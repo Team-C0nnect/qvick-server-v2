@@ -18,8 +18,8 @@ public class UserQueryServiceImpl implements UserQueryService{
     private final UserQueryRepository movieQueryRepository;
 
     @Override
-    public List<User> findUsers(UserApprovalPageRequest request) {
-        return movieQueryRepository.findUsers(request);
+    public List<User> findWaitingUsers(UserApprovalPageRequest request) {
+        return movieQueryRepository.findWaitingUsers(request);
     }
 
 }

@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface UserQueryRepository {
 
-    List<User> findUsers(UserApprovalPageRequest request);
+    List<User> findWaitingUsers(UserApprovalPageRequest request);
 
 }

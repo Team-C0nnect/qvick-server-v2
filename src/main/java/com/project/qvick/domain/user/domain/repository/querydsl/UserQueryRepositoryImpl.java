@@ -17,13 +17,15 @@ import static com.project.qvick.domain.user.domain.QUserEntity.userEntity;
 @Repository
 @RequiredArgsConstructor
 public class UserQueryRepositoryImpl implements UserQueryRepository{
+
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public List<User> findUsers(UserApprovalPageRequest request) {
+    public List<User> findWaitingUsers(UserApprovalPageRequest request) {
         return jpaQueryFactory
                 .select(userConstructorExpression())
                 .from(userEntity)
+                .where(inApprovals(request.getApprovals()))
                 .offset((request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
                 .orderBy(userEntity.id.desc())
@@ -32,8 +34,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
 
     private ConstructorExpression<User> userConstructorExpression() {
         return Projections.constructor(User.class,
-                userEntity.id,userEntity.approval
-                );
+                userEntity.id,userEntity.approval);
     }
 
     private BooleanExpression inApprovals(List<Approval> approvals){

@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface UserQueryService {
 
-    List<User> findUsers(UserApprovalPageRequest request);
+    List<User> findWaitingUsers(UserApprovalPageRequest request);
 
 }

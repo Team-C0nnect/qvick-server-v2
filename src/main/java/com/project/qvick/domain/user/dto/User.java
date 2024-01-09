@@ -1,5 +1,7 @@
 package com.project.qvick.domain.user.dto;
 
+import com.project.qvick.domain.user.domain.enums.Approval;
+import com.project.qvick.domain.user.domain.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,4 +17,6 @@ public class User {
     private Long id;
     private String name;
     private String email;
+    private Approval approval;
+    private UserRole userRole;
 }
