@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+/** 유저 Entity */
 @Entity
 @Getter
 @SuperBuilder
