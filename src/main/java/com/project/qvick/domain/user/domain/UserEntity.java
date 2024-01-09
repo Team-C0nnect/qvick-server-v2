@@ -1,5 +1,6 @@
 package com.project.qvick.domain.user.domain;
 
+import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,5 +20,8 @@ public class UserEntity extends BaseTimeEntity {
 
     @Column(nullable = false, unique = true)
     private String email;
+
+    @Column(nullable = false)
+    private Approval approval;
 
 }
