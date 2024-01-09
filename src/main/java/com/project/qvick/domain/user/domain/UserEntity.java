@@ -7,6 +7,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/** 유저 Entity */
 @Entity
 public class UserEntity extends BaseTimeEntity {
 

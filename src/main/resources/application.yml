@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/springStudy?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/Qvick?useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: root
-    password: 8556rjsdn
+    username: qvick
+    password: qvick1234!
 
   jpa:
     database: mysql
@@ -17,3 +17,10 @@ spring:
       ddl-auto: update
     show-sql: true
     defer-datasource-initialization: true
+
+    cache:
+      type: redis
+
+    redis:
+      port: 6379
+      host: localhost
