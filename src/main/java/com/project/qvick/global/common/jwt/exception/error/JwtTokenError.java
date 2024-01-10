@@ -1,6 +1,6 @@
 package com.project.qvick.global.common.jwt.exception.error;
 
-import com.project.checkin.global.exception.error.ErrorProperty;
+import com.project.qvick.global.exception.error.ErrorProperty;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

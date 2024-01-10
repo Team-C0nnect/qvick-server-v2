@@ -1,14 +1,14 @@
 package com.project.qvick.global.common.jwt;
 
-import com.project.checkin.domain.user.domain.enums.UserRole;
+import com.project.qvick.domain.user.domain.enums.UserRole;
+import com.project.qvick.domain.user.domain.exception.UserNotFoundException;
 import com.project.qvick.global.common.jwt.exception.TokenTypeException;
-import com.project.checkin.domain.user.domain.repository.UserRepository;
-import com.project.checkin.domain.user.exception.UserNotFoundException;
-import com.project.checkin.domain.user.mapper.UserMapper;
-import com.project.checkin.domain.user.dto.User;
+import com.project.qvick.domain.user.domain.repository.UserRepository;
+import com.project.qvick.domain.user.mapper.UserMapper;
+import com.project.qvick.domain.user.dto.User;
 import com.project.qvick.global.common.jwt.config.JwtProperties;
 import com.project.qvick.global.common.jwt.enums.JwtType;
-import com.project.checkin.global.security.auth.principal.CustomUserDetails;
+import com.project.qvick.global.security.auth.principal.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Header;

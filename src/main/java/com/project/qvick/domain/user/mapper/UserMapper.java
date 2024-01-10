@@ -4,6 +4,7 @@ import com.project.qvick.domain.user.domain.UserEntity;
 import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.dto.User;
+import com.project.qvick.global.infra.google.dto.OAuth2Attribute;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -21,12 +22,11 @@ public class UserMapper {
                 .build();
     }
 
-    public UserEntity toCreate(User user){
+    public UserEntity createEntity(OAuth2Attribute oAuth2Attribute) {
         return UserEntity.builder()
-                .name(user.getName())
-                .email(user.getEmail())
-                .userRole(UserRole.GUEST)
-                .approval(Approval.WAIT)
+                .email(oAuth2Attribute.getEmail())
+                .name(oAuth2Attribute.getName())
+                .userRole(UserRole.USER)
                 .build();
     }
 

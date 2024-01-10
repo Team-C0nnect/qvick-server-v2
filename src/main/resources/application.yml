@@ -21,9 +21,9 @@ spring:
     cache:
       type: redis
 
-    redis:
-      port: 6379
-      host: localhost
+  redis:
+    port: 6379
+    host: localhost
 
     security:
       oauth2:
