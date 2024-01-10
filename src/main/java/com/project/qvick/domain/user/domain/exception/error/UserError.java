@@ -15,4 +15,5 @@ public enum UserError implements ErrorProperty {
 
     private final HttpStatus status;
     private final String message;
+
 }
