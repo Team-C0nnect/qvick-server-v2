@@ -12,33 +12,31 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
-    generate-ddl: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
-    defer-datasource-initialization: true
 
-    cache:
-      type: redis
+  cache:
+    type: redis
 
   redis:
     port: 6379
     host: localhost
 
-    security:
-      oauth2:
-        client:
-          registration:
-            google:
-              client-id: 846014004935-s8as4ndv858n1r1790tk1t3pd92v66rv.apps.googleusercontent.com
-              client-secret: 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
-          provider:
-            google:
-              token-info: https://oauth2.googleapis.com/tokeninfo
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 246755219900-6dvpou8m5lktd4jgfd23i3cv24f1pkq9.apps.googleusercontent.com
+            client-secret: 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
+        provider:
+          google:
+            token-info: https://oauth2.googleapis.com/tokeninfo
 
 application:
   jwt:
-    secretKey: 25432A462D4A614E645267556A586E3272357538782F413F4428472B4B625065
+    secretKey: eyJhbGciOiJIUzI1NiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTcwNDg2NjU4MiwiaWF0IjoxNzA0ODY2NTgyfQ.yKZ4QXFUdPAG2ftZtbScCUeWUvjbdKiL2LPcagXHyYU
     expiration: 900000
     refreshExpiration: 99999999
 
@@ -50,10 +48,21 @@ firebase:
     non-check-message: 출석하자~!!
 
 springdoc:
-  default-consumes-media-type: application/json;charset=UTF-8
-  default-produces-media-type: application/json;charset=UTF-8
+  api-docs:
+    enabled: true
+    version: openapi_3_0 #사용하는 버전을 명시
+    path: /v3/api-docs #api 문서 확인 경로, localhost:8080/v3/api-docs 로 접근
+
+  default-consumes-media-type: application/json #기본으로 설정되는 미디어타입 지정
+  auto-tag-classes: true #오토 태그 기능 활성화
+  groups:
+    enabled: false #api 그룹 기능, default는 true 이나 당장 사용하지 않기에 false 로 지정
+
   swagger-ui:
-    path: /
-    disable-swagger-default-url: true
-    display-request-duration: true
-    tags-sorter: alpha
+    operationsSorter: method #method 기준으로 정렬, 그외 alpha 로 정렬 가능
+    path: /swagger-ui.html
+
+server:
+  port: 8080
+  servlet:
+    context-path: /
