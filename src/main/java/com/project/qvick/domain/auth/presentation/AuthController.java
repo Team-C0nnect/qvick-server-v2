@@ -27,7 +27,7 @@ public class AuthController {
         return oAuth2UserService.auth(authRequest);
     }
 
-    @Operation(summary = "토큰 재발급", description = "토근 재발급")
+    @Operation(summary = "토큰 재발급", description = "토큰 재발급")
     @PostMapping("/refresh")
     public JsonWebTokenResponse refresh(@Validated @RequestBody RefreshTokenRequest refreshTokenRequest) {
         return oAuth2UserService.refresh(refreshTokenRequest.getRefreshToken());
