@@ -24,15 +24,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional(rollbackFor = Exception.class)
+/**OAtuh2 로그인 기능 구현 클래스*/
 public class OAuth2UserServiceImpl implements OAuth2UserService {
 
+    //의존성 주입
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final GoogleService googleService;
 //    private final FirebaseNotificationService firebaseNotificationService;
-
     private final JwtProvider jwtProvider;
 
+    /**JWT 생성*/
     public JsonWebTokenResponse auth(AuthenticationRequest request) {
         OAuth2Attribute oAuth2Attribute = googleService.getTokenInfo(request.getIdToken());
         if (!Strings.hasText(oAuth2Attribute.getEmail())) {
@@ -47,6 +49,7 @@ public class OAuth2UserServiceImpl implements OAuth2UserService {
                 .build();
     }
 
+    /**refresh 토큰 생성*/
     @Override
     public JsonWebTokenResponse refresh(String token) {
         Jws<Claims> claims = jwtProvider.getClaims(jwtProvider.extractToken(token));
@@ -58,6 +61,7 @@ public class OAuth2UserServiceImpl implements OAuth2UserService {
                 .build();
     }
 
+    /**신규회원 확인 후 저장*/
     private User findOrSave(OAuth2Attribute oAuth2Attribute) {
         User user = userRepository.findByEmail(oAuth2Attribute.getEmail()).map(userMapper::toUser).orElse(null);
         if (user == null) {
@@ -66,6 +70,7 @@ public class OAuth2UserServiceImpl implements OAuth2UserService {
         return user;
     }
 
+    /**유저 저장*/
     private User save(final UserEntity userEntity) {
         return userMapper.toUser(userRepository.save(userEntity));
     }
