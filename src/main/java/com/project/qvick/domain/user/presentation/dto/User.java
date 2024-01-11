@@ -1,4 +1,4 @@
-package com.project.qvick.domain.user.dto;
+package com.project.qvick.domain.user.presentation.dto;
 
 import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;

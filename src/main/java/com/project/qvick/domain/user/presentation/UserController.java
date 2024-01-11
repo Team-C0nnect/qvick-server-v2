@@ -1,6 +1,6 @@
 package com.project.qvick.domain.user.presentation;
 
-import com.project.qvick.domain.user.dto.request.UserSignUpRequest;
+import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.domain.user.service.UserService;
 import com.project.qvick.domain.user.service.querydsl.UserQueryService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -8,7 +8,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

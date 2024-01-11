@@ -1,6 +1,6 @@
 package com.project.qvick.global.security.auth.principal;
 
-import com.project.qvick.domain.user.dto.User;
+import com.project.qvick.domain.user.presentation.dto.User;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

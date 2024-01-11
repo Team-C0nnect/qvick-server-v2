@@ -1,4 +1,4 @@
-package com.project.qvick.domain.auth.dto.response;
+package com.project.qvick.domain.auth.presentation.dto.response;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;

@@ -5,7 +5,7 @@ import com.project.qvick.domain.user.domain.exception.UserNotFoundException;
 import com.project.qvick.global.common.jwt.exception.TokenTypeException;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.mapper.UserMapper;
-import com.project.qvick.domain.user.dto.User;
+import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.jwt.config.JwtProperties;
 import com.project.qvick.global.common.jwt.enums.JwtType;
 import com.project.qvick.global.security.auth.principal.CustomUserDetails;

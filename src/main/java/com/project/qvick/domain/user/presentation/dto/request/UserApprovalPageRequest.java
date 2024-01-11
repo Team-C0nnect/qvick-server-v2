@@ -1,4 +1,4 @@
-package com.project.qvick.domain.user.dto.request;
+package com.project.qvick.domain.user.presentation.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.project.qvick.domain.user.domain.enums.Approval;

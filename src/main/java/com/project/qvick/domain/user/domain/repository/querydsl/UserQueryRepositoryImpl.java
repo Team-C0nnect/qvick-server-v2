@@ -1,8 +1,8 @@
 package com.project.qvick.domain.user.domain.repository.querydsl;
 
 import com.project.qvick.domain.user.domain.enums.Approval;
-import com.project.qvick.domain.user.dto.User;
-import com.project.qvick.domain.user.dto.request.UserApprovalPageRequest;
+import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;

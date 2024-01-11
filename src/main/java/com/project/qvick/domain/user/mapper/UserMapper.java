@@ -1,13 +1,10 @@
 package com.project.qvick.domain.user.mapper;
 
 import com.project.qvick.domain.user.domain.UserEntity;
-import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.domain.user.dto.User;
+import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.infra.google.dto.OAuth2Attribute;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDateTime;
 
 @Component
 public class UserMapper {

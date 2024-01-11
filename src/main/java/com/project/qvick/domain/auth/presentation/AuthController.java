@@ -1,8 +1,8 @@
 package com.project.qvick.domain.auth.presentation;
 
-import com.project.qvick.domain.auth.dto.request.AuthenticationRequest;
-import com.project.qvick.domain.auth.dto.request.RefreshTokenRequest;
-import com.project.qvick.domain.auth.dto.response.JsonWebTokenResponse;
+import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
+import com.project.qvick.domain.auth.presentation.dto.request.RefreshTokenRequest;
+import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
 import com.project.qvick.domain.auth.service.OAuth2UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

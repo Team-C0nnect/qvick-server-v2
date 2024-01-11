@@ -1,4 +1,4 @@
-package com.project.qvick.domain.auth.dto.request;
+package com.project.qvick.domain.auth.presentation.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;

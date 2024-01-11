@@ -1,9 +1,8 @@
 package com.project.qvick.domain.user.service.querydsl;
 
 import com.project.qvick.domain.user.domain.repository.querydsl.UserQueryRepository;
-import com.project.qvick.domain.user.dto.User;
-import com.project.qvick.domain.user.dto.request.UserApprovalPageRequest;
-import com.project.qvick.global.common.dto.request.PageRequest;
+import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

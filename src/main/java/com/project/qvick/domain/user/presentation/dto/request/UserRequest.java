@@ -1,10 +1,9 @@
-package com.project.qvick.domain.user.dto.request;
+package com.project.qvick.domain.user.presentation.dto.request;
 
 import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.domain.user.dto.User;
+import com.project.qvick.domain.user.presentation.dto.User;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @Getter
