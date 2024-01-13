@@ -4,4 +4,5 @@ import com.project.qvick.domain.check.presentation.dto.response.CheckCodeRespons
 
 public interface CheckCodeService {
     CheckCodeResponse generate();
+
 }

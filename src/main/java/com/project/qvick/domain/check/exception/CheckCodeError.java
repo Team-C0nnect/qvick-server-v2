@@ -10,5 +10,6 @@ public class CheckCodeError extends BusinessException {
     private CheckCodeError() {
         super(CheckError.CHECK_ERROR);
     }
+
 }
 

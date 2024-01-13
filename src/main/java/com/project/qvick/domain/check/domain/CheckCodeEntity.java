@@ -20,6 +20,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 public class CheckCodeEntity extends BaseTimeEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,5 +32,6 @@ public class CheckCodeEntity extends BaseTimeEntity {
     private String code;
 
     private boolean valid;
+
 }
 

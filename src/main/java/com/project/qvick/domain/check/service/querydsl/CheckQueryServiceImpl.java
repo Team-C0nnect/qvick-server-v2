@@ -22,5 +22,6 @@ public class CheckQueryServiceImpl implements CheckQueryService {
     public List<Check> findCheck(PageRequest pageRequest) {
         return checkQueryRepository.findCheck(pageRequest);
     }
+
 }
 

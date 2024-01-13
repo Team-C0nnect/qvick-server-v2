@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class UserSecurityImpl implements UserSecurity {
+
     @Override
     public User getUser() {
         return ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser();

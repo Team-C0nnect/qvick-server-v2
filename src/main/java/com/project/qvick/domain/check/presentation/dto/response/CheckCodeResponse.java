@@ -9,4 +9,5 @@ import lombok.Setter;
 @Builder
 public class CheckCodeResponse {
     private String code;
+
 }

@@ -50,7 +50,7 @@ public class CheckController {
     }
 
     @Operation(summary = "출석 확인", description = "출석 상태를 확인합니다")
-    @GetMapping("/confirm")
+    @GetMapping("")
     public ResponseEntity<Void> attendanceCheck(){
         return checkService.attendanceCheck();
     }
