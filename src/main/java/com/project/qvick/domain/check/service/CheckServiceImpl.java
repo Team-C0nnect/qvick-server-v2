@@ -3,6 +3,7 @@ package com.project.qvick.domain.check.service;
 import com.project.qvick.domain.check.domain.CheckEntity;
 import com.project.qvick.domain.check.domain.repository.CheckCodeRepository;
 import com.project.qvick.domain.check.domain.repository.CheckRepository;
+import com.project.qvick.domain.check.exception.CheckCodeExpirationException;
 import com.project.qvick.domain.check.presentation.dto.request.CodeRequest;
 import com.project.qvick.domain.check.exception.CheckAlreadyExistsException;
 import com.project.qvick.domain.check.exception.CheckCodeError;
@@ -35,8 +36,10 @@ public class CheckServiceImpl implements CheckService {
         if (checkCodeRepository.existsByCodeAndValid(codeRequest.getCode(), true)) {
             checkRepository.save(checkEntity);
         } else {
-            throw CheckCodeError.EXCEPTION;
+            throw CheckCodeExpirationException.EXCEPTION;
         }
+
+        throw CheckCodeError.EXCEPTION;
 
     }
 
