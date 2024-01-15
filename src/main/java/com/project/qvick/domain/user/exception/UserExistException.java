@@ -1,6 +1,6 @@
-package com.project.qvick.domain.user.domain.exception;
+package com.project.qvick.domain.user.exception;
 
-import com.project.qvick.domain.user.domain.exception.error.UserError;
+import com.project.qvick.domain.user.exception.error.UserError;
 import com.project.qvick.global.exception.BusinessException;
 
 public class UserExistException extends BusinessException {

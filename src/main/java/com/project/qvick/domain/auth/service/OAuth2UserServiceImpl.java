@@ -5,7 +5,7 @@ import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequ
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
 import com.project.qvick.domain.user.domain.UserEntity;
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.domain.user.domain.exception.UserNotFoundException;
+import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.mapper.UserMapper;

@@ -1,7 +1,7 @@
 package com.project.qvick.global.common.jwt;
 
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.domain.user.domain.exception.UserNotFoundException;
+import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.global.common.jwt.exception.TokenTypeException;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.mapper.UserMapper;

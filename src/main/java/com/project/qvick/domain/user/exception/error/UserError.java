@@ -1,4 +1,4 @@
-package com.project.qvick.domain.user.domain.exception.error;
+package com.project.qvick.domain.user.exception.error;
 
 import com.project.qvick.global.exception.error.ErrorProperty;
 import lombok.Getter;
