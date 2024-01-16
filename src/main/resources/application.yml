@@ -28,8 +28,9 @@ spring:
       client:
         registration:
           google:
-            client-id: 246755219900-6dvpou8m5lktd4jgfd23i3cv24f1pkq9.apps.googleusercontent.com
-            client-secret: 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
+            client-id: 246755219900-ubbuhsmojfign0du3pulukfi6a3843fv.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
         provider:
           google:
             token-info: https://oauth2.googleapis.com/tokeninfo
@@ -40,12 +41,12 @@ application:
     expiration: 900000
     refreshExpiration: 99999999
 
-firebase:
-  sdk:
-    path: checkin-52ec9-firebase-adminsdk-ogjpu-a96b4a67f0.json
-  notification:
-    non-check-title: ✅✅✅✅✅✅
-    non-check-message: 출석하자~!!
+#firebase:
+#  sdk:
+#    path: checkin-52ec9-firebase-adminsdk-ogjpu-a96b4a67f0.json
+#  notification:
+#    non-check-title: ✅✅✅✅✅✅
+#    non-check-message: 출석하자~!!
 
 springdoc:
   api-docs:

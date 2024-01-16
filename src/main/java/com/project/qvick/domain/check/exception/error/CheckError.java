@@ -17,4 +17,3 @@ public enum CheckError implements ErrorProperty {
     private final String message;
 
 }
-
