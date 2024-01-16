@@ -20,7 +20,7 @@ public class WifiController {
     private final WifiService wifiService;
 
     @Operation(summary = "와이파이 등록", description = "와이파이를 등록합니다")
-    @PostMapping("/register")
+    @PostMapping("")
     public void wifiRegister(WifiRequest wifiRequest){
         wifiService.wifiRegister(wifiRequest);
     }
