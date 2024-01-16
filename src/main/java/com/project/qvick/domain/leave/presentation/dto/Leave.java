@@ -13,10 +13,10 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Getter
 @Setter
+/* 기본적인 퇴사주 dto */
 public class Leave {
 
     private Long id;
-    private Long userId;
     private LocalDate leaveDate;
 
 }

@@ -6,6 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
+/*퇴사주 설정 객체*/
 public class LeaveRequest {
 
     @NotNull

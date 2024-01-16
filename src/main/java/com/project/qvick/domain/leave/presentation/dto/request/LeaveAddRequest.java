@@ -9,6 +9,8 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+/*
+* 퇴사주 추가 요청 객체*/
 public class LeaveAddRequest {
 
     @NotNull

@@ -14,6 +14,8 @@ import static com.project.qvick.domain.leave.domain.QLeaveEntity.leaveEntity;
 
 @Repository
 @RequiredArgsConstructor
+/*
+* 퇴사주 페이징 처리*/
 public class LeaveQueryRepositoryImpl implements LeaveQueryRepository {
 
     private final JPAQueryFactory queryFactory;

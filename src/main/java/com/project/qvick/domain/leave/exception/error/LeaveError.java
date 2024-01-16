@@ -7,6 +7,9 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @RequiredArgsConstructor
+/*
+ * 퇴사주 도메인 예외처리
+ */
 public enum LeaveError implements ErrorProperty {
 
     LEAVE_CONFLICT(HttpStatus.CONFLICT,"이미 설정 되었습니다."),
