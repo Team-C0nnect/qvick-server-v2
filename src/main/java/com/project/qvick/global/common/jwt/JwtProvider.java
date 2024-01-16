@@ -76,7 +76,6 @@ public class JwtProvider {
 
         User user = userRepository.findByEmail(claims.getBody().getSubject()).map(userMapper::toUser).orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
-
         final CustomUserDetails details = new CustomUserDetails(user);
 
         return new UsernamePasswordAuthenticationToken(details, null, details.getAuthorities());
@@ -96,4 +95,5 @@ public class JwtProvider {
     public boolean isWrongType(final Jws<Claims> claims, final JwtType jwtType) {
         return !(claims.getHeader().get(Header.JWT_TYPE).equals(jwtType.toString()));
     }
+
 }
