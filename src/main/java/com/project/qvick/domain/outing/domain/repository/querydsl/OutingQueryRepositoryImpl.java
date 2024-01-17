@@ -7,14 +7,18 @@ import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 import static com.project.qvick.domain.outing.domain.QOutingEntity.outingEntity;
 
+@Repository
+@RequiredArgsConstructor
 public class OutingQueryRepositoryImpl implements OutingQueryRepository{
 
-    JPAQueryFactory queryFactory;
+    private final JPAQueryFactory queryFactory;
 
     @Override
     public List<Outing> findStudents(OutingPageRequest request) {
