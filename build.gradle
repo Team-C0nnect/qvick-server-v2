@@ -30,6 +30,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.0.4'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
 
 	// queryDSL 설정
 	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
@@ -56,8 +58,4 @@ dependencies {
 
 	implementation 'org.springdoc:springdoc-openapi-ui:1.6.14'
 
-}
-
-tasks.named('test') {
-	useJUnitPlatform()
 }
