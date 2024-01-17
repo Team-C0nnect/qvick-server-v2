@@ -1,4 +1,4 @@
-package com.project.qvick.domain.outing.domain.presentation.dto;
+package com.project.qvick.domain.outing.presentation.dto.response;
 
 import com.project.qvick.domain.outing.domain.enums.OutingStatus;
 import lombok.AllArgsConstructor;
@@ -9,20 +9,17 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Builder
-public class Outing {
+@AllArgsConstructor
+@Getter
+@NoArgsConstructor
+@Setter
+public class OutingResponse {
 
     private Long id;
-    private Long userId;
-    private LocalDateTime startDateTime;
-    private LocalDateTime endDateTime;
     private String reason;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private OutingStatus approval;
-    private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
 
 }

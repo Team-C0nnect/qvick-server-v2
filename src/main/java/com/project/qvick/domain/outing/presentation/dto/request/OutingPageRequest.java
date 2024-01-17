@@ -1,4 +1,4 @@
-package com.project.qvick.domain.outing.domain.presentation.dto.request;
+package com.project.qvick.domain.outing.presentation.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 import com.project.qvick.domain.outing.domain.enums.OutingStatus;

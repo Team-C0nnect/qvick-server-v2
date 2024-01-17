@@ -1,7 +1,7 @@
-package com.project.qvick.domain.outing.domain.presentation.dto.request;
+package com.project.qvick.domain.outing.presentation.dto.request;
 
 import com.project.qvick.domain.outing.domain.enums.OutingStatus;
-import com.project.qvick.domain.outing.domain.presentation.dto.Outing;
+import com.project.qvick.domain.outing.presentation.dto.Outing;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;

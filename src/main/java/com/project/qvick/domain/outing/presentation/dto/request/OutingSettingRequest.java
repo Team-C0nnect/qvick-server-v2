@@ -1,4 +1,4 @@
-package com.project.qvick.domain.outing.domain.presentation.dto.request;
+package com.project.qvick.domain.outing.presentation.dto.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotNull;
