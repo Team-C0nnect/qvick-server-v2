@@ -1,6 +1,6 @@
-package com.project.qvick.domain.sleepover.presentation.dto;
+package com.project.qvick.domain.outing.domain.presentation.dto;
 
-import com.project.qvick.domain.sleepover.domain.enums.SleepoverStatus;
+import com.project.qvick.domain.outing.domain.enums.OutingStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,19 +9,19 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
 @Getter
 @Setter
-public class Sleepover {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class Outing {
 
     private Long id;
     private Long userId;
     private LocalDateTime startDateTime;
     private LocalDateTime endDateTime;
     private String reason;
-    private SleepoverStatus approval;
+    private OutingStatus approval;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
 

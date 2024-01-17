@@ -26,8 +26,8 @@ public class SleepoverRequest {
 
     public Sleepover toSleepover() {
         return Sleepover.builder()
-                .startDateTime(startDateTime)
-                .endDateTime(endDateTime)
+                .startDateTime(this.startDateTime)
+                .endDateTime(this.endDateTime)
                 .reason(this.reason)
                 .approval(this.approval)
                 .build();
