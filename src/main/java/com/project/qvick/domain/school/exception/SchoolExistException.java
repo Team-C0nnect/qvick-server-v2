@@ -5,7 +5,7 @@ import com.project.qvick.global.exception.BusinessException;
 
 public class SchoolExistException extends BusinessException {
 
-    private final SchoolExistException EXCEPTION = new SchoolExistException();
+    public static final SchoolExistException EXCEPTION = new SchoolExistException();
 
     private SchoolExistException(){
         super(SchoolError.SCHOOL_EXIST);
