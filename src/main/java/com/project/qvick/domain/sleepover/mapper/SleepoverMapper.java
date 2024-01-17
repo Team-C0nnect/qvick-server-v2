@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 
 @Component
 public class SleepoverMapper {
+
     public Sleepover toSleepover(SleepoverEntity entity){
         return Sleepover.builder()
                 .id(entity.getId())
@@ -33,6 +34,7 @@ public class SleepoverMapper {
                 .modifiedDateTime(LocalDateTime.now())
                 .build();
     }
+
     public SleepoverEntity toCreate(Sleepover sleepover){
         return SleepoverEntity.builder()
                 .userId(sleepover.getUserId())
