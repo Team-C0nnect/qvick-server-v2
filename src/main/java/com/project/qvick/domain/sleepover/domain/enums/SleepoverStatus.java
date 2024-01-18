@@ -8,8 +8,7 @@ import lombok.RequiredArgsConstructor;
 public enum SleepoverStatus {
 
     SLEEPOVER_ACCEPTED("ACCEPTED"),
-    SLEEPOVER_REJECTED("REJECTED"),
-    SLEEPOVER_WAITING("WAITING");
+    SLEEPOVER_NOT_ACCEPTED("NOT_ACCEPTED");
     private final String key;
 
 }

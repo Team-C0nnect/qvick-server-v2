@@ -25,7 +25,7 @@ public class OutingMapper {
                 .startDateTime(outing.getStartDateTime())
                 .endDateTime(outing.getEndDateTime())
                 .reason(outing.getReason())
-                .approval(OutingStatus.SLEEPOVER_WAITING)
+                .approval(OutingStatus.OUTING_NOT_ACCEPTED)
                 .build();
     }
 

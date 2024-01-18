@@ -7,9 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum OutingStatus {
 
-    SLEEPOVER_ACCEPTED("ACCEPTED"),
-    SLEEPOVER_REJECTED("REJECTED"),
-    SLEEPOVER_WAITING("WAITING");
+    OUTING_ACCEPTED("ACCEPTED"),
+    OUTING_NOT_ACCEPTED("NOT_ACCEPTED");
     private final String key;
 
 }

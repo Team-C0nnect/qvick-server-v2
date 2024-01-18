@@ -33,14 +33,14 @@ public class OutingServiceImpl implements OutingService{
     @Override
     public void refuse(Long outingId) {
         Outing outing = repository.findById(outingId).map(mapper::toOuting).orElseThrow(()-> OutingNotFoundException.EXCEPTION);
-        outing.setApproval(OutingStatus.SLEEPOVER_REJECTED);
+        outing.setApproval(OutingStatus.OUTING_NOT_ACCEPTED);
         repository.save(mapper.toUpdate(outing));
     }
 
     @Override
     public void accept(Long outingId) {
         Outing outing = repository.findById(outingId).map(mapper::toOuting).orElseThrow(()-> OutingNotFoundException.EXCEPTION);
-        outing.setApproval(OutingStatus.SLEEPOVER_ACCEPTED);
+        outing.setApproval(OutingStatus.OUTING_ACCEPTED);
         repository.save(mapper.toUpdate(outing));
     }
 

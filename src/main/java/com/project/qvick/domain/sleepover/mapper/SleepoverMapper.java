@@ -41,7 +41,7 @@ public class SleepoverMapper {
                 .startDateTime(sleepover.getStartDateTime())
                 .endDateTime(sleepover.getEndDateTime())
                 .reason(sleepover.getReason())
-                .approval(SleepoverStatus.SLEEPOVER_WAITING)
+                .approval(SleepoverStatus.SLEEPOVER_NOT_ACCEPTED)
                 .createdDateTime(sleepover.getCreatedDate())
                 .modifiedDateTime(LocalDateTime.now())
                 .build();
