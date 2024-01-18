@@ -8,6 +8,7 @@ import com.project.qvick.domain.outing.mapper.OutingMapper;
 import com.project.qvick.domain.outing.presentation.dto.Outing;
 import com.project.qvick.domain.outing.service.querydsl.OutingQueryService;
 import com.project.qvick.domain.sleepover.domain.enums.SleepoverStatus;
+import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.BadRequestException;
@@ -24,7 +25,7 @@ public class OutingServiceImpl implements OutingService{
 
     @Override
     public void register(Outing outing) {
-        if(repository.findById(userSecurity.getUser().getId()).get().getApproval().equals(SleepoverStatus.SLEEPOVER_WAITING)){
+        if(repository.findById(userSecurity.getUser().getId()).get().getApproval().equals(SleepoverStatus.SLEEPOVER_NOT_ACCEPTED)){
             throw OutingAlreadyWaitingException.EXCEPTION;
         }
         repository.save(mapper.toCreate(outing));

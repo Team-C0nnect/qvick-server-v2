@@ -11,10 +11,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/terms")
 public class HtmlController {
 
-    @Operation(summary = " 개인정보처리약관", description = "개인정보처리약관을 불러옵니다")
+
     @GetMapping("/privacy-policy")
+    @Operation(summary = "개인정보처리약관", description = "개인정보처리약관을 불러옵니다")
     public String privacyPolicy(){
         return "PrivacyPolicy";
+    }
+
+    @GetMapping("/use-term")
+    @Operation(summary = "이용약관", description = "이용약관을 불러옵니다")
+    public String useTerm(){
+        return "UseTerm";
     }
 
 }

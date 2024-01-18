@@ -9,6 +9,7 @@ import com.project.qvick.domain.sleepover.presentation.dto.Sleepover;
 import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverPageRequest;
 import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverSettingRequest;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/outing-admin")
+@Tag(name = "외출 관리자", description = "외출 관리자")
 public class OutingAdminController {
 
     private final OutingService service;
