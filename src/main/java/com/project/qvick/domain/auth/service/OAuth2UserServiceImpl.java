@@ -5,10 +5,10 @@ import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequ
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
 import com.project.qvick.domain.user.domain.UserEntity;
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
-import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
+import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.jwt.JwtProvider;
 import com.project.qvick.global.common.jwt.enums.JwtType;
 import com.project.qvick.global.common.jwt.exception.TokenTypeException;

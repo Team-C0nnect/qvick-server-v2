@@ -2,8 +2,8 @@ package com.project.qvick.domain.check.service;
 
 import com.project.qvick.domain.check.domain.CheckCodeEntity;
 import com.project.qvick.domain.check.domain.repository.CheckCodeRepository;
-import com.project.qvick.domain.check.presentation.dto.response.CheckCodeResponse;
 import com.project.qvick.domain.check.mapper.CheckCodeMapper;
+import com.project.qvick.domain.check.presentation.dto.response.CheckCodeResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -12,8 +12,8 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 import java.util.List;
 
-import static com.project.qvick.domain.user.domain.QUserEntity.userEntity;
 import static com.project.qvick.domain.check.domain.QCheckEntity.checkEntity;
+import static com.project.qvick.domain.user.domain.QUserEntity.userEntity;
 
 @Repository
 @RequiredArgsConstructor
