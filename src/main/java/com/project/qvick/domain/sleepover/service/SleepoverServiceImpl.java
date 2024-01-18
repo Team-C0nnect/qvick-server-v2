@@ -32,7 +32,7 @@ public class SleepoverServiceImpl implements SleepoverService {
     public void refuseSleepover(Long sleepoverId) {
 
         Sleepover sleepover = sleepoverRepository.findById(sleepoverId).map(sleepoverMapper::toSleepover).orElseThrow(() -> SleepoverNotFoundException.EXCEPTION);
-        sleepover.setApproval(SleepoverStatus.SLEEPOVER_REJECTED);
+        sleepover.setApproval(SleepoverStatus.SLEEPOVER_NOT_ACCEPTED);
         sleepoverRepository.save(sleepoverMapper.toUpdate(sleepover));
 
     }
