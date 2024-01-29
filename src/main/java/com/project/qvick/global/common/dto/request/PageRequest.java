@@ -9,6 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PageRequest {
+
     private int page;
     private int size;
 
@@ -21,4 +22,5 @@ public class PageRequest {
         this.page = page;
         this.size = size;
     }
+
 }

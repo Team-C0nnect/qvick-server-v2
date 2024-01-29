@@ -10,7 +10,9 @@ version = '0.0.2'
 java {
 	sourceCompatibility = '17'
 }
-
+jar {
+	enabled = false
+}
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor

@@ -1,3 +1,4 @@
-FROM openjdk:17-jdk-slim
-ADD /build/libs/*.jar app.jar
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+FROM openjdk:17-jdk
+ARG JAR_FILE=builds/libs/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["java", "-Dspring.profiles.active=docker", "-jar", "app.jar"]

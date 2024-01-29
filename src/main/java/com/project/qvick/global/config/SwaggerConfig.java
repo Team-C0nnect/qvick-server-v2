@@ -23,4 +23,5 @@ public class SwaggerConfig {
                 .description("Qcivk API")
                 .version("0.0.2");
     }
+
 }
