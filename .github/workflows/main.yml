@@ -1,0 +1,43 @@
+name: CI/CD using github actions & docker
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  CI-CD:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: set chmod
+      run: chmod +x ./gradlew
+        
+    - name: Build with Gradle
+      run: ./gradlew bootJar
+
+    - name: Docker build & push to prod
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/daesyullaeng:latest .
+        docker push ${{ secrets.DOCKER_USERNAME }}/daesyullaeng:latest
+
+    - name: Deploy to prod
+      uses: appleboy/ssh-action@master
+      id: deploy-prod
+      with:
+        host: ${{ secrets.HOST_PROD }} # EC2 퍼블릭 IPv4 DNS
+        username: ubuntu
+        key: ${{ secrets.PRIVATE_KEY }}
+        envs: GITHUB_SHA
+        script: |
+          docker stop daesyullaeng
+          docker rm daesyullaeng
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/daesyullaeng:latest
+          docker pull ${{ secrets.DOCKER_USERNAME }}/daesyullaeng:latest
+          docker run -d -p 8080:8080 --name daesyullaeng ${{ secrets.DOCKER_USERNAME }}/daesyullaeng:latest
