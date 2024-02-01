@@ -1,4 +1,5 @@
-FROM openjdk:17-jdk
-ARG JAR_FILE=builds/libs/*.jar
+FROM openjdk:17
+ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-Dspring.profiles.active=docker", "-jar", "app.jar"]
+ENV TZ=Asia/Seoul
+ENTRYPOINT ["java","-jar","/app.jar","-Duser.timezone=Asia/Seoul"]
