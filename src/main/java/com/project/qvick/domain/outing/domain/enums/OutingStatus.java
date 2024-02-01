@@ -9,6 +9,7 @@ public enum OutingStatus {
 
     OUTING_ACCEPTED("ACCEPTED"),
     OUTING_NOT_ACCEPTED("NOT_ACCEPTED");
+
     private final String key;
 
 }
