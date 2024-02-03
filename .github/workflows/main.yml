@@ -1,8 +1,9 @@
 name: CI/CD using github actions & docker
 
+
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "main" ] # 해당 branch에 푸쉬 발생 시 업데이트
 
 jobs:
   CI-CD:
@@ -33,7 +34,7 @@ jobs:
       with:
         host: ${{ secrets.HOST_PROD }} # EC2 퍼블릭 IPv4 DNS
         username: ubuntu
-        key: ${{ secrets.PRIVATE_KEY }}
+        key: ${{ secrets.PRIVATE_KEY }} # EC2 private key
         envs: GITHUB_SHA
         script: |
           docker stop qvick
