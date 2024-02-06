@@ -5,8 +5,13 @@ import com.project.qvick.domain.check.domain.repository.CheckCodeRepository;
 import com.project.qvick.domain.check.mapper.CheckCodeMapper;
 import com.project.qvick.domain.check.presentation.dto.response.CheckCodeResponse;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 @Transactional(rollbackFor = Exception.class)
 @Service
@@ -15,12 +20,14 @@ public class CheckCodeServiceImpl implements CheckCodeService {
 
     private final CheckCodeRepository checkCodeRepository;
     private final CheckCodeMapper checkCodeMapper;
+    private static final Executor executor = Executors.newFixedThreadPool(10);
 
     @Override
-    public CheckCodeResponse generate() {
+    @Async
+    public CompletableFuture<CheckCodeResponse> generate() {
         checkCodeRepository.updateAllInvalidCheckCode(1L);
         CheckCodeEntity checkCodeEntity = checkCodeRepository.save(checkCodeMapper.createCheckCodeEntity(1L));
-        return CheckCodeResponse.builder().code(checkCodeEntity.getCode()).build();
+        return CompletableFuture.completedFuture(CheckCodeResponse.builder().code(checkCodeEntity.getCode()).build());
     }
 
 }
