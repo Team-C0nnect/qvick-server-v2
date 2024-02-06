@@ -26,7 +26,4 @@ public class StudentEntity extends BaseTimeEntity {
     @Column(nullable = false)
     private String stdId;
 
-    @Column
-    private String roomId;
-
 }
