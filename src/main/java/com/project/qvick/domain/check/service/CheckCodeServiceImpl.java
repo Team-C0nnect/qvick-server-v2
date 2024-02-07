@@ -20,7 +20,6 @@ public class CheckCodeServiceImpl implements CheckCodeService {
 
     private final CheckCodeRepository checkCodeRepository;
     private final CheckCodeMapper checkCodeMapper;
-    private static final Executor executor = Executors.newFixedThreadPool(10);
 
     @Override
     @Async
