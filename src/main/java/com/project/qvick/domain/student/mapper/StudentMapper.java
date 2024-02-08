@@ -15,9 +15,8 @@ public class StudentMapper {
                 .build();
     }
 
-    public StudentEntity toCreate(Long id, String stdId){
+    public StudentEntity toCreate(String stdId){
         return StudentEntity.builder()
-                .id(id)
                 .stdId(stdId)
                 .build();
     }
