@@ -18,8 +18,9 @@ public class RoomMapper {
                 .build();
     }
 
-    public RoomEntity toCreate(String roomId){
+    public RoomEntity toCreate(Long userId, String roomId){
         return RoomEntity.builder()
+                .userId(userId)
                 .roomId(roomId)
                 .build();
     }

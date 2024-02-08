@@ -38,7 +38,6 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void studentEdit(StudentEditRequest studentEditRequest) {
-
         Student student = studentRepository.findById(userSecurity.getUser().getId())
                 .map(studentMapper::toStudent).orElseThrow(() -> StudentNotFoundException.EXCEPTION);
         student.setStdId(studentEditRequest.getStdId());
@@ -47,12 +46,10 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void studentDelete(){
-
         if(studentRepository.findById(userSecurity.getUser().getId()).isEmpty()){
             throw StudentNotFoundException.EXCEPTION;
         }
         studentRepository.deleteById(userSecurity.getUser().getId());
-
     }
 
 }
