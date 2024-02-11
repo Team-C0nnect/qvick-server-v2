@@ -33,26 +33,23 @@ public class StudentServiceImpl implements StudentService{
             throw StudentExistException.EXCEPTION;
         }
         studentRepository.save(studentMapper
-                .toCreate(userSecurity.getUser().getId(), studentRequest.getStdId()));
+                .toCreate(studentRequest.getStdId()));
     }
 
     @Override
     public void studentEdit(StudentEditRequest studentEditRequest) {
-
         Student student = studentRepository.findById(userSecurity.getUser().getId())
                 .map(studentMapper::toStudent).orElseThrow(() -> StudentNotFoundException.EXCEPTION);
         student.setStdId(studentEditRequest.getStdId());
-        studentRepository.save(studentMapper.toCreate(userSecurity.getUser().getId(), studentEditRequest.getStdId()));
+        studentRepository.save(studentMapper.toCreate(student.getStdId()));
     }
 
     @Override
     public void studentDelete(){
-
         if(studentRepository.findById(userSecurity.getUser().getId()).isEmpty()){
             throw StudentNotFoundException.EXCEPTION;
         }
         studentRepository.deleteById(userSecurity.getUser().getId());
-
     }
 
 }
