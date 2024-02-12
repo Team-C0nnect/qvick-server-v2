@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 @Service
 @RequiredArgsConstructor
@@ -23,6 +25,8 @@ public class CheckServiceImpl implements CheckService {
     private final CheckCodeRepository checkCodeRepository;
     private final CheckMapper checkMapper;
     private final UserSecurity userSecurity;
+
+    private static final Executor executor = Executors.newFixedThreadPool(10);
 
     @Override
     public void attendance(CodeRequest codeRequest) {

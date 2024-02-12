@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @Tag(name = "출석 명단", description = "출석 명단")
 @SecurityRequirement(name = "BearerAuthentication")
@@ -45,8 +47,10 @@ public class CheckController {
 
     @Operation(summary = "출석 코드 생성", description = "출석 코드 생성합니다")
     @PostMapping("/code")
-    public ResponseEntity<CheckCodeResponse> generateCheckCode() {
-        return ResponseEntity.status(HttpStatus.CREATED).body(checkCodeService.generate());
+    public ResponseEntity<CheckCodeResponse> generateCheckCode() throws ExecutionException, InterruptedException {
+        CompletableFuture<CheckCodeResponse> codeResponseFuture = checkCodeService.generate();
+        CheckCodeResponse codes = codeResponseFuture.get();
+        return ResponseEntity.status(HttpStatus.CREATED).body(codes);
     }
 
     @Operation(summary = "출석 확인", description = "출석 상태를 확인합니다")
