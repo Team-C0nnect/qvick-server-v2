@@ -20,10 +20,11 @@ import lombok.experimental.SuperBuilder;
 public class StudentEntity extends BaseTimeEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true, length = 4)
+    @Column(nullable = false,
+            unique = true,
+            length = 4)
     private String stdId;
 
 }
