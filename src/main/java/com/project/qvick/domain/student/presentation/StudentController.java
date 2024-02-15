@@ -5,6 +5,7 @@ import com.project.qvick.domain.student.presentation.dto.request.StudentEditRequ
 import com.project.qvick.domain.student.presentation.dto.request.StudentRequest;
 import com.project.qvick.domain.student.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@SecurityRequirement(name = "BearerAuthentication")
 @RequestMapping("/student")
 @Tag(name = "학생", description = "학생")
 public class StudentController {
