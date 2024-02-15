@@ -9,7 +9,7 @@ public class StudentExistException extends BusinessException {
     public static final StudentExistException EXCEPTION = new StudentExistException();
 
     private StudentExistException(){
-        super(StudentError.STUDENT_NOT_FOUND);
+        super(StudentError.STUDENT_EXIST);
     }
 
 }

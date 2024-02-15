@@ -29,7 +29,7 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void register(StudentRequest studentRequest){
-        if(studentRepository.findById(userSecurity.getUser().getId()).isPresent()){
+        if(studentRepository.findByStdId(studentRequest.getStdId()).isPresent()){
             throw StudentExistException.EXCEPTION;
         }
         studentRepository.save(studentMapper
