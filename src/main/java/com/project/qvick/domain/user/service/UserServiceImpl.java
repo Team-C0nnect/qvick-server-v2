@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
         User user = repository.findById(request.getId()).map(mapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
         if(user.getUserRole().equals(UserRole.ADMIN) || user.getUserRole().equals(UserRole.TEACHER)){
             user.setUserRole(UserRole.USER);
+            repository.save(mapper.toUpdate(user));
         }
         throw UserForbiddenException.EXCEPTION;
     }
