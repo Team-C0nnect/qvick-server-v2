@@ -41,12 +41,12 @@ application:
     expiration: 900000
     refreshExpiration: 99999999
 
-#firebase:
-#  sdk:
-#    path: checkin-52ec9-firebase-adminsdk-ogjpu-a96b4a67f0.json
-#  notification:
-#    non-check-title: ✅✅✅✅✅✅
-#    non-check-message: 출석하자~!!
+firebase:
+  sdk:
+    path: qvick-410805-firebase-adminsdk-69qs0-203e4ce808.json
+  notification:
+    non-check-title: ✅✅✅✅✅✅
+    non-check-message: 출석하자~!!
 
 springdoc:
   api-docs:
