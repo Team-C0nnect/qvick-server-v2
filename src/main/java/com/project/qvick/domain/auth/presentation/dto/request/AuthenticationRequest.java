@@ -13,7 +13,7 @@ public class AuthenticationRequest {
     @NotBlank(message = "")
     private String idToken;
 
-//    @Schema(description = "FCM Token")
-//    private String fcmToken;
+    @Schema(description = "FCM Token")
+    private String fcmToken;
 
 }
