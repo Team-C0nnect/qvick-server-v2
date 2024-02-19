@@ -30,6 +30,7 @@ public class SecurityConfig {
                         authorize -> authorize
                                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
                                 .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/terms/**").permitAll()
                                 .anyRequest()
                                 .authenticated()
                 )
