@@ -36,23 +36,23 @@ public class CheckServiceImpl implements CheckService {
         if (checkRepository.findByUserIdAndCheckedDate(checkEntity.getUserId(), checkEntity.getCheckedDate()).isPresent()) {
             throw CheckAlreadyExistsException.EXCEPTION;
         }
-
         if (checkCodeRepository.existsByCodeAndValid(codeRequest.getCode(), true)) {
             checkRepository.save(checkEntity);
         } else {
             throw CheckCodeExpirationException.EXCEPTION;
         }
-
         throw CheckCodeError.EXCEPTION;
 
     }
 
     @Override
     public ResponseEntity<Void> attendanceCheck() {
+
         if (checkRepository.findByUserIdAndCheckedDate(userSecurity.getUser().getId(),LocalDate.now()).isPresent()){
             return ResponseEntity.ok().build();
         }
         return ResponseEntity.notFound().build();
+
     }
 
 }
