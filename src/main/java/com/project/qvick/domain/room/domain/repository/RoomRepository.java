@@ -12,6 +12,6 @@ public interface RoomRepository extends JpaRepository<RoomEntity,Long> {
 
     Optional<RoomEntity>findByRoomId(String roomId);
 
-    Optional<RoomEntity>deleteRoomEntityByRoomId(String roomId);
+    Optional<RoomEntity>deleteByRoomId(String roomId);
 
 }

@@ -37,7 +37,7 @@ public class RoomServiceImpl implements RoomService{
         if(roomRepository.findByRoomId(request.getRoomId()).isEmpty()){
             throw RoomNotFoundException.EXCEPTION;
         }
-        roomRepository.deleteRoomEntityByRoomId(request.getRoomId());
+        roomRepository.deleteByRoomId(request.getRoomId());
     }
 
 }
