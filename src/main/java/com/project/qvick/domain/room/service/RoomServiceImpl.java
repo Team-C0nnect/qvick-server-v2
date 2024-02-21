@@ -1,7 +1,6 @@
 package com.project.qvick.domain.room.service;
 
 import com.project.qvick.domain.room.domain.repository.RoomRepository;
-import com.project.qvick.domain.room.exception.RoomExistException;
 import com.project.qvick.domain.room.exception.RoomNotFoundException;
 import com.project.qvick.domain.room.mapper.RoomMapper;
 import com.project.qvick.domain.room.presentation.dto.Room;
@@ -20,9 +19,6 @@ public class RoomServiceImpl implements RoomService{
 
     @Override
     public void roomRegister(RoomRequest request){
-        if(roomRepository.findByRoomId(request.getRoomId()).isPresent()){
-            throw RoomExistException.EXCEPTION;
-        }
         roomRepository.save(roomMapper.toCreate(
                 userSecurity.getUser().getId(),
                 request.getRoomId()));
@@ -34,6 +30,14 @@ public class RoomServiceImpl implements RoomService{
                 .map(roomMapper::toRoom).orElseThrow(()-> RoomNotFoundException.EXCEPTION);
         room.setRoomId(request.getRoomId());
         roomRepository.save(roomMapper.toCreate(room.getUserId(), room.getRoomId()));
+    }
+
+    @Override
+    public void roomDelete(RoomRequest request){
+        if(roomRepository.findByRoomId(request.getRoomId()).isEmpty()){
+            throw RoomNotFoundException.EXCEPTION;
+        }
+        roomRepository.deleteRoomEntityByRoomId(request.getRoomId());
     }
 
 }

@@ -6,4 +6,6 @@ public interface RoomService {
     void roomRegister(RoomRequest request);
 
     void roomEdit(RoomRequest request);
+
+    void roomDelete(RoomRequest request);
 }
