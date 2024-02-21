@@ -1,12 +1,15 @@
 package com.project.qvick.domain.room.presentation;
 
+import com.project.qvick.domain.room.presentation.dto.Room;
 import com.project.qvick.domain.room.presentation.dto.request.RoomRequest;
 import com.project.qvick.domain.room.service.RoomService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -26,6 +29,12 @@ public class RoomController {
     @Operation(summary = "호실 등록", description = "호실을 등록합니다")
     public void roomRegister(RoomRequest request){
         roomService.roomRegister(request);
+    }
+
+    @GetMapping("")
+    @Operation(summary = "호실 조회", description = "호실을 조회합니다")
+    public ResponseEntity<Room> findRoom(RoomRequest request){
+        return ResponseEntity.ok(roomService.findRoom(request));
     }
 
     @PutMapping("")
