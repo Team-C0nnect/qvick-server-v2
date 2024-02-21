@@ -8,6 +8,7 @@ import com.project.qvick.domain.room.presentation.dto.request.RoomRequest;
 import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,6 +34,7 @@ public class RoomServiceImpl implements RoomService{
     }
 
     @Override
+    @Transactional
     public void roomDelete(RoomRequest request){
         if(roomRepository.findByRoomId(request.getRoomId()).isEmpty()){
             throw RoomNotFoundException.EXCEPTION;
