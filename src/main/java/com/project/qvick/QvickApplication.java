@@ -7,9 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableAsync;
 
 @SpringBootApplication
-@ConfigurationPropertiesScan
 @EnableAsync
-@EnableJpaAuditing
 public class QvickApplication {
 
 	public static void main(String[] args) {
