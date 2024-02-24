@@ -2,7 +2,10 @@ package com.project.qvick.domain.auth.presentation;
 
 import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.RefreshTokenRequest;
+import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
+import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
+import com.project.qvick.domain.auth.service.AuthService;
 import com.project.qvick.domain.auth.service.OAuth2UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
 
     private final OAuth2UserService oAuth2UserService;
+    private final AuthService authService;
 
     @Operation(summary = "회원 인증", description = "회원 인증")
     @PostMapping("")
@@ -31,6 +35,18 @@ public class AuthController {
     @PostMapping("/refresh")
     public JsonWebTokenResponse refresh(@Validated @RequestBody RefreshTokenRequest refreshTokenRequest) {
         return oAuth2UserService.refresh(refreshTokenRequest.getRefreshToken());
+    }
+
+    @Operation(summary = "회원가입", description = "회원가입")
+    @PostMapping("/sign-up")
+    public void signUp(@Validated @RequestBody SignUpRequest signUpRequest){
+        authService.SignUp(signUpRequest);
+    }
+
+    @Operation(summary = "로그인", description = "로그인")
+    @PostMapping("/sign-up")
+    public JsonWebTokenResponse signIn(@Validated @RequestBody SignInRequest signInRequest){
+        return authService.SignIn(signInRequest);
     }
 
 }

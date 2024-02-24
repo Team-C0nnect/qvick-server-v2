@@ -29,4 +29,15 @@ public class UserMapper {
                 .build();
     }
 
+    public UserEntity toCreate(String name, String email, String password){
+        return UserEntity.builder()
+                .name(name)
+                .email(email)
+                .password(password)
+                .approval(Approval.ACCEPT)
+                .userRole(UserRole.USER)
+                .build();
+
+    }
+
 }
