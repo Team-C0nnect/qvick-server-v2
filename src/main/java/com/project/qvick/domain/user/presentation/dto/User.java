@@ -14,9 +14,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @Builder
 public class User {
+
     private Long id;
+
     private String name;
+
     private String email;
+
+    private String password;
+
     private Approval approval;
+
     private UserRole userRole;
+
 }

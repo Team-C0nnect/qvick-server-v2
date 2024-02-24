@@ -9,7 +9,9 @@ import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.exception.PasswordWrongException;
 import com.project.qvick.domain.user.exception.UserExistException;
 import com.project.qvick.domain.user.mapper.UserMapper;
+import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.jwt.JwtProvider;
+import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -24,6 +26,7 @@ public class AuthServiceImpl implements AuthService{
     private final UserMapper userMapper;
     private final PasswordEncoder encoder;
     private final JwtProvider jwtProvider;
+    private final UserSecurity userSecurity;
 
     @Transactional
     @Override
@@ -40,10 +43,7 @@ public class AuthServiceImpl implements AuthService{
     @Transactional
     @Override
     public JsonWebTokenResponse SignIn(SignInRequest request) {
-        UserEntity user = userMapper.toCreate(
-                request.getEmail(),
-                request.getEmail(),
-                request.getPassword());
+        User user = userSecurity.getUser();
 
         if (!encoder.matches(request.getPassword(), user.getPassword()))
             throw PasswordWrongException.EXCEPTION;
