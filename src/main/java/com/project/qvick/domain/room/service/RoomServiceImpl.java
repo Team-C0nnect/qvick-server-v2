@@ -26,9 +26,9 @@ public class RoomServiceImpl implements RoomService{
     }
 
     @Override
-    public Room findRoom(RoomRequest request){
+    public Room findRoom(){
         return roomRepository
-                .findByRoomId(request.getRoomId())
+                .findByUserId(userSecurity.getUser().getId())
                 .map(roomMapper::toRoom)
                 .orElseThrow(() -> RoomNotFoundException.EXCEPTION);
     }

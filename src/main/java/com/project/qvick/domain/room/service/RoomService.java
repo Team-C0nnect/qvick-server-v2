@@ -6,7 +6,7 @@ import com.project.qvick.domain.room.presentation.dto.request.RoomRequest;
 public interface RoomService {
     void roomRegister(RoomRequest request);
 
-    Room findRoom(RoomRequest request);
+    Room findRoom();
 
     void roomEdit(RoomRequest request);
 

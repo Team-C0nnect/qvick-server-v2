@@ -44,10 +44,8 @@ public class AuthServiceImpl implements AuthService{
     @Override
     public JsonWebTokenResponse SignIn(SignInRequest request) {
         User user = userSecurity.getUser();
-
         if (!encoder.matches(request.getPassword(), user.getPassword()))
             throw PasswordWrongException.EXCEPTION;
-
         return JsonWebTokenResponse.builder()
                 .accessToken(jwtProvider.generateAccessToken(user.getEmail(), UserRole.USER))
                 .refreshToken(jwtProvider.generateRefreshToken(user.getEmail(), UserRole.USER))

@@ -33,8 +33,8 @@ public class RoomController {
 
     @GetMapping("")
     @Operation(summary = "호실 조회", description = "호실을 조회합니다")
-    public ResponseEntity<Room> findRoom(RoomRequest request){
-        return ResponseEntity.ok(roomService.findRoom(request));
+    public ResponseEntity<Room> findRoom(){
+        return ResponseEntity.ok(roomService.findRoom());
     }
 
     @PutMapping("")
