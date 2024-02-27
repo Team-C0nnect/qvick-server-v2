@@ -26,8 +26,8 @@ public class AuthServiceImpl implements AuthService{
     @Transactional
     @Override
     public JsonWebTokenResponse SignUp(SignUpRequest request) {
-        if(userRepository.findByEmail(request.getEmail()).isPresent())
-            throw UserExistException.EXCEPTION;
+//        if(userRepository.findByEmail(request.getEmail()).isPresent())
+//            throw UserExistException.EXCEPTION;
         userRepository.save(userMapper.toCreate(
                 request.getName(),
                 request.getEmail(),
