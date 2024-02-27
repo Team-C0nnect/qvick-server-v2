@@ -42,14 +42,14 @@ public class AuthController {
     @Operation(summary = "회원가입", description = "회원가입")
     @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.CREATED)
-    public void signUp(@Validated @RequestBody SignUpRequest signUpRequest){
-        authService.SignUp(signUpRequest);
+    public JsonWebTokenResponse signUp(@Validated @RequestBody SignUpRequest signUpRequest){
+        return authService.SignUp(signUpRequest);
     }
 
     @Operation(summary = "로그인", description = "로그인")
     @PostMapping("/sign-in")
-    public JsonWebTokenResponse signIn(@Validated @RequestBody SignInRequest signInRequest){
-        return authService.SignIn(signInRequest);
+    public void signIn(@Validated @RequestBody SignInRequest signInRequest){
+        authService.SignIn(signInRequest);
     }
 
 }

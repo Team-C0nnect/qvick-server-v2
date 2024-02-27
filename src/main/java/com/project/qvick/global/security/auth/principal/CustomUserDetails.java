@@ -1,8 +1,10 @@
 package com.project.qvick.global.security.auth.principal;
 
+import com.nimbusds.jose.proc.SecurityContext;
 import com.project.qvick.domain.user.presentation.dto.User;
 import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;

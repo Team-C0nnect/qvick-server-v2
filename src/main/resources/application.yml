@@ -21,15 +21,15 @@ spring:
 
   redis:
     port: 6379
-    host: localhost
+    host: redis
 
   security:
     oauth2:
       client:
         registration:
           google:
-            client-id: 246755219900-ubbuhsmojfign0du3pulukfi6a3843fv.apps.googleusercontent.com
-            client-secret: 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
+            client-id: 246755219900-sovfq7ee6o64n06hga1evp77jb7vkl2a.apps.googleusercontent.com
+            client-secret: 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
             redirect-uri: http://localhost:8080/login/oauth2/code/google
         provider:
           google:
