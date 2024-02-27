@@ -1,11 +1,13 @@
 package com.project.qvick.domain.user.service;
 
+import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.exception.UserForbiddenException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.presentation.dto.request.UserAcceptRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import lombok.RequiredArgsConstructor;
@@ -20,27 +22,26 @@ public class UserServiceImpl implements UserService {
 
     /* 승격 승인자의 권한이 관리자거나, 선생님인 경우 승격 요청자의 권한을 유저로 올려줌*/
     @Override
-    public void acceptSignUp(UserSignUpRequest request) {
+    public void acceptSignUp(UserAcceptRequest request) {
         User user = repository.findById(request.getId()).map(mapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
-        if(user.getUserRole().equals(UserRole.ADMIN) || user.getUserRole().equals(UserRole.TEACHER)){
-            user.setUserRole(UserRole.USER);
+        if(request.getUserRole().equals(UserRole.ADMIN) || request.getUserRole().equals(UserRole.TEACHER)){
+            User accptedUser = repository.findById(request.getUserId()).map(mapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
+            accptedUser.setUserRole(UserRole.USER);
+            accptedUser.setApproval(Approval.ACCEPT);
+            repository.save(mapper.toUpdate(accptedUser));
         }
         throw UserForbiddenException.EXCEPTION;
     }
 
     @Override
-    public void register(UserRequest request) {
-
-    }
-
-    @Override
-    public void rejectSignUp(UserSignUpRequest request) {
+    public void rejectSignUp(UserAcceptRequest request) {
         User user = repository.findById(request.getId()).map(mapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
-        if(user.getUserRole().equals(UserRole.GUEST)){
-            repository.deleteById(request.getId());
+        User rejectedUser = repository.findById(request.getUserId()).map(mapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
+        if((request.getUserRole().equals(UserRole.ADMIN) || request.getUserRole().equals(UserRole.TEACHER)) && rejectedUser.getUserRole().equals(UserRole.GUEST)){
+            rejectedUser.setApproval(Approval.REJECT);
+            repository.save(mapper.toUpdate(rejectedUser));
         }
         throw UserForbiddenException.EXCEPTION;
     }
-
 
 }

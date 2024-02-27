@@ -7,6 +7,8 @@ import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.infra.google.dto.OAuth2Attribute;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class UserMapper {
 
@@ -37,7 +39,18 @@ public class UserMapper {
                 .approval(Approval.ACCEPT)
                 .userRole(UserRole.USER)
                 .build();
+    }
 
+    public UserEntity toUpdate(User user){
+        return UserEntity.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .modifiedDateTime(LocalDateTime.now())
+                .approval(user.getApproval())
+                .userRole(user.getUserRole())
+                .build();
     }
 
 }

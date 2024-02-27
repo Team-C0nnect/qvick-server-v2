@@ -1,8 +1,8 @@
 package com.project.qvick.domain.user.presentation;
 
 import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.presentation.dto.request.UserAcceptRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
-import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.domain.user.service.UserService;
 import com.project.qvick.domain.user.service.querydsl.UserQueryService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,13 +32,13 @@ public class UserController {
     @Operation(summary = "유저 승인", description = "유저를 승인합니다")
     @PutMapping("/approve")
     @ResponseStatus(HttpStatus.OK)
-    public void userApprove(@Validated @RequestBody UserSignUpRequest request){
+    public void userApprove(@Validated @RequestBody UserAcceptRequest request){
         service.acceptSignUp(request);
     }
 
     @Operation(summary = "유저 거부", description = "유저를 거부합니다")
     @PutMapping("/reject")
-    public void userReject(@Validated @RequestBody UserSignUpRequest request){
+    public void userReject(@Validated @RequestBody UserAcceptRequest request){
         service.rejectSignUp(request);
     }
 
