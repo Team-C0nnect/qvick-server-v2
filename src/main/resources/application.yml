@@ -21,7 +21,7 @@ spring:
 
   redis:
     port: 6379
-    host: redis
+    host: qvick
 
   security:
     oauth2:
