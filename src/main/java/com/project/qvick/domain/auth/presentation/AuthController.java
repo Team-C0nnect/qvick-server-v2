@@ -42,8 +42,8 @@ public class AuthController {
     @Operation(summary = "회원가입", description = "회원가입")
     @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.CREATED)
-    public JsonWebTokenResponse signUp(@Validated @RequestBody SignUpRequest signUpRequest){
-        return authService.SignUp(signUpRequest);
+    public void signUp(@Validated @RequestBody SignUpRequest signUpRequest){
+        authService.SignUp(signUpRequest);
     }
 
     @Operation(summary = "로그인", description = "로그인")

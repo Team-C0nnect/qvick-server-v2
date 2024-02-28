@@ -25,29 +25,25 @@ public class AuthServiceImpl implements AuthService{
 
     @Transactional
     @Override
-    public JsonWebTokenResponse SignUp(SignUpRequest request) {
-//        if(userRepository.findByEmail(request.getEmail()).isPresent())
-//            throw UserExistException.EXCEPTION;
+    public void SignUp(SignUpRequest request) {
+        if (userRepository.findByEmail(request.getEmail()).isPresent())
+            throw UserExistException.EXCEPTION;
         userRepository.save(userMapper.toCreate(
                 request.getName(),
                 request.getEmail(),
                 encoder.encode(request.getPassword())));
-        return JsonWebTokenResponse.builder()
-                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.USER))
-                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.USER))
-                .build();
     }
 
     @Transactional
     @Override
-    public void SignIn(SignInRequest request) {
+    public JsonWebTokenResponse SignIn(SignInRequest request) {
         String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
         if (!encoder.matches(request.getPassword(), userPassword))
             throw PasswordWrongException.EXCEPTION;
-//        return JsonWebTokenResponse.builder()
-//                .accessToken(jwtProvider.generateAccessToken(user.getEmail(), UserRole.USER))
-//                .refreshToken(jwtProvider.generateRefreshToken(user.getEmail(), UserRole.USER))
-//                .build();
+        return JsonWebTokenResponse.builder()
+                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.USER))
+                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.USER))
+                .build();
     }
 
 }
