@@ -38,8 +38,9 @@ spring:
 application:
   jwt:
     secretKey: 25432A462D4A614E645267556A586E3272357538782F413F4428472B4B625065
-    expiration: 900000
-    refreshExpiration: 99999999
+    token:
+      access-expiration-time: 43200000    # 12시간
+      refresh-expiration-time: 604800000   # 7일
 
 firebase:
   sdk:
@@ -65,5 +66,3 @@ springdoc:
 
 server:
   port: 8080
-  servlet:
-    context-path: /
