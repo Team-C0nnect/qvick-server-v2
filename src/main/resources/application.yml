@@ -19,10 +19,10 @@ spring:
   cache:
     type: redis
 
-  data:
-    redis:
-      host: 172.31.12.37
-      port: 6379
+
+  redis:
+    host: qvick
+    port: 6379
 
   security:
     oauth2:
