@@ -1,5 +1,6 @@
 package com.project.qvick.global.common.repository;
 
+import com.project.qvick.domain.user.domain.UserEntity;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.security.auth.principal.CustomUserDetails;
 import org.springframework.security.core.context.SecurityContextHolder;

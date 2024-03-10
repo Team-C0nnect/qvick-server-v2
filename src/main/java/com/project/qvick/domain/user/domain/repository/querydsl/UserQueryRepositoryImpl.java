@@ -3,6 +3,7 @@ package com.project.qvick.domain.user.domain.repository.querydsl;
 import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
+import com.project.qvick.global.common.dto.request.PageRequest;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -32,9 +33,20 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
                 .fetch();
     }
 
+    @Override
+    public List<User> findAllUsers(PageRequest request) {
+        return jpaQueryFactory
+                .select(userConstructorExpression())
+                .from(userEntity)
+                .offset((request.getPage() - 1) * request.getSize())
+                .limit(request.getSize())
+                .orderBy(userEntity.id.desc())
+                .fetch();
+    }
+
     private ConstructorExpression<User> userConstructorExpression() {
         return Projections.constructor(User.class,
-                userEntity.id,userEntity.approval);
+                userEntity.id,userEntity.approval,userEntity.stdId);
     }
 
     private BooleanExpression inApprovals(List<Approval> approvals){

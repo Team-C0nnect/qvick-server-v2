@@ -8,14 +8,12 @@ import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.UserAcceptRequest;
-import com.project.qvick.domain.user.presentation.dto.request.UserRequest;
-import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 
     private final UserRepository repository;
     private final UserMapper mapper;

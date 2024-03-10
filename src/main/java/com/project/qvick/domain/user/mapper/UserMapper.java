@@ -41,6 +41,16 @@ public class UserMapper {
                 .build();
     }
 
+    public UserEntity toCreateEntity(User user){
+        return UserEntity.builder()
+                .name(user.getName())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .approval(Approval.ACCEPT)
+                .userRole(UserRole.USER)
+                .build();
+    }
+
     public UserEntity toUpdate(User user){
         return UserEntity.builder()
                 .id(user.getId())

@@ -1,9 +1,13 @@
 package com.project.qvick.domain.student.domain;
 
+import com.project.qvick.domain.user.domain.UserEntity;
 import com.project.qvick.global.entity.BaseTimeEntity;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -17,12 +21,20 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "tb_student")
 public class StudentEntity extends BaseTimeEntity {
 
-    @Id
-    private Long id;
+//    @Id
+//    private Long id;
 
+    @Id
     @Column(nullable = false,
             unique = true,
             length = 4)
-    private String stdId;
+    private String id;
+
+//    @Column(unique = true)
+//    private Long userId;
+
+    @JoinColumn(name = "user_id")
+    @OneToOne(cascade = CascadeType.REMOVE)
+    private UserEntity userId;
 
 }

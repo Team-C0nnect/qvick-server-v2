@@ -2,7 +2,6 @@ package com.project.qvick.domain.student.presentation;
 
 import com.project.qvick.domain.student.presentation.dto.Student;
 import com.project.qvick.domain.student.presentation.dto.request.StudentEditRequest;
-import com.project.qvick.domain.student.presentation.dto.request.StudentRequest;
 import com.project.qvick.domain.student.service.StudentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -39,9 +38,9 @@ public class StudentController {
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
     public void register(
-            @Validated @RequestBody StudentRequest studentRequest
-    ) {
-        studentService.register(studentRequest);
+            @Validated @RequestBody String id
+            ) {
+        studentService.register(id);
     }
 
     @Operation(summary = "학번 수정", description = "학번을 수정합니다")
