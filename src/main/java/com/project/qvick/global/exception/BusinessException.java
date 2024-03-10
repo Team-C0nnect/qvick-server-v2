@@ -11,4 +11,3 @@ public class BusinessException extends RuntimeException {
     private final ErrorProperty error;
 
 }
-

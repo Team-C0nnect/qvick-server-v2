@@ -44,7 +44,6 @@ public class AuthServiceImpl implements AuthService{
                 .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.USER))
                 .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.USER))
                 .build();
-
     }
 
 }

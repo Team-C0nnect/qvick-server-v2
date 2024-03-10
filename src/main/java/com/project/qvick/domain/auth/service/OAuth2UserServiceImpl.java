@@ -12,6 +12,8 @@ import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.jwt.JwtProvider;
 import com.project.qvick.global.common.jwt.enums.JwtType;
 import com.project.qvick.global.common.jwt.exception.TokenTypeException;
+import com.project.qvick.global.infra.dAuth.client.OpenDodamFeignClient;
+import com.project.qvick.global.infra.dAuth.dto.response.DAuthGetUserDataResponse;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
 import com.project.qvick.global.infra.google.dto.OAuth2Attribute;
 import com.project.qvick.global.infra.google.service.GoogleService;

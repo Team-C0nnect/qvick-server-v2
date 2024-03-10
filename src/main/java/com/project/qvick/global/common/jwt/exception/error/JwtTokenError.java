@@ -14,4 +14,5 @@ public enum JwtTokenError implements ErrorProperty {
 
     private final HttpStatus status;
     private final String message;
+
 }
