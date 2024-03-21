@@ -42,9 +42,6 @@ public class AuthServiceImpl implements AuthService{
         String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
         if (!encoder.matches(request.getPassword(), userPassword))
             throw PasswordWrongException.EXCEPTION;
-        if(request.getAcessToken().isEmpty()){
-
-        }
         return JsonWebTokenResponse.builder()
                 .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.USER))
                 .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.USER))
