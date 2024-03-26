@@ -9,7 +9,6 @@ import com.project.qvick.domain.user.exception.PasswordWrongException;
 import com.project.qvick.domain.user.exception.UserExistException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.global.common.jwt.JwtProvider;
-import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,6 @@ public class AuthServiceImpl implements AuthService{
     private final UserMapper userMapper;
     private final PasswordEncoder encoder;
     private final JwtProvider jwtProvider;
-    private final UserSecurity userSecurity;
 
     @Transactional
     @Override

@@ -19,7 +19,6 @@ spring:
   cache:
     type: redis
 
-
   redis:
     host: qvick
     port: 6379
