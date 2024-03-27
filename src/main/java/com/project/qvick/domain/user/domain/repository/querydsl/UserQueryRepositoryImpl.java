@@ -3,6 +3,7 @@ package com.project.qvick.domain.user.domain.repository.querydsl;
 import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
+import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -21,27 +22,26 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public List<User> findWaitingUsers(UserApprovalPageRequest request) {
+    public List<UserPageResponse> findWaitingUsers(UserApprovalPageRequest request) {
         return jpaQueryFactory
                 .select(userConstructorExpression())
                 .from(userEntity)
-                .where(inApprovals(request.getApprovals()))
+                .where(inApprovals(request.getApproval()))
                 .offset((request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
                 .orderBy(userEntity.id.desc())
                 .fetch();
     }
 
-    private ConstructorExpression<User> userConstructorExpression() {
-        return Projections.constructor(User.class,
-                userEntity.id,userEntity.approval);
+    private ConstructorExpression<UserPageResponse> userConstructorExpression() {
+        return Projections.constructor(UserPageResponse.class,
+                userEntity.id,
+                userEntity.name,
+                userEntity.approval);
     }
 
-    private BooleanExpression inApprovals(List<Approval> approvals){
-        if(approvals.isEmpty()){
-            return null;
-        }
-        return userEntity.approval.in(approvals);
+    private BooleanExpression inApprovals(Approval approval){
+        return userEntity.approval.in(approval);
     }
 
 }

@@ -51,7 +51,7 @@ public class JwtProvider {
                 .setSubject(email)
                 .claim("authority", userRole)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getExpiration()))
+                .setExpiration(new Date(System.currentTimeMillis() + 43200000))
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }
@@ -62,7 +62,7 @@ public class JwtProvider {
                 .setSubject(email)
                 .claim("authority", userRole)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getRefreshExpiration()))
+                .setExpiration(new Date(System.currentTimeMillis() + 43200000))
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }

@@ -14,9 +14,6 @@ import java.util.List;
 public class UserApprovalPageRequest extends PageRequest {
 
     @JsonValue
-    List<Approval> approvals;
+    Approval approval;
 
-    public UserApprovalPageRequest() {
-        approvals = new ArrayList<>();
-    }
 }

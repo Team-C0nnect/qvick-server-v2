@@ -3,6 +3,7 @@ package com.project.qvick.domain.user.service.querydsl;
 import com.project.qvick.domain.user.domain.repository.querydsl.UserQueryRepository;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
+import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,7 +18,7 @@ public class UserQueryServiceImpl implements UserQueryService{
     private final UserQueryRepository movieQueryRepository;
 
     @Override
-    public List<User> findWaitingUsers(UserApprovalPageRequest request) {
+    public List<UserPageResponse> findWaitingUsers(UserApprovalPageRequest request) {
         return movieQueryRepository.findWaitingUsers(request);
     }
 
