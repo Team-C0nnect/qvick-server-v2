@@ -29,7 +29,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
                 .where(inApprovals(request.getApproval()))
                 .offset((request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
-                .orderBy(userEntity.id.desc())
+                .orderBy(userEntity.id.asc())
                 .fetch();
     }
 
