@@ -1,7 +1,6 @@
 package com.project.qvick.domain.user.presentation.dto.response;
 
 import com.project.qvick.domain.user.domain.enums.Approval;
-import com.project.qvick.domain.user.domain.enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,12 +18,6 @@ public class UserPageResponse {
 
     private String name;
 
-//    private String email;
-
-//    private String password;
-
     private Approval approval;
-
-//    private UserRole userRole;
 
 }
