@@ -23,24 +23,11 @@ spring:
     host: qvick
     port: 6379
 
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: 246755219900-sovfq7ee6o64n06hga1evp77jb7vkl2a.apps.googleusercontent.com
-            client-secret: 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
-            redirect-uri: http://localhost:8080/login/oauth2/code/google
-        provider:
-          google:
-            token-info: https://oauth2.googleapis.com/tokeninfo
-
 application:
   jwt:
     secretKey: 25432A462D4A614E645267556A586E3272357538782F413F4428472B4B625065
-    token:
-      access-expiration-time: 43200000    # 12시간
-      refresh-expiration-time: 604800000   # 7일
+    expiration: 43200000    # 12시간
+    refreshExpiration: 604800000   # 7일
 
 firebase:
   sdk:

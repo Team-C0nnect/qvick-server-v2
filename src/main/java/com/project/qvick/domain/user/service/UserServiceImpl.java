@@ -6,7 +6,6 @@ import com.project.qvick.domain.user.exception.UserForbiddenException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
-import com.project.qvick.domain.user.presentation.dto.request.UserRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,11 +28,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void register(UserRequest request) {
-
-    }
-
-    @Override
     public void rejectSignUp(UserSignUpRequest request) {
         User user = repository.findById(request.getId()).map(mapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
         if(user.getUserRole().equals(UserRole.GUEST)){
@@ -41,6 +35,5 @@ public class UserServiceImpl implements UserService {
         }
         throw UserForbiddenException.EXCEPTION;
     }
-
 
 }

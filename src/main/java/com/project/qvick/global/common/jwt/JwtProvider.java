@@ -1,13 +1,13 @@
 package com.project.qvick.global.common.jwt;
 
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.domain.user.exception.UserNotFoundException;
-import com.project.qvick.global.common.jwt.exception.TokenTypeException;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
+import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.jwt.config.JwtProperties;
 import com.project.qvick.global.common.jwt.enums.JwtType;
+import com.project.qvick.global.common.jwt.exception.TokenTypeException;
 import com.project.qvick.global.security.auth.principal.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -23,6 +23,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+
 import java.util.Date;
 
 @Component
@@ -51,7 +52,7 @@ public class JwtProvider {
                 .setSubject(email)
                 .claim("authority", userRole)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 43200000))
+                .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getExpiration()))
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }
@@ -62,7 +63,7 @@ public class JwtProvider {
                 .setSubject(email)
                 .claim("authority", userRole)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 43200000))
+                .setExpiration(new Date(System.currentTimeMillis() + jwtProperties.getRefreshExpiration()))
                 .signWith(SignatureAlgorithm.HS256, jwtProperties.getSecretKey())
                 .compact();
     }
