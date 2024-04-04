@@ -8,4 +8,5 @@ public interface UserService {
 
     void rejectSignUp(UserSignUpRequest request);
 
+    void deleteUser();
 }

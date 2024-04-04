@@ -7,6 +7,7 @@ import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
+import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,13 +15,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository repository;
-    private final UserMapper mapper;
+    private final UserRepository userRepository;
+    private final UserMapper userMapper;
+    private final UserSecurity userSecurity;
 
     /* 승격 승인자의 권한이 관리자거나, 선생님인 경우 승격 요청자의 권한을 유저로 올려줌*/
     @Override
     public void acceptSignUp(UserSignUpRequest request) {
-        User user = repository.findById(request.getId()).map(mapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
+        User user = userRepository.findById(request.getId()).map(userMapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
         if(user.getUserRole().equals(UserRole.ADMIN) || user.getUserRole().equals(UserRole.TEACHER)){
             user.setUserRole(UserRole.USER);
         }
@@ -29,11 +31,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void rejectSignUp(UserSignUpRequest request) {
-        User user = repository.findById(request.getId()).map(mapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
+        User user = userRepository.findById(request.getId()).map(userMapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
         if(user.getUserRole().equals(UserRole.GUEST)){
-            repository.deleteById(request.getId());
+            userRepository.deleteById(request.getId());
         }
         throw UserForbiddenException.EXCEPTION;
+    }
+
+    @Override
+    public void deleteUser(){
+        Long userId = userSecurity.getUser().getId();
+        if (userRepository.findById(userId).isEmpty()){
+            throw UserNotFoundException.EXCEPTION;
+        }
+        userRepository.deleteById(userId);
     }
 
 }
