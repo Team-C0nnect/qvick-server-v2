@@ -1,6 +1,5 @@
 package com.project.qvick.domain.user.presentation;
 
-import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
@@ -44,7 +43,7 @@ public class UserController {
         userService.rejectSignUp(request);
     }
 
-    @Operation(summary = "유저 조회", description = "승인 대기 유저를 조회합니다.")
+    @Operation(summary = "승인 대기 유저 조회", description = "승인 대기 유저를 조회합니다.")
     @GetMapping("")
     public ResponseEntity<List<UserPageResponse>> findWaitingUsers(UserApprovalPageRequest request){
         return ResponseEntity.ok(userQueryService.findWaitingUsers(request));
