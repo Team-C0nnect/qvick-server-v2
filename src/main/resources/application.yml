@@ -16,12 +16,12 @@ spring:
       ddl-auto: none
     show-sql: true
 
-  cache:
-    type: redis
-
-  redis:
-    host: qvick
-    port: 6379
+#  cache:
+#    type: redis
+#
+#  redis:
+#    host: qvick
+#    port: 6379
 
 application:
   jwt:
