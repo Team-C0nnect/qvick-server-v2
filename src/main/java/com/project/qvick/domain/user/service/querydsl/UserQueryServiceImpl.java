@@ -15,11 +15,11 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserQueryServiceImpl implements UserQueryService{
 
-    private final UserQueryRepository movieQueryRepository;
+    private final UserQueryRepository userQueryRepository;
 
     @Override
     public List<UserPageResponse> findWaitingUsers(UserApprovalPageRequest request) {
-        return movieQueryRepository.findWaitingUsers(request);
+        return userQueryRepository.findWaitingUsers(request);
     }
 
 }

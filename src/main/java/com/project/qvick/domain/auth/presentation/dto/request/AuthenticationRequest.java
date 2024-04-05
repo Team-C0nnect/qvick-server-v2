@@ -9,9 +9,9 @@ import lombok.Setter;
 @Getter
 public class AuthenticationRequest {
 
-    @Schema(description = "Google idToken")
-    @NotBlank(message = "")
-    private String idToken;
+//    @Schema(description = "Google idToken")
+//    @NotBlank(message = "")
+//    private String idToken;
 
     @Schema(description = "FCM Token")
     private String fcmToken;
