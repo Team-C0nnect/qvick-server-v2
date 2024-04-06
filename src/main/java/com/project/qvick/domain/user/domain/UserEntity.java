@@ -2,6 +2,7 @@ package com.project.qvick.domain.user.domain;
 
 import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;
+import com.project.qvick.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -35,9 +36,6 @@ public class UserEntity{
 
     @Column(nullable = false)
     private String password;
-
-    @Column(nullable = false, unique = true, length = 4)
-    private String stdId;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
