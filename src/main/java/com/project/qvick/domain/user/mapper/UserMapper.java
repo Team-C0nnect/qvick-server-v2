@@ -15,15 +15,17 @@ public class UserMapper {
                 .name(entity.getName())
                 .userRole(entity.getUserRole())
                 .email(entity.getEmail())
+                .stdId(entity.getStdId())
                 .approval(entity.getApproval())
                 .build();
     }
 
-    public UserEntity toCreate(String name, String email, String password){
+    public UserEntity toCreate(String name, String email, String password, String stdId){
         return UserEntity.builder()
                 .name(name)
                 .email(email)
                 .password(password)
+                .stdId(stdId)
                 .approval(Approval.ACCEPT)
                 .userRole(UserRole.USER)
                 .build();

@@ -37,6 +37,9 @@ public class UserEntity{
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false, unique = true, length = 4)
+    private String stdId;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Approval approval;
