@@ -13,6 +13,7 @@ public class UserRequest {
     private Long id;
     private String name;
     private String email;
+    private String stdId;
     private Approval approval;
     private UserRole userRole;
 
@@ -21,6 +22,7 @@ public class UserRequest {
                 .id(this.id)
                 .name(this.name)
                 .email(this.email)
+                .stdId(this.stdId)
                 .approval(this.approval)
                 .userRole(this.userRole)
                 .build();
