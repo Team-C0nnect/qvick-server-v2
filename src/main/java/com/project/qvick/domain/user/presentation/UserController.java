@@ -50,7 +50,7 @@ public class UserController {
         return ResponseEntity.ok(userQueryService.findWaitingUsers(request));
     }
 
-    @Operation(summary = "회원 수정", description = "회원을 수정합니다")
+    @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
     @PutMapping("")
     @ResponseStatus(HttpStatus.OK)
     public void editUser(@Validated @RequestBody UserEditRequest request){
