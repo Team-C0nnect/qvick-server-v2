@@ -1,6 +1,5 @@
 package com.project.qvick.domain.user.service;
 
-import com.project.qvick.domain.user.presentation.dto.request.UserEditRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 
 public interface UserService {
@@ -10,6 +9,4 @@ public interface UserService {
     void rejectSignUp(UserSignUpRequest request);
 
     void deleteUser();
-
-    void editUser(UserEditRequest request);
 }

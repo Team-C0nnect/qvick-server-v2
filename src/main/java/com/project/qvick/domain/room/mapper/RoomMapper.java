@@ -2,6 +2,8 @@ package com.project.qvick.domain.room.mapper;
 
 import com.project.qvick.domain.room.domain.RoomEntity;
 import com.project.qvick.domain.room.presentation.dto.Room;
+import com.project.qvick.domain.student.domain.StudentEntity;
+import com.project.qvick.domain.student.presentation.dto.Student;
 import org.springframework.stereotype.Component;
 
 @Component
