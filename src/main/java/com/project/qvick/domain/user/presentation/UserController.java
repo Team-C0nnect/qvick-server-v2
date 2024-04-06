@@ -1,6 +1,7 @@
 package com.project.qvick.domain.user.presentation;
 
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
+import com.project.qvick.domain.user.presentation.dto.request.UserEditRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
 import com.project.qvick.domain.user.service.UserService;
@@ -53,6 +54,12 @@ public class UserController {
     @DeleteMapping("")
     public void deleteUser(){
         userService.deleteUser();
+    }
+
+    @Operation(summary = "회원 수정", description = "회원을 수정합니다.")
+    @PutMapping("")
+    public void editUser(@Validated @RequestBody UserEditRequest request) {
+        userService.editUser(request);
     }
 
 }
