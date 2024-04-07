@@ -6,7 +6,8 @@ import com.project.qvick.domain.user.exception.UserForbiddenException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
-import com.project.qvick.domain.user.presentation.dto.request.UserEditRequest;
+import com.project.qvick.domain.user.presentation.dto.request.RoomRequest;
+import com.project.qvick.domain.user.presentation.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
@@ -40,20 +41,28 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editUser(UserEditRequest request) {
+    public void editUserStdId(StdIdEditRequest request) {
         User user = userRepository.findById(userSecurity.getUser().getId())
                 .map(userMapper::toUser).orElseThrow(() -> UserNotFoundException.EXCEPTION);
         user.setStdId(request.getStdId());
-        userRepository.save(userMapper.toCreate(userSecurity.getUser().getName(), userSecurity.getUser().getEmail(), userSecurity.getUser().getPassword(), user.getStdId()));
+        userRepository.save(userMapper.toEdit(user));
     }
 
     @Override
-    public void deleteUser(){
+    public void deleteUser() {
         Long userId = userSecurity.getUser().getId();
         if (userRepository.findById(userId).isEmpty()){
             throw UserNotFoundException.EXCEPTION;
         }
         userRepository.deleteById(userId);
+    }
+
+    @Override
+    public void editRoom(RoomRequest request){
+        User user = userRepository.findById(userSecurity.getUser().getId())
+                .map(userMapper::toUser).orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        user.setRoom(request.getRoom());
+        userRepository.save(userMapper.toEdit(user));
     }
 
 }

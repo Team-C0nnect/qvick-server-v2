@@ -28,7 +28,7 @@ public class UserEntity{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Column(nullable = false)
+    @Column(nullable = false)
     private String name;
 
     @Column(nullable = false, unique = true)
@@ -41,6 +41,9 @@ public class UserEntity{
             unique = true,
             length = 4)
     private String stdId;
+
+    @Column(nullable = false)
+    private String room;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

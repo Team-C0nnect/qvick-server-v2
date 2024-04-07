@@ -16,17 +16,12 @@ import lombok.Setter;
 public class User {
 
     private Long id;
-
     private String name;
-
     private String email;
-
     private String password;
-
     private String stdId;
-
+    private String room;
     private Approval approval;
-
     private UserRole userRole;
 
 }

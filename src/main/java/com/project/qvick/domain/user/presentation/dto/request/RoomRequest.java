@@ -8,11 +8,11 @@ import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
-public class UserEditRequest {
+public class RoomRequest {
 
-    @Schema(description = "수정할 학번")
+    @Schema(description = "수정할 호실")
     @NotBlank
     @Length(max = 4, min = 4)
-    private String stdId;
+    private String room;
 
 }

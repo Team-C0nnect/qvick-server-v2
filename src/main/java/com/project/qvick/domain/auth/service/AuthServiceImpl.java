@@ -29,8 +29,7 @@ public class AuthServiceImpl implements AuthService{
         if (userRepository.findByEmail(request.getEmail()).isPresent())
             throw UserExistException.EXCEPTION;
         userRepository.save(userMapper.toCreate(
-                request.getName(),
-                request.getEmail(),
+                request,
                 encoder.encode(request.getPassword())));
     }
 
