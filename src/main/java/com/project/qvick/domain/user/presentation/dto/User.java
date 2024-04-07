@@ -23,6 +23,8 @@ public class User {
 
     private String password;
 
+    private String stdId;
+
     private Approval approval;
 
     private UserRole userRole;

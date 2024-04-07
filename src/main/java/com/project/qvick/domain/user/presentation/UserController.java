@@ -1,6 +1,7 @@
 package com.project.qvick.domain.user.presentation;
 
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
+import com.project.qvick.domain.user.presentation.dto.request.UserEditRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
 import com.project.qvick.domain.user.service.UserService;
@@ -47,6 +48,13 @@ public class UserController {
     @GetMapping("")
     public ResponseEntity<List<UserPageResponse>> findWaitingUsers(UserApprovalPageRequest request){
         return ResponseEntity.ok(userQueryService.findWaitingUsers(request));
+    }
+
+    @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
+    @PutMapping("")
+    @ResponseStatus(HttpStatus.OK)
+    public void editUser(@Validated @RequestBody UserEditRequest request){
+        userService.editUser(request);
     }
 
     @Operation(summary = "회원탈퇴", description = "회원 탈퇴를 진행합니다.")
