@@ -1,5 +1,6 @@
 package com.project.qvick.domain.auth.service;
 
+import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
@@ -13,4 +14,5 @@ public interface AuthService {
     @Transactional
     JsonWebTokenResponse SignIn(SignInRequest request);
 
+    void firebase(AuthenticationRequest request);
 }
