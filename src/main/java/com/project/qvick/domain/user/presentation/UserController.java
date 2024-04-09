@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,14 +34,14 @@ public class UserController {
     private final UserQueryService userQueryService;
 
     @Operation(summary = "유저 승인", description = "유저를 승인합니다")
-    @PutMapping("/approve")
+    @PatchMapping("/approve")
     @ResponseStatus(HttpStatus.OK)
     public void userApprove(@Validated @RequestBody UserSignUpRequest request){
         userService.acceptSignUp(request);
     }
 
     @Operation(summary = "유저 거부", description = "유저를 거부합니다")
-    @PutMapping("/reject")
+    @PatchMapping("/reject")
     public void userReject(@Validated @RequestBody UserSignUpRequest request){
         userService.rejectSignUp(request);
     }
@@ -52,14 +53,14 @@ public class UserController {
     }
 
     @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
-    @PutMapping("/stdId")
+    @PatchMapping("/stdId")
     @ResponseStatus(HttpStatus.OK)
     public void editUser(@Validated @RequestBody StdIdEditRequest request){
         userService.editUserStdId(request);
     }
 
     @Operation(summary = "회원 호실 수정", description = "회원 호실을 수정합니다")
-    @PutMapping("/room")
+    @PatchMapping("/room")
     @ResponseStatus(HttpStatus.OK)
     public void editUser(@Validated @RequestBody RoomRequest request){
         userService.editRoom(request);

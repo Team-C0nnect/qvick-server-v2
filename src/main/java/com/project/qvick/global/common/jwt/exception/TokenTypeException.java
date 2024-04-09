@@ -10,4 +10,5 @@ public class TokenTypeException extends BusinessException {
     private TokenTypeException() {
         super(JwtTokenError.JWT_TOKEN_ERROR);
     }
+
 }
