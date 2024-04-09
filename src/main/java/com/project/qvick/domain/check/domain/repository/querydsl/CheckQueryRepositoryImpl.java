@@ -22,24 +22,6 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
     private final JPAQueryFactory queryFactory;
 
     @Override
-    public List<String> findAllNonCheckUser(PageRequest pageRequest) {
-        return queryFactory
-                .select(userEntity.email)
-                .from(userEntity)
-                .leftJoin(checkEntity).on(
-                        checkEntity.userId.eq(userEntity.id)
-                                .and(checkEntity.checkedDate.eq(LocalDate.now()))
-                )
-                .where(
-                        checkEntity.id.isNull(),
-                        userEntity.userRole.eq(UserRole.USER)
-                )
-                .offset((pageRequest.getPage() - 1) * pageRequest.getSize())
-                .limit(pageRequest.getSize())
-                .fetch();
-    }
-
-    @Override
     public List<Check> findCheck(PageRequest pageRequest) {
         return queryFactory
                 .select(checkProjection())

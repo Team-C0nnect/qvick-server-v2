@@ -5,6 +5,7 @@ import com.project.qvick.domain.check.presentation.dto.response.CheckCodeRespons
 import java.util.concurrent.CompletableFuture;
 
 public interface CheckCodeService {
+
     CompletableFuture<CheckCodeResponse> generate();
 
 }
