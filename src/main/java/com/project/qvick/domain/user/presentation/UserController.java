@@ -35,37 +35,6 @@ public class UserController {
     private final UserService userService;
     private final UserQueryService userQueryService;
 
-    @Operation(summary = "유저 승인", description = "유저를 승인합니다")
-    @PatchMapping("/approve")
-    @ResponseStatus(HttpStatus.OK)
-    public void userApprove(@Validated @RequestBody UserSignUpRequest request){
-        userService.acceptSignUp(request);
-    }
-
-    @Operation(summary = "유저 거부", description = "유저를 거부합니다")
-    @PatchMapping("/reject")
-    public void userReject(@Validated @RequestBody UserSignUpRequest request){
-        userService.rejectSignUp(request);
-    }
-
-    @Operation(summary = "승인 대기 유저 조회", description = "승인 대기 유저를 조회합니다.")
-    @GetMapping("/await-user")
-    public ResponseEntity<List<UserPageResponse>> findWaitingUsers(UserApprovalPageRequest request){
-        return ResponseEntity.ok(userQueryService.findWaitingUsers(request));
-    }
-
-    @Operation(summary = "전체 유저 조회", description = "전체 유저를 조회합니다.")
-    @GetMapping("/find-all")
-    public ResponseEntity<List<User>>userList(PageRequest pageRequest){
-        return ResponseEntity.ok(userQueryService.userList(pageRequest));
-    }
-
-    @Operation(summary = "유저 검색", description = "특정 유저를 이름을 기준으로 검색합니다.")
-    @GetMapping("/search")
-    public ResponseEntity<List<User>>userSearch(String name, PageRequest pageRequest){
-        return ResponseEntity.ok(userQueryService.userSearch(name, pageRequest));
-    }
-
     @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
     @PatchMapping("/stdId")
     @ResponseStatus(HttpStatus.OK)
