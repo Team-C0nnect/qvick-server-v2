@@ -10,4 +10,5 @@ public class PasswordWrongException extends BusinessException {
     private PasswordWrongException() {
         super(UserError.PASSWORD_WRONG);
     }
+
 }

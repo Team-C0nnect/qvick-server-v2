@@ -8,4 +8,5 @@ public class UserForbiddenException extends BusinessException {
     private UserForbiddenException(){
         super(UserError.USER_FORBIDDEN);
     }
+
 }
