@@ -15,6 +15,7 @@ import com.project.qvick.global.common.jwt.JwtProvider;
 import com.project.qvick.global.common.repository.UserSecurity;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -31,6 +32,7 @@ public class AuthServiceImpl implements AuthService{
     private final FirebaseNotificationService firebaseNotificationService;
     private final UserSecurity userSecurity;
 
+    @Async
     @Transactional
     @Override
     public void SignUp(SignUpRequest request) {
@@ -41,6 +43,7 @@ public class AuthServiceImpl implements AuthService{
                 encoder.encode(request.getPassword())));
     }
 
+    @Async
     @Transactional
     @Override
     public JsonWebTokenResponse SignIn(SignInRequest request) {
