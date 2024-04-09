@@ -1,5 +1,6 @@
 package com.project.qvick.domain.user.presentation;
 
+import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.RoomRequest;
 import com.project.qvick.domain.user.presentation.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
@@ -7,6 +8,7 @@ import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
 import com.project.qvick.domain.user.service.UserService;
 import com.project.qvick.domain.user.service.querydsl.UserQueryService;
+import com.project.qvick.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -47,9 +49,15 @@ public class UserController {
     }
 
     @Operation(summary = "승인 대기 유저 조회", description = "승인 대기 유저를 조회합니다.")
-    @GetMapping("")
+    @GetMapping("/await-user")
     public ResponseEntity<List<UserPageResponse>> findWaitingUsers(UserApprovalPageRequest request){
         return ResponseEntity.ok(userQueryService.findWaitingUsers(request));
+    }
+
+    @Operation(summary = "전체 유저 조회", description = "전체 유저를 조회합니다.")
+    @GetMapping("/find-all")
+    public ResponseEntity<List<User>>userList(PageRequest pageRequest){
+        return ResponseEntity.ok(userQueryService.userList(pageRequest));
     }
 
     @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
