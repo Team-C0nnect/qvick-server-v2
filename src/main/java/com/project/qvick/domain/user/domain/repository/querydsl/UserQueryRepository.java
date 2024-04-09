@@ -13,4 +13,6 @@ public interface UserQueryRepository {
     List<UserPageResponse> findWaitingUsers(UserApprovalPageRequest request);
 
     List<User> userList(PageRequest request);
+
+    List<User>userSearch(String name, PageRequest request);
 }

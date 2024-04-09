@@ -60,6 +60,12 @@ public class UserController {
         return ResponseEntity.ok(userQueryService.userList(pageRequest));
     }
 
+    @Operation(summary = "유저 검색", description = "특정 유저를 이름을 기준으로 검색합니다.")
+    @GetMapping("/search")
+    public ResponseEntity<List<User>>userSearch(String name, PageRequest pageRequest){
+        return ResponseEntity.ok(userQueryService.userSearch(name, pageRequest));
+    }
+
     @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
     @PatchMapping("/stdId")
     @ResponseStatus(HttpStatus.OK)

@@ -11,6 +11,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -45,6 +46,18 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
                 .fetch();
     }
 
+    @Override
+    public List<User>userSearch(String name, PageRequest request){
+        return jpaQueryFactory
+                .select(userListConstructorExpression())
+                .from(userEntity)
+                .where(nameLike(name))
+                .offset((request.getPage() - 1) * request.getSize())
+                .limit(request.getSize())
+                .orderBy(userEntity.id.asc())
+                .fetch();
+    }
+
     private ConstructorExpression<UserPageResponse> userConstructorExpression() {
         return Projections.constructor(UserPageResponse.class,
                 userEntity.id,
@@ -64,6 +77,10 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
 
     private BooleanExpression inApprovals(Approval approval){
         return userEntity.approval.in(approval);
+    }
+
+    private BooleanExpression nameLike(String name) {
+        return StringUtils.hasText(name) ? userEntity.name.contains(name) : null;
     }
 
 }

@@ -28,6 +28,11 @@ public class UserQueryServiceImpl implements UserQueryService{
         return userQueryRepository.userList(pageRequest);
     }
 
+    @Override
+    public List<User> userSearch(String name, PageRequest pageRequest){
+        return userQueryRepository.userSearch(name,pageRequest);
+    }
+
 }
 
 
