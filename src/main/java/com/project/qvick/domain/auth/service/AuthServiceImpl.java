@@ -32,7 +32,6 @@ public class AuthServiceImpl implements AuthService{
     private final FirebaseNotificationService firebaseNotificationService;
     private final UserSecurity userSecurity;
 
-    @Async
     @Transactional
     @Override
     public void SignUp(SignUpRequest request) {
@@ -43,7 +42,6 @@ public class AuthServiceImpl implements AuthService{
                 encoder.encode(request.getPassword())));
     }
 
-    @Async
     @Transactional
     @Override
     public JsonWebTokenResponse SignIn(SignInRequest request) {
