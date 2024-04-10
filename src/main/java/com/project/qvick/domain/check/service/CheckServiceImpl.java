@@ -26,8 +26,6 @@ public class CheckServiceImpl implements CheckService {
     private final CheckMapper checkMapper;
     private final UserSecurity userSecurity;
 
-    private static final Executor executor = Executors.newFixedThreadPool(10);
-
     @Override
     public void attendance(CodeRequest codeRequest) {
 
