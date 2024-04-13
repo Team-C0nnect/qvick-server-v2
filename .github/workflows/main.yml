@@ -1,6 +1,5 @@
 name: CI/CD using github actions & docker
 
-
 on:
   push:
     branches: [ "main" ] # 해당 branch에 푸쉬 발생 시 업데이트
@@ -25,9 +24,8 @@ jobs:
     - name: Docker build & push to prod
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
+        docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2 .
         docker push ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
-
     - name: Deploy to prod
       uses: appleboy/ssh-action@master
       id: deploy-prod
