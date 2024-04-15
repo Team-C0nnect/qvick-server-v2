@@ -1,4 +1,4 @@
-package com.project.qvick.domain.check.presentation;
+package com.project.qvick.domain.check.presentation.api;
 
 import com.project.qvick.domain.check.presentation.dto.Check;
 import com.project.qvick.domain.check.presentation.dto.request.CodeRequest;

@@ -1,4 +1,4 @@
-package com.project.qvick.domain.school.presentation;
+package com.project.qvick.domain.school.presentation.api;
 
 import com.project.qvick.domain.school.presentation.dto.School;
 import com.project.qvick.domain.school.presentation.dto.request.SchoolRequest;

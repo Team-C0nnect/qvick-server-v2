@@ -1,4 +1,4 @@
-package com.project.qvick.domain.sleepover.presentation;
+package com.project.qvick.domain.sleepover.presentation.api;
 
 import com.project.qvick.domain.sleepover.presentation.dto.Sleepover;
 import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverPageRequest;

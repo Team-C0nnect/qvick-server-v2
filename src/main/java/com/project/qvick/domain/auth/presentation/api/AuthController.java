@@ -1,4 +1,4 @@
-package com.project.qvick.domain.auth.presentation;
+package com.project.qvick.domain.auth.presentation.api;
 
 import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;

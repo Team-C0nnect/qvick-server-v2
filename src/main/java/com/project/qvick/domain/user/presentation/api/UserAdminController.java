@@ -1,4 +1,4 @@
-package com.project.qvick.domain.user.presentation;
+package com.project.qvick.domain.user.presentation.api;
 
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;

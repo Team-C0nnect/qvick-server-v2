@@ -1,4 +1,4 @@
-package com.project.qvick.domain.outing.presentation;
+package com.project.qvick.domain.outing.presentation.api;
 
 import com.project.qvick.domain.outing.presentation.dto.request.OutingRequest;
 import com.project.qvick.domain.outing.service.OutingService;
