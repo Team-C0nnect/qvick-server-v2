@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
-    private final UserQueryService userQueryService;
 
     @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
     @PatchMapping("/stdId")
