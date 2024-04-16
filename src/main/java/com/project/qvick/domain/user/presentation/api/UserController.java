@@ -3,7 +3,6 @@ package com.project.qvick.domain.user.presentation.api;
 import com.project.qvick.domain.user.presentation.dto.request.RoomRequest;
 import com.project.qvick.domain.user.presentation.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.service.UserService;
-import com.project.qvick.domain.user.service.querydsl.UserQueryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
