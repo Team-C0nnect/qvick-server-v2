@@ -33,8 +33,8 @@ firebase:
   sdk:
     path: qvick-410805-firebase-adminsdk-69qs0-203e4ce808.json
   notification:
-    non-check-title: ✅✅✅✅✅✅
-    non-check-message: 출석하자~!!
+    non-check-title: ❗️
+    non-check-message: 출석이 완료되지 않았습니다.
 
 springdoc:
   api-docs:
