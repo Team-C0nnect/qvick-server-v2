@@ -15,9 +15,7 @@ import lombok.Setter;
 public class UserPageResponse {
 
     private Long id;
-
     private String name;
-
     private Approval approval;
 
 }
