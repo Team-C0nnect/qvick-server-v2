@@ -2,7 +2,6 @@ package com.project.qvick.domain.user.domain;
 
 import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.global.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -31,7 +30,8 @@ public class UserEntity{
     @Column(nullable = false)
     private String name;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false,
+            unique = true)
     private String email;
 
     @Column(nullable = false)
@@ -42,7 +42,8 @@ public class UserEntity{
             length = 4)
     private String stdId;
 
-    @Column(nullable = false)
+    @Column(nullable = false,
+            length = 3)
     private String room;
 
     @Column(nullable = false)
