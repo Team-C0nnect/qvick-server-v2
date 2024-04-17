@@ -9,5 +9,7 @@ public interface CheckQueryService {
 
     List<Check> findCheck(PageRequest pageRequest);
 
+    List<String> findAllNonCheckUser(PageRequest pageRequest);
+
 }
 

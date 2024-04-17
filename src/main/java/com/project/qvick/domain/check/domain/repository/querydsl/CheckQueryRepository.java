@@ -9,4 +9,6 @@ public interface CheckQueryRepository {
 
     List<Check> findCheck(PageRequest pageRequest);
 
+    List<String> findAllNonCheckUser(PageRequest pageRequest);
+
 }

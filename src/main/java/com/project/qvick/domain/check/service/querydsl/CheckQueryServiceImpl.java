@@ -20,5 +20,9 @@ public class CheckQueryServiceImpl implements CheckQueryService {
         return checkQueryRepository.findCheck(pageRequest);
     }
 
+    public List<String> findAllNonCheckUser(PageRequest pageRequest) {
+        return checkQueryRepository.findAllNonCheckUser(pageRequest);
+    }
+
 }
 
