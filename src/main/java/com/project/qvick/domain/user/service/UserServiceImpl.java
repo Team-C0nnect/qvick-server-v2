@@ -1,6 +1,8 @@
 package com.project.qvick.domain.user.service;
 
+import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
+import com.project.qvick.domain.user.exception.UserForbiddenException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
@@ -18,6 +20,24 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final UserSecurity userSecurity;
+
+    @Override
+    public void acceptSignUp(UserSignUpRequest request) {
+        User user = userRepository.findById(request.getId()).map(userMapper::toUser).orElseThrow(()-> UserNotFoundException.EXCEPTION);
+        if(user.getUserRole().equals(UserRole.ADMIN) || user.getUserRole().equals(UserRole.TEACHER)){
+            user.setUserRole(UserRole.USER);
+        }
+        throw UserForbiddenException.EXCEPTION;
+    }
+
+    @Override
+    public void rejectSignUp(UserSignUpRequest request) {
+        User user = userRepository.findById(request.getId()).map(userMapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
+        if(user.getUserRole().equals(UserRole.GUEST)){
+            userRepository.deleteById(request.getId());
+        }
+        throw UserForbiddenException.EXCEPTION;
+    }
 
     @Override
     public void editUserStdId(StdIdEditRequest request) {
@@ -43,11 +63,5 @@ public class UserServiceImpl implements UserService {
         user.setRoom(request.getRoom());
         userRepository.save(userMapper.toEdit(user));
     }
-
-    @Override
-    public void acceptSignUp(UserSignUpRequest request) {}
-
-    @Override
-    public void rejectSignUp(UserSignUpRequest request) {}
 
 }
