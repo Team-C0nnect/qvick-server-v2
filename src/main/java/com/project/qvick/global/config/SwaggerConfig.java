@@ -20,7 +20,7 @@ public class SwaggerConfig {
     private Info apiInfo() {
         return new Info()
                 .title("Qvick")
-                .description("Qcivk API")
+                .description("Qvick API")
                 .version("0.0.2");
     }
 

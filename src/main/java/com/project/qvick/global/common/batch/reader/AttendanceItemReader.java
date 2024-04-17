@@ -15,7 +15,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AttendanceItemReader implements ItemReader<List<String>> {
     private static final int SIZE = 50;
-
     private final CheckQueryService checkQueryService;
     private int page = 1;
 
@@ -38,4 +37,5 @@ public class AttendanceItemReader implements ItemReader<List<String>> {
     private PageRequest pageRequest(int page) {
         return new PageRequest(page, SIZE);
     }
+
 }
