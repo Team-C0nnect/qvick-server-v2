@@ -1,8 +1,8 @@
 package com.project.qvick.global.config;
 
-import com.project.qvick.global.common.jwt.filter.JwtAuthenticationFilter;
-import com.project.qvick.global.common.jwt.filter.JwtExceptionFilter;
-import com.project.qvick.global.common.jwt.handler.JwtAuthenticationEntryPoint;
+import com.project.qvick.global.security.jwt.filter.JwtAuthenticationFilter;
+import com.project.qvick.global.security.jwt.filter.JwtExceptionFilter;
+import com.project.qvick.global.security.jwt.handler.JwtAuthenticationEntryPoint;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

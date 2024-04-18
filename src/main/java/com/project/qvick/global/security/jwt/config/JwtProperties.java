@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.jwt.config;
+package com.project.qvick.global.security.jwt.config;
 
 
 import lombok.Getter;

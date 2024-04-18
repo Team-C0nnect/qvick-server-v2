@@ -1,13 +1,13 @@
-package com.project.qvick.global.common.jwt;
+package com.project.qvick.global.security.jwt;
 
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
-import com.project.qvick.global.common.jwt.config.JwtProperties;
-import com.project.qvick.global.common.jwt.enums.JwtType;
-import com.project.qvick.global.common.jwt.exception.TokenTypeException;
+import com.project.qvick.global.security.jwt.config.JwtProperties;
+import com.project.qvick.global.security.jwt.enums.JwtType;
+import com.project.qvick.global.security.jwt.exception.TokenTypeException;
 import com.project.qvick.global.security.auth.principal.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

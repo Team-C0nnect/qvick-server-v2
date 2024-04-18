@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.jwt.handler;
+package com.project.qvick.global.security.jwt.handler;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

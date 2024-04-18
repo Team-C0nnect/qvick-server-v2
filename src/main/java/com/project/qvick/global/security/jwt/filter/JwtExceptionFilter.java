@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.jwt.filter;
+package com.project.qvick.global.security.jwt.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.FilterChain;

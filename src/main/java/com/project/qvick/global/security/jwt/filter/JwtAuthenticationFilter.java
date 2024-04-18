@@ -1,6 +1,6 @@
-package com.project.qvick.global.common.jwt.filter;
+package com.project.qvick.global.security.jwt.filter;
 
-import com.project.qvick.global.common.jwt.JwtProvider;
+import com.project.qvick.global.security.jwt.JwtProvider;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

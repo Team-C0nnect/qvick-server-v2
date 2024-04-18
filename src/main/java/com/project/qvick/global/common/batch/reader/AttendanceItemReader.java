@@ -24,12 +24,10 @@ public class AttendanceItemReader implements ItemReader<List<String>> {
         log.info("....................... attendaceItemReader start");
         final List<String> nonCheckUserList = checkQueryService.findAllNonCheckUser(pageRequest(page));
         log.info("....................... nonAttendanceList : {} ", nonCheckUserList.size());
-
         if (nonCheckUserList.isEmpty()) {
             page = 1;
             return null;
         }
-
         page++;
         log.info("....................... attendaceItemReader end");
         return nonCheckUserList;

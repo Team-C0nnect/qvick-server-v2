@@ -1,6 +1,6 @@
-package com.project.qvick.global.common.jwt.exception;
+package com.project.qvick.global.security.jwt.exception;
 
-import com.project.qvick.global.common.jwt.exception.error.JwtTokenError;
+import com.project.qvick.global.security.jwt.exception.error.JwtTokenError;
 import com.project.qvick.global.exception.BusinessException;
 
 public class TokenTypeException extends BusinessException {

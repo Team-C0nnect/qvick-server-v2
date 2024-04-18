@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.jwt.exception.error;
+package com.project.qvick.global.security.jwt.exception.error;
 
 import com.project.qvick.global.exception.error.ErrorProperty;
 import lombok.Getter;
