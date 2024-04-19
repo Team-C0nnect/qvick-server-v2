@@ -9,8 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @Tag(name = "약관", description = "약관")
 @RequestMapping("/terms")
-public class HtmlController {
-
+public class TermController {
 
     @GetMapping("/privacy-policy")
     @Operation(summary = "개인정보처리약관", description = "개인정보처리약관을 불러옵니다")
