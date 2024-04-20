@@ -6,7 +6,6 @@ import com.project.qvick.domain.user.presentation.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
