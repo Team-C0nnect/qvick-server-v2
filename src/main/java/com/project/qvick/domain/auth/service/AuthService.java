@@ -14,4 +14,5 @@ public interface AuthService {
     JsonWebTokenResponse refresh(String token);
 
     void firebase(AuthenticationRequest request);
+
 }
