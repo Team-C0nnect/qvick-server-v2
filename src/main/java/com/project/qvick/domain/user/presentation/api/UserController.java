@@ -1,14 +1,17 @@
 package com.project.qvick.domain.user.presentation.api;
 
+import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.RoomRequest;
 import com.project.qvick.domain.user.presentation.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,10 +40,16 @@ public class UserController {
         userService.editRoom(request);
     }
 
-    @Operation(summary = "회원탈퇴", description = "회원 탈퇴를 진행합니다.")
+    @Operation(summary = "회원탈퇴", description = "회원 탈퇴를 진행합니다")
     @DeleteMapping("")
     public void deleteUser(){
         userService.deleteUser();
+    }
+
+    @Operation(summary = "유저 조회", description = "현재 로그인한 유저 정보를 조회합니다")
+    @GetMapping("")
+    public User findUser(){
+        return userService.findUser();
     }
 
 }

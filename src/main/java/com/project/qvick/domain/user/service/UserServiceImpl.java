@@ -40,6 +40,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User findUser(){
+        return userRepository
+                .findById(userSecurity.getUser().getId())
+                .map(userMapper::toUser)
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+    }
+
+    @Override
     public void editUserStdId(StdIdEditRequest request) {
         User user = userRepository.findById(userSecurity.getUser().getId())
                 .map(userMapper::toUser).orElseThrow(() -> UserNotFoundException.EXCEPTION);
