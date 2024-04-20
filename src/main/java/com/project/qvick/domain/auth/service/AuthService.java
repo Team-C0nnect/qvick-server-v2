@@ -8,10 +8,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 public interface AuthService {
 
-    @Transactional
     void SignUp(SignUpRequest request);
 
-    @Transactional
     JsonWebTokenResponse SignIn(SignInRequest request);
 
     JsonWebTokenResponse refresh(String token);
