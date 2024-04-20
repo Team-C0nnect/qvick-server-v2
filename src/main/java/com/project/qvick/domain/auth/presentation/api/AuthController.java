@@ -1,6 +1,7 @@
 package com.project.qvick.domain.auth.presentation.api;
 
 import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
+import com.project.qvick.domain.auth.presentation.dto.request.RefreshTokenRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
@@ -39,6 +40,12 @@ public class AuthController {
     @PostMapping("/sign-in")
     public JsonWebTokenResponse signIn(@Validated @RequestBody SignInRequest signInRequest){
         return authService.SignIn(signInRequest);
+    }
+
+    @Operation(summary = "토큰 재발급", description = "acess 토큰을 재발급 합니다")
+    @PostMapping("/refresh")
+    public JsonWebTokenResponse refresh(RefreshTokenRequest request){
+        return authService.refresh(request.getRefreshToken());
     }
 
     @Operation(summary = "firebase 인증", description = "firebase 인증 서비스")

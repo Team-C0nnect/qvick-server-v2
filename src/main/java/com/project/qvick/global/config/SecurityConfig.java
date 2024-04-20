@@ -14,6 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.google.api.client.http.HttpMethods.POST;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor

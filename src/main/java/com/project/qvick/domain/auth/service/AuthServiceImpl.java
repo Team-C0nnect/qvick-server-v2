@@ -14,6 +14,10 @@ import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.security.jwt.JwtProvider;
 import com.project.qvick.global.common.repository.UserSecurity;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
+import com.project.qvick.global.security.jwt.enums.JwtType;
+import com.project.qvick.global.security.jwt.exception.TokenTypeException;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jws;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -52,6 +56,17 @@ public class AuthServiceImpl implements AuthService{
                 .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.USER))
                 .build();
 
+    }
+
+    @Override
+    public JsonWebTokenResponse refresh(String token) {
+        Jws<Claims> claims = jwtProvider.getClaims(jwtProvider.extractToken(token));
+        if (jwtProvider.isWrongType(claims, JwtType.REFRESH)) {
+            throw TokenTypeException.EXCEPTION;
+        }
+        return JsonWebTokenResponse.builder()
+                .accessToken(jwtProvider.generateAccessToken(claims.getBody().getSubject(),
+                        (UserRole) claims.getHeader().get("authority"))).build();
     }
 
     @Override

@@ -14,5 +14,7 @@ public interface AuthService {
     @Transactional
     JsonWebTokenResponse SignIn(SignInRequest request);
 
+    JsonWebTokenResponse refresh(String token);
+
     void firebase(AuthenticationRequest request);
 }
