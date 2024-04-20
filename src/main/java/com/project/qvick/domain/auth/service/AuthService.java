@@ -4,7 +4,6 @@ import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequ
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
-import org.springframework.transaction.annotation.Transactional;
 
 public interface AuthService {
 
