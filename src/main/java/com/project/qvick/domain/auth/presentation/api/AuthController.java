@@ -4,7 +4,6 @@ import com.project.qvick.domain.auth.presentation.dto.request.AdminSignUpRequest
 import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.RefreshTokenRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
-import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.TeacherSignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
