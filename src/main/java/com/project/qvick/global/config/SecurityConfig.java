@@ -33,10 +33,7 @@ public class SecurityConfig {
                                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
                                 .requestMatchers("/terms/**").permitAll()
 
-                                .requestMatchers("/auth/sign-up").permitAll()
-                                .requestMatchers("/auth/sign-in/user").hasAnyAuthority("USER")
-                                .requestMatchers("/auth/sign-in/admin").hasAnyAuthority("ADMIN")
-                                .requestMatchers("/auth/sign-in/teacher").hasAnyAuthority("TEACHER")
+                                .requestMatchers("/auth/**").permitAll()
 
                                 .requestMatchers("/user-admin/**").hasAnyAuthority("ADMIN","TEACHER")
                                 .requestMatchers("/outing-admin/**").hasAnyAuthority("ADMIN","TEACHER")
