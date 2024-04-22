@@ -27,7 +27,6 @@ public class UserMapper {
         return UserEntity.builder()
                 .name(signUpRequest.getName())
                 .email(signUpRequest.getEmail())
-                .phoneNum(signUpRequest.getPhoneNum())
                 .password(password)
                 .stdId(signUpRequest.getStdId())
                 .room(signUpRequest.getRoom())
