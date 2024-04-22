@@ -34,6 +34,8 @@ public class SecurityConfig {
                         authorize -> authorize
                                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
                                 .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/auth/sign-in/admin").hasAnyAuthority("ADMIN")
+                                .requestMatchers("/auth/sign-in/teacher").hasAnyAuthority("TEACHER")
                                 .requestMatchers("/terms/**").permitAll()
                                 .requestMatchers("/user-admin/**").hasAnyAuthority("ADMIN","TEACHER")
                                 .requestMatchers("/outing-admin/**").hasAnyAuthority("ADMIN","TEACHER")

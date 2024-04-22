@@ -13,6 +13,8 @@ public interface AuthService {
 
     JsonWebTokenResponse adminSignIn(SignInRequest request);
 
+    JsonWebTokenResponse teacherSignIn(SignInRequest request);
+
     JsonWebTokenResponse refresh(String token);
 
     void firebase(AuthenticationRequest request);

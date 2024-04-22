@@ -66,6 +66,17 @@ public class AuthServiceImpl implements AuthService{
     }
 
     @Override
+    public JsonWebTokenResponse teacherSignIn(SignInRequest request) {
+        String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
+        if (!encoder.matches(request.getPassword(), userPassword))
+            throw PasswordWrongException.EXCEPTION;
+        return JsonWebTokenResponse.builder()
+                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.TEACHER))
+                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.TEACHER))
+                .build();
+    }
+
+    @Override
     public JsonWebTokenResponse refresh(String token) {
         Jws<Claims> claims = jwtProvider.getClaims(jwtProvider.extractToken(token));
         if (jwtProvider.isWrongType(claims, JwtType.REFRESH)) {
