@@ -15,4 +15,5 @@ public interface UserQueryRepository {
     List<User> userList(PageRequest request);
 
     List<User>userSearch(String name, PageRequest request);
+
 }

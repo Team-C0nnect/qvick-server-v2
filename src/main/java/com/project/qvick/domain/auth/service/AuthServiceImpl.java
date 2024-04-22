@@ -1,8 +1,10 @@
 package com.project.qvick.domain.auth.service;
 
+import com.project.qvick.domain.auth.presentation.dto.request.AdminSignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
-import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
+import com.project.qvick.domain.auth.presentation.dto.request.TeacherSignUpRequest;
+import com.project.qvick.domain.auth.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
@@ -11,9 +13,9 @@ import com.project.qvick.domain.user.exception.UserExistException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
-import com.project.qvick.global.security.jwt.JwtProvider;
 import com.project.qvick.global.common.repository.UserSecurity;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
+import com.project.qvick.global.security.jwt.JwtProvider;
 import com.project.qvick.global.security.jwt.enums.JwtType;
 import com.project.qvick.global.security.jwt.exception.TokenTypeException;
 import io.jsonwebtoken.Claims;
@@ -35,16 +37,34 @@ public class AuthServiceImpl implements AuthService{
     private final UserSecurity userSecurity;
 
     @Override
-    public void signUp(SignUpRequest request) {
+    public void userSignUp(UserSignUpRequest request) {
         if (userRepository.findByEmail(request.getEmail()).isPresent())
             throw UserExistException.EXCEPTION;
-        userRepository.save(userMapper.toCreate(
+        userRepository.save(userMapper.toCreateUser(
                 request,
                 encoder.encode(request.getPassword())));
     }
 
     @Override
-    public JsonWebTokenResponse signIn(SignInRequest request) {
+    public void teacherSignUp(TeacherSignUpRequest request) {
+        if (userRepository.findByEmail(request.getEmail()).isPresent())
+            throw UserExistException.EXCEPTION;
+        userRepository.save(userMapper.toCreateTeacher(
+                request,
+                encoder.encode(request.getPassword())));
+    }
+
+    @Override
+    public void adminSignUp(AdminSignUpRequest request) {
+        if (userRepository.findByEmail(request.getEmail()).isPresent())
+            throw UserExistException.EXCEPTION;
+        userRepository.save(userMapper.toCreateAdmin(
+                request,
+                encoder.encode(request.getPassword())));
+    }
+
+    @Override
+    public JsonWebTokenResponse userSignIn(SignInRequest request) {
         String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
         if (!encoder.matches(request.getPassword(), userPassword))
             throw PasswordWrongException.EXCEPTION;

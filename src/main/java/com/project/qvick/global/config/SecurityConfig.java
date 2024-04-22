@@ -40,6 +40,7 @@ public class SecurityConfig {
                                 .requestMatchers("/attendance/list").hasAnyAuthority("ADMIN","TEACHER")
                                 .requestMatchers("/attendance/code").hasAnyAuthority("ADMIN","TEACHER")
                                 .requestMatchers("/sleepover-admin/**").hasAnyAuthority("ADMIN","TEACHER")
+                                
                                 .requestMatchers("/school/**").hasAnyAuthority("ADMIN")
                                 .anyRequest().authenticated()
                 )
