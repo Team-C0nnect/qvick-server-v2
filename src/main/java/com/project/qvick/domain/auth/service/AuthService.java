@@ -7,9 +7,11 @@ import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenRespo
 
 public interface AuthService {
 
-    void SignUp(SignUpRequest request);
+    void signUp(SignUpRequest request);
 
-    JsonWebTokenResponse SignIn(SignInRequest request);
+    JsonWebTokenResponse signIn(SignInRequest request);
+
+    JsonWebTokenResponse adminSignIn(SignInRequest request);
 
     JsonWebTokenResponse refresh(String token);
 

@@ -33,13 +33,19 @@ public class AuthController {
     @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.CREATED)
     public void signUp(@Validated @RequestBody SignUpRequest signUpRequest){
-        authService.SignUp(signUpRequest);
+        authService.signUp(signUpRequest);
     }
 
     @Operation(summary = "로그인", description = "로그인")
     @PostMapping("/sign-in")
     public JsonWebTokenResponse signIn(@Validated @RequestBody SignInRequest signInRequest){
-        return authService.SignIn(signInRequest);
+        return authService.signIn(signInRequest);
+    }
+
+    @Operation(summary = "로그인", description = "로그인")
+    @PostMapping("/sign-in/admin")
+    public JsonWebTokenResponse adminSignIn(@Validated @RequestBody SignInRequest signInRequest){
+        return authService.adminSignIn(signInRequest);
     }
 
     @Operation(summary = "토큰 재발급", description = "acess 토큰을 재발급 합니다")

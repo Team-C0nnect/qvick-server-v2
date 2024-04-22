@@ -21,7 +21,6 @@ import io.jsonwebtoken.Jws;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 @Service
@@ -35,9 +34,8 @@ public class AuthServiceImpl implements AuthService{
     private final FirebaseNotificationService firebaseNotificationService;
     private final UserSecurity userSecurity;
 
-    @Transactional
     @Override
-    public void SignUp(SignUpRequest request) {
+    public void signUp(SignUpRequest request) {
         if (userRepository.findByEmail(request.getEmail()).isPresent())
             throw UserExistException.EXCEPTION;
         userRepository.save(userMapper.toCreate(
@@ -45,9 +43,8 @@ public class AuthServiceImpl implements AuthService{
                 encoder.encode(request.getPassword())));
     }
 
-    @Transactional
     @Override
-    public JsonWebTokenResponse SignIn(SignInRequest request) {
+    public JsonWebTokenResponse signIn(SignInRequest request) {
         String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
         if (!encoder.matches(request.getPassword(), userPassword))
             throw PasswordWrongException.EXCEPTION;
@@ -55,7 +52,17 @@ public class AuthServiceImpl implements AuthService{
                 .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.USER))
                 .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.USER))
                 .build();
+    }
 
+    @Override
+    public JsonWebTokenResponse adminSignIn(SignInRequest request) {
+        String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
+        if (!encoder.matches(request.getPassword(), userPassword))
+            throw PasswordWrongException.EXCEPTION;
+        return JsonWebTokenResponse.builder()
+                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.ADMIN))
+                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.ADMIN))
+                .build();
     }
 
     @Override
