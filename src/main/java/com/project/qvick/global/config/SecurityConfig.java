@@ -14,8 +14,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import static com.google.api.client.http.HttpMethods.POST;
-
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -33,7 +31,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
-                                .requestMatchers("/auth/**").permitAll()
+                                .requestMatchers("/auth/sign-up").permitAll()
+                                .requestMatchers("/auth/sign-in").permitAll()
                                 .requestMatchers("/auth/sign-in/admin").hasAnyAuthority("ADMIN")
                                 .requestMatchers("/auth/sign-in/teacher").hasAnyAuthority("TEACHER")
                                 .requestMatchers("/terms/**").permitAll()

@@ -37,7 +37,7 @@ public class AuthController {
     }
 
     @Operation(summary = "로그인", description = "로그인")
-    @PostMapping("/sign-in")
+    @PostMapping("/sign-in/user")
     public JsonWebTokenResponse signIn(@Validated @RequestBody SignInRequest signInRequest){
         return authService.signIn(signInRequest);
     }
