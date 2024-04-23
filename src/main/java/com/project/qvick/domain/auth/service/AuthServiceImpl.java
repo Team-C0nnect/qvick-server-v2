@@ -1,10 +1,8 @@
 package com.project.qvick.domain.auth.service;
 
-import com.project.qvick.domain.auth.presentation.dto.request.AdminSignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
-import com.project.qvick.domain.auth.presentation.dto.request.TeacherSignUpRequest;
-import com.project.qvick.domain.auth.presentation.dto.request.UserSignUpRequest;
+import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
@@ -37,62 +35,22 @@ public class AuthServiceImpl implements AuthService{
     private final UserSecurity userSecurity;
 
     @Override
-    public void userSignUp(UserSignUpRequest request) {
+    public void signUp(SignUpRequest request) {
         if (userRepository.findByEmail(request.getEmail()).isPresent())
             throw UserExistException.EXCEPTION;
-        userRepository.save(userMapper.toCreateUser(
+        userRepository.save(userMapper.toCreate(
                 request,
                 encoder.encode(request.getPassword())));
     }
 
     @Override
-    public void teacherSignUp(TeacherSignUpRequest request) {
-        if (userRepository.findByEmail(request.getEmail()).isPresent())
-            throw UserExistException.EXCEPTION;
-        userRepository.save(userMapper.toCreateTeacher(
-                request,
-                encoder.encode(request.getPassword())));
-    }
-
-    @Override
-    public void adminSignUp(AdminSignUpRequest request) {
-        if (userRepository.findByEmail(request.getEmail()).isPresent())
-            throw UserExistException.EXCEPTION;
-        userRepository.save(userMapper.toCreateAdmin(
-                request,
-                encoder.encode(request.getPassword())));
-    }
-
-    @Override
-    public JsonWebTokenResponse userSignIn(SignInRequest request) {
+    public JsonWebTokenResponse signIn(SignInRequest request) {
         String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
         if (!encoder.matches(request.getPassword(), userPassword))
             throw PasswordWrongException.EXCEPTION;
         return JsonWebTokenResponse.builder()
                 .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.USER))
                 .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.USER))
-                .build();
-    }
-
-    @Override
-    public JsonWebTokenResponse adminSignIn(SignInRequest request) {
-        String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
-        if (!encoder.matches(request.getPassword(), userPassword))
-            throw PasswordWrongException.EXCEPTION;
-        return JsonWebTokenResponse.builder()
-                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.ADMIN))
-                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.ADMIN))
-                .build();
-    }
-
-    @Override
-    public JsonWebTokenResponse teacherSignIn(SignInRequest request) {
-        String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
-        if (!encoder.matches(request.getPassword(), userPassword))
-            throw PasswordWrongException.EXCEPTION;
-        return JsonWebTokenResponse.builder()
-                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.TEACHER))
-                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.TEACHER))
                 .build();
     }
 

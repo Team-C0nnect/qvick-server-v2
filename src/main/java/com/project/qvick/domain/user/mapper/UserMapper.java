@@ -1,8 +1,6 @@
 package com.project.qvick.domain.user.mapper;
 
-import com.project.qvick.domain.auth.presentation.dto.request.AdminSignUpRequest;
-import com.project.qvick.domain.auth.presentation.dto.request.TeacherSignUpRequest;
-import com.project.qvick.domain.auth.presentation.dto.request.UserSignUpRequest;
+import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.user.domain.UserEntity;
 import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;
@@ -23,7 +21,7 @@ public class UserMapper {
                 .build();
     }
 
-    public UserEntity toCreateUser(UserSignUpRequest signUpRequest, String password){
+    public UserEntity toCreate(SignUpRequest signUpRequest, String password){
         return UserEntity.builder()
                 .name(signUpRequest.getName())
                 .email(signUpRequest.getEmail())
@@ -32,26 +30,6 @@ public class UserMapper {
                 .room(signUpRequest.getRoom())
                 .approval(Approval.ACCEPT)
                 .userRole(UserRole.USER)
-                .build();
-    }
-
-    public UserEntity toCreateTeacher(TeacherSignUpRequest signUpRequest, String password){
-        return UserEntity.builder()
-                .name(signUpRequest.getName())
-                .email(signUpRequest.getEmail())
-                .phoneNum(signUpRequest.getPhoneNum())
-                .password(password)
-                .approval(Approval.ACCEPT)
-                .userRole(UserRole.TEACHER)
-                .build();
-    }
-
-    public UserEntity toCreateAdmin(AdminSignUpRequest signUpRequest, String password){
-        return UserEntity.builder()
-                .email(signUpRequest.getEmail())
-                .password(password)
-                .approval(Approval.ACCEPT)
-                .userRole(UserRole.ADMIN)
                 .build();
     }
 
