@@ -21,11 +21,10 @@ public class CheckCodeServiceImpl implements CheckCodeService {
     private final CheckCodeMapper checkCodeMapper;
     private final UserSecurity userSecurity;
 
-    Long id = userSecurity.getUser().getId();
-
     @Override
     @Async
     public CompletableFuture<CheckCodeResponse> generate() {
+        Long id = userSecurity.getUser().getId();
         checkCodeRepository.updateAllInvalidCheckCode(id);
         CheckCodeEntity checkCodeEntity = checkCodeRepository.save(checkCodeMapper.createCheckCodeEntity(id));
         return CompletableFuture.completedFuture(CheckCodeResponse.builder().code(checkCodeEntity.getCode()).build());
