@@ -7,6 +7,7 @@ import java.util.UUID;
 
 @Component
 public class CheckCodeMapper {
+
     public CheckCodeEntity createCheckCodeEntity(final Long userId) {
         return CheckCodeEntity.builder()
                 .userId(userId)
