@@ -26,7 +26,7 @@ public class AuthController {
     private final AuthService authService;
 
     @Operation(summary = "유저 회원가입", description = "유저 회원가입")
-    @PostMapping("/sign-up/user")
+    @PostMapping("/sign-up")
     @ResponseStatus(HttpStatus.CREATED)
     public void signUp(@Validated @RequestBody SignUpRequest signUpRequest){
         authService.signUp(signUpRequest);
