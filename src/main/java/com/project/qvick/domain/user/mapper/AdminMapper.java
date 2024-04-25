@@ -8,11 +8,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class AdminMapper {
 
-    public AdminEntity toEntity(AdminSignUpRequest request) {
+    public AdminEntity toEntity(AdminSignUpRequest request, String password) {
         return AdminEntity.builder()
                 .name(request.getName())
                 .email(request.getEmail())
-                .password(request.getPassword())
+                .password(password)
                 .userRole(UserRole.ADMIN)
                 .build();
     }
