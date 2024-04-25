@@ -50,8 +50,8 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public void adminSignUp(AdminSignUpRequest request) {
-        if(adminRepository.findByEmail(request.getEmail()).isEmpty()){
-            throw UserNotFoundException.EXCEPTION;
+        if(adminRepository.findByEmail(request.getEmail()).isPresent()){
+            throw UserExistException.EXCEPTION;
         }
         adminRepository.save(adminMapper.toEntity(request));
     }
