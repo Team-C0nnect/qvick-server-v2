@@ -39,13 +39,13 @@ public class SecurityConfig {
 
                                 .requestMatchers("/auth/**").permitAll()
 
-                                .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers("/attendance/list").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers("/attendance/code").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
-                                
-                                .requestMatchers("/school/**").hasRole(ADMIN)
-                                .requestMatchers("/user-admin/**").hasRole(ADMIN)
+//                                .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
+//                                .requestMatchers("/attendance/list").hasAnyAuthority(ADMIN,TEACHER)
+//                                .requestMatchers("/attendance/code").hasAnyAuthority(ADMIN,TEACHER)
+//                                .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
+//
+//                                .requestMatchers("/school/**").hasAuthority(ADMIN)
+//                                .requestMatchers("/user-admin/**").hasAuthority(ADMIN)
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
