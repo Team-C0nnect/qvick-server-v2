@@ -53,7 +53,9 @@ public class AuthServiceImpl implements AuthService{
         if(adminRepository.findByEmail(request.getEmail()).isPresent()){
             throw UserExistException.EXCEPTION;
         }
-        adminRepository.save(adminMapper.toEntity(request, encoder.encode(request.getPassword())));
+        adminRepository.save(adminMapper.toEntity(
+                request,
+                encoder.encode(request.getPassword())));
     }
 
     @Override
