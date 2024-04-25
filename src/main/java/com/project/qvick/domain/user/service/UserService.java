@@ -19,4 +19,5 @@ public interface UserService {
     void deleteUser();
 
     void editRoom(RoomRequest request);
+
 }

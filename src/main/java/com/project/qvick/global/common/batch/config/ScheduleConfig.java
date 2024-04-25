@@ -25,6 +25,7 @@ import java.util.List;
 @EnableBatchProcessing
 @RequiredArgsConstructor
 public class ScheduleConfig {
+
     private static final int CHUNK_SIZE = 1;
     private final CheckQueryService checkQueryService;
     private final FirebaseNotificationService firebaseNotificationService;

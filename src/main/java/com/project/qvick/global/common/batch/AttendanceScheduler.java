@@ -33,5 +33,4 @@ public class AttendanceScheduler {
         jobLauncher.run(checkAttendanceJob, parameters);
     }
 
-
 }
