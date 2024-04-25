@@ -44,8 +44,8 @@ public class SecurityConfig {
                                 .requestMatchers("/attendance/code").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
                                 
-                                .requestMatchers("/school/**").hasAnyRole(ADMIN)
-                                .requestMatchers("/user-admin/**").hasAnyAuthority(ADMIN)
+                                .requestMatchers("/school/**").hasRole(ADMIN)
+                                .requestMatchers("/user-admin/**").hasRole(ADMIN)
                                 .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
