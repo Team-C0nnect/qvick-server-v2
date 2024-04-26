@@ -5,10 +5,10 @@ import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.global.security.auth.principal.CustomUserDetails;
 import com.project.qvick.global.security.jwt.config.JwtProperties;
 import com.project.qvick.global.security.jwt.enums.JwtType;
 import com.project.qvick.global.security.jwt.exception.TokenTypeException;
-import com.project.qvick.global.security.auth.principal.CustomUserDetails;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Header;
@@ -18,6 +18,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,6 +27,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.Date;
 
+@Slf4j
 @Component
 @RequiredArgsConstructor
 public class JwtProvider {

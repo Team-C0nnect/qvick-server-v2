@@ -1,6 +1,7 @@
 package com.project.qvick.global.security.jwt.filter;
 
 import com.project.qvick.global.security.jwt.JwtProvider;
+import groovy.util.logging.Slf4j;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -15,6 +16,7 @@ import java.io.IOException;
 
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtProvider jwtProvider;
@@ -24,11 +26,10 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException, ExpiredJwtException {
 
         String token = jwtProvider.extractTokenFromRequest(request);
-
+        logger.info(token);
         if (token != null) {
             SecurityContextHolder.getContext().setAuthentication(jwtProvider.getAuthentication(token));
         }
-
         filterChain.doFilter(request, response);
     }
 

@@ -33,6 +33,18 @@ public class UserMapper {
                 .build();
     }
 
+    public UserEntity toCreateAdmin(SignUpRequest signUpRequest, String password){
+        return UserEntity.builder()
+                .name(signUpRequest.getName())
+                .email(signUpRequest.getEmail())
+                .password(password)
+                .stdId(signUpRequest.getStdId())
+                .room(signUpRequest.getRoom())
+                .approval(Approval.ACCEPT)
+                .userRole(UserRole.ADMIN)
+                .build();
+    }
+
     public UserEntity toEdit(User user){
         return UserEntity.builder()
                 .stdId(user.getStdId())

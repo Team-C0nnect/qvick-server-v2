@@ -1,17 +1,14 @@
 package com.project.qvick.domain.auth.service;
 
-import com.project.qvick.domain.auth.presentation.dto.request.AdminSignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.domain.user.domain.repository.AdminRepository;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.exception.PasswordWrongException;
 import com.project.qvick.domain.user.exception.UserExistException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
-import com.project.qvick.domain.user.mapper.AdminMapper;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.repository.UserSecurity;
@@ -31,9 +28,7 @@ import org.springframework.util.StringUtils;
 public class AuthServiceImpl implements AuthService{
 
     private final UserRepository userRepository;
-    private final AdminRepository adminRepository;
     private final UserMapper userMapper;
-    private final AdminMapper adminMapper;
     private final PasswordEncoder encoder;
     private final JwtProvider jwtProvider;
     private final FirebaseNotificationService firebaseNotificationService;
@@ -49,18 +44,17 @@ public class AuthServiceImpl implements AuthService{
     }
 
     @Override
-    public void adminSignUp(AdminSignUpRequest request) {
-        if(adminRepository.findByEmail(request.getEmail()).isPresent()){
+    public void adminSignUp(SignUpRequest request) {
+        if (userRepository.findByEmail(request.getEmail()).isPresent())
             throw UserExistException.EXCEPTION;
-        }
-        adminRepository.save(adminMapper.toEntity(
+        userRepository.save(userMapper.toCreateAdmin(
                 request,
                 encoder.encode(request.getPassword())));
     }
 
     @Override
     public JsonWebTokenResponse adminSignIn(SignInRequest request) {
-        String adminPassword = adminRepository.getByEmail(request.getEmail()).getPassword();
+        String adminPassword = userRepository.getByEmail(request.getEmail()).getPassword();
         if (!encoder.matches(request.getPassword(), adminPassword))
             throw PasswordWrongException.EXCEPTION;
         return JsonWebTokenResponse.builder()

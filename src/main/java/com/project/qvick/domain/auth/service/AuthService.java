@@ -11,7 +11,7 @@ public interface AuthService {
 
     void signUp(SignUpRequest request);
 
-    void adminSignUp(AdminSignUpRequest request);
+    void adminSignUp(SignUpRequest request);
 
     JsonWebTokenResponse adminSignIn(SignInRequest request);
 

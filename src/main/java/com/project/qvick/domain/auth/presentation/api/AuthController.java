@@ -1,6 +1,5 @@
 package com.project.qvick.domain.auth.presentation.api;
 
-import com.project.qvick.domain.auth.presentation.dto.request.AdminSignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.RefreshTokenRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
@@ -33,10 +32,10 @@ public class AuthController {
         authService.signUp(signUpRequest);
     }
 
-    @Operation(summary = "관리자 회원가입", description = "관리자 회원가입")
+    @Operation(summary = "유저 회원가입", description = "유저 회원가입")
     @PostMapping("/sign-up/admin")
     @ResponseStatus(HttpStatus.CREATED)
-    public void adminSignUp(@Validated @RequestBody AdminSignUpRequest signUpRequest){
+    public void adminSignUp(@Validated @RequestBody SignUpRequest signUpRequest){
         authService.adminSignUp(signUpRequest);
     }
 
@@ -46,7 +45,7 @@ public class AuthController {
         return authService.signIn(signInRequest);
     }
 
-    @Operation(summary = "관리자 로그인", description = "관리자 로그인")
+    @Operation(summary = "로그인", description = "로그인")
     @PostMapping("/sign-in/admin")
     public JsonWebTokenResponse adminSignIn(@Validated @RequestBody SignInRequest signInRequest){
         return authService.adminSignIn(signInRequest);
