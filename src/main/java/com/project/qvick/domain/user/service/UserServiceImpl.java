@@ -23,7 +23,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void acceptSignUp(UserSignUpRequest request) {
-        User user = userRepository.findById(request.getId()).map(userMapper::toUser).orElseThrow(()-> UserNotFoundException.EXCEPTION);
+        User user = userRepository
+                .findById(request.getId())
+                .map(userMapper::toUser)
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
         if(user.getUserRole().equals(UserRole.ADMIN) || user.getUserRole().equals(UserRole.TEACHER)){
             user.setUserRole(UserRole.USER);
         }
@@ -32,7 +35,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void rejectSignUp(UserSignUpRequest request) {
-        User user = userRepository.findById(request.getId()).map(userMapper::toUser).orElseThrow(()->UserNotFoundException.EXCEPTION);
+        User user = userRepository
+                .findById(request.getId())
+                .map(userMapper::toUser)
+                .orElseThrow(()->UserNotFoundException.EXCEPTION);
         if(user.getUserRole().equals(UserRole.GUEST)){
             userRepository.deleteById(request.getId());
         }
@@ -49,8 +55,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editUserStdId(StdIdEditRequest request) {
-        User user = userRepository.findById(userSecurity.getUser().getId())
-                .map(userMapper::toUser).orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        User user = userRepository
+                .findById(userSecurity.getUser().getId())
+                .map(userMapper::toUser)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
         user.setStdId(request.getStdId());
         userRepository.save(userMapper.toEdit(user));
     }
@@ -66,8 +74,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editRoom(RoomRequest request){
-        User user = userRepository.findById(userSecurity.getUser().getId())
-                .map(userMapper::toUser).orElseThrow(() -> UserNotFoundException.EXCEPTION);
+        User user = userRepository
+                .findById(userSecurity.getUser().getId())
+                .map(userMapper::toUser)
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
         user.setRoom(request.getRoom());
         userRepository.save(userMapper.toEdit(user));
     }
