@@ -26,7 +26,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException, ExpiredJwtException {
 
         String token = jwtProvider.extractTokenFromRequest(request);
-        logger.info(token);
         if (token != null) {
             SecurityContextHolder.getContext().setAuthentication(jwtProvider.getAuthentication(token));
         }

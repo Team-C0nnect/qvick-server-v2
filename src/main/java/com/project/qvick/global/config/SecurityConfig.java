@@ -42,16 +42,16 @@ public class SecurityConfig {
 
                                 .requestMatchers("/auth/**").permitAll()
 
-//                                .requestMatchers("/outing-admin/**").hasAnyRole(ADMIN,TEACHER)
-//                                .requestMatchers("/attendance/list").hasAnyRole(ADMIN,TEACHER)
-//                                .requestMatchers("/attendance/code").hasAnyRole(ADMIN,TEACHER)
-//                                .requestMatchers("/sleepover-admin/**").hasAnyRole(ADMIN,TEACHER)
-//
-//                                .requestMatchers("/school/**").hasRole(ADMIN)
-//                                .requestMatchers("/user-admin/**").hasRole(ADMIN)
+                                .requestMatchers("/outing-admin/**").hasAnyRole(ADMIN,TEACHER)
+                                .requestMatchers("/attendance/list").hasAnyRole(ADMIN,TEACHER)
+                                .requestMatchers("/attendance/code").hasAnyRole(ADMIN,TEACHER)
+                                .requestMatchers("/sleepover-admin/**").hasAnyRole(ADMIN,TEACHER)
+
+                                .requestMatchers("/school/**").hasRole(ADMIN)
+                                .requestMatchers("/user-admin/**").hasRole(ADMIN)
                                 .anyRequest().authenticated()
                 )
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtExceptionFilter, JwtAuthenticationFilter.class);
 
         return http.build();

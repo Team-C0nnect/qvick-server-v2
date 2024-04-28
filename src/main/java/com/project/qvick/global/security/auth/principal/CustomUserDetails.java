@@ -3,6 +3,7 @@ package com.project.qvick.global.security.auth.principal;
 import com.nimbusds.jose.proc.SecurityContext;
 import com.project.qvick.domain.user.presentation.dto.User;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,6 +12,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 @Getter
+@Slf4j
 public class CustomUserDetails implements UserDetails {
 
     private final User user;
@@ -31,7 +33,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return Collections.singleton((GrantedAuthority) user.getUserRole()::getKey);
     }
 
     @Override
