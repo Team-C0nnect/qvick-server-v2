@@ -32,7 +32,7 @@ public class AuthController {
         authService.signUp(signUpRequest);
     }
 
-    @Operation(summary = "유저 회원가입", description = "유저 회원가입")
+    @Operation(summary = "관리자 회원가입", description = "관리자 회원가입")
     @PostMapping("/sign-up/admin")
     @ResponseStatus(HttpStatus.CREATED)
     public void adminSignUp(@Validated @RequestBody SignUpRequest signUpRequest){
