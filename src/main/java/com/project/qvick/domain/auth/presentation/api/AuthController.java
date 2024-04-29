@@ -45,12 +45,6 @@ public class AuthController {
         return authService.signIn(signInRequest);
     }
 
-    @Operation(summary = "로그인", description = "로그인")
-    @PostMapping("/sign-in/admin")
-    public JsonWebTokenResponse adminSignIn(@Validated @RequestBody SignInRequest signInRequest){
-        return authService.adminSignIn(signInRequest);
-    }
-
     @Operation(summary = "토큰 재발급", description = "acess 토큰을 재발급 합니다")
     @PostMapping("/refresh")
     public JsonWebTokenResponse refresh(RefreshTokenRequest request){

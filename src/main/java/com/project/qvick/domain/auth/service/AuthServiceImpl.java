@@ -53,24 +53,17 @@ public class AuthServiceImpl implements AuthService{
     }
 
     @Override
-    public JsonWebTokenResponse adminSignIn(SignInRequest request) {
+    public JsonWebTokenResponse signIn(SignInRequest request) {
         String adminPassword = userRepository.getByEmail(request.getEmail()).getPassword();
         if (!encoder.matches(request.getPassword(), adminPassword))
             throw PasswordWrongException.EXCEPTION;
+        User user = userRepository
+                .findByEmail(request.getEmail())
+                .map(userMapper::toUser)
+                .orElseThrow(()->UserNotFoundException.EXCEPTION);
         return JsonWebTokenResponse.builder()
-                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.ADMIN))
-                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.ADMIN))
-                .build();
-    }
-
-    @Override
-    public JsonWebTokenResponse signIn(SignInRequest request) {
-        String userPassword = userRepository.getByEmail(request.getEmail()).getPassword();
-        if (!encoder.matches(request.getPassword(), userPassword))
-            throw PasswordWrongException.EXCEPTION;
-        return JsonWebTokenResponse.builder()
-                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),UserRole.USER))
-                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), UserRole.USER))
+                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),user.getUserRole()))
+                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), user.getUserRole()))
                 .build();
     }
 
