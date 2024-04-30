@@ -44,7 +44,7 @@ public class SecurityConfig {
 
                                 .requestMatchers("/outing-admin/**").hasAnyRole(ADMIN,TEACHER)
                                 .requestMatchers("/attendance/list").hasAnyRole(ADMIN,TEACHER)
-                                .requestMatchers("/attendance/code").hasAnyRole(ADMIN,TEACHER)
+                                .requestMatchers("/attendance/code").permitAll()
                                 .requestMatchers("/sleepover-admin/**").hasAnyRole(ADMIN,TEACHER)
 
                                 .requestMatchers("/school/**").hasRole(ADMIN)

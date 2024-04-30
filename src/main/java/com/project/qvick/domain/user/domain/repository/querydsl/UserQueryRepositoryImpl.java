@@ -67,11 +67,14 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
 
     private ConstructorExpression<User> userListConstructorExpression(){
         return Projections.constructor(User.class,
+                userEntity.id,
                 userEntity.name,
                 userEntity.email,
                 userEntity.password,
                 userEntity.stdId,
-                userEntity.room
+                userEntity.room,
+                userEntity.approval,
+                userEntity.userRole
         );
     }
 

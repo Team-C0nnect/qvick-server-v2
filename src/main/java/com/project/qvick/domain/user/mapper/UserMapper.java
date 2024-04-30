@@ -17,6 +17,7 @@ public class UserMapper {
                 .userRole(entity.getUserRole())
                 .email(entity.getEmail())
                 .stdId(entity.getStdId())
+                .room(entity.getRoom())
                 .approval(entity.getApproval())
                 .build();
     }
