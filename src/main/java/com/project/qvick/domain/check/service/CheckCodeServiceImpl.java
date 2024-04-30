@@ -25,9 +25,7 @@ public class CheckCodeServiceImpl implements CheckCodeService {
     @Override
     @Async
     public CompletableFuture<CheckCodeResponse> generate() {
-        Long id = userRepository.findById(1L).get().getId();
-        checkCodeRepository.updateAllInvalidCheckCode(id);
-        CheckCodeEntity checkCodeEntity = checkCodeRepository.save(checkCodeMapper.createCheckCodeEntity(id));
+        CheckCodeEntity checkCodeEntity = checkCodeRepository.save(checkCodeMapper.createCheckCodeEntity(1L));
         return CompletableFuture.completedFuture(CheckCodeResponse.builder().code(checkCodeEntity.getCode()).build());
     }
 
