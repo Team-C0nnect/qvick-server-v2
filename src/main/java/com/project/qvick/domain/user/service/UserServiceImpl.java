@@ -21,6 +21,8 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserSecurity userSecurity;
 
+    private final Long userId = userSecurity.getUser().getId();
+
     @Override
     public void acceptSignUp(UserSignUpRequest request) {
         User user = userRepository
@@ -48,7 +50,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUser(){
         return userRepository
-                .findById(userSecurity.getUser().getId())
+                .findById(userId)
                 .map(userMapper::toUser)
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
     }
@@ -56,7 +58,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void editUserStdId(StdIdEditRequest request) {
         User user = userRepository
-                .findById(userSecurity.getUser().getId())
+                .findById(userId)
                 .map(userMapper::toUser)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
         user.setStdId(request.getStdId());
@@ -65,7 +67,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser() {
-        Long userId = userSecurity.getUser().getId();
         if (userRepository.findById(userId).isEmpty()){
             throw UserNotFoundException.EXCEPTION;
         }
@@ -75,7 +76,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void editRoom(RoomRequest request){
         User user = userRepository
-                .findById(userSecurity.getUser().getId())
+                .findById(userId)
                 .map(userMapper::toUser)
                 .orElseThrow(() -> UserNotFoundException.EXCEPTION);
         user.setRoom(request.getRoom());
