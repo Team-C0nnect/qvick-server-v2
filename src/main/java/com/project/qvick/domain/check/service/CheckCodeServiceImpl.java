@@ -4,6 +4,7 @@ import com.project.qvick.domain.check.domain.CheckCodeEntity;
 import com.project.qvick.domain.check.domain.repository.CheckCodeRepository;
 import com.project.qvick.domain.check.mapper.CheckCodeMapper;
 import com.project.qvick.domain.check.presentation.dto.response.CheckCodeResponse;
+import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
@@ -19,12 +20,12 @@ public class CheckCodeServiceImpl implements CheckCodeService {
 
     private final CheckCodeRepository checkCodeRepository;
     private final CheckCodeMapper checkCodeMapper;
-    private final UserSecurity userSecurity;
+    private final UserRepository userRepository;
 
     @Override
     @Async
     public CompletableFuture<CheckCodeResponse> generate() {
-        Long id = userSecurity.getUser().getId();
+        Long id = userRepository.findById(1L).get().getId();
         checkCodeRepository.updateAllInvalidCheckCode(id);
         CheckCodeEntity checkCodeEntity = checkCodeRepository.save(checkCodeMapper.createCheckCodeEntity(id));
         return CompletableFuture.completedFuture(CheckCodeResponse.builder().code(checkCodeEntity.getCode()).build());
