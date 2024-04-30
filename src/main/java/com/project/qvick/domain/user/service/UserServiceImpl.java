@@ -10,6 +10,7 @@ import com.project.qvick.domain.user.presentation.dto.request.RoomRequest;
 import com.project.qvick.domain.user.presentation.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.global.common.repository.UserSecurity;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,12 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserSecurity userSecurity;
 
-    private final Long userId = userSecurity.getUser().getId();
+    private Long userId;
+
+    @PostConstruct
+    public void init() {
+        this.userId = userSecurity.getUser().getId();
+    }
 
     @Override
     public void acceptSignUp(UserSignUpRequest request) {
