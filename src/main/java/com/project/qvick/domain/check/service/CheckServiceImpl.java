@@ -11,6 +11,7 @@ import com.project.qvick.domain.check.presentation.dto.Check;
 import com.project.qvick.domain.check.presentation.dto.request.CodeRequest;
 import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +19,7 @@ import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class CheckServiceImpl implements CheckService {
 
     private final CheckRepository checkRepository;
@@ -29,7 +31,6 @@ public class CheckServiceImpl implements CheckService {
     public void attendance(CodeRequest codeRequest) {
 
         CheckEntity checkEntity = checkMapper.createCheckEntity(userSecurity.getUser().getId(), LocalDate.now());
-
         if (checkRepository.findByUserIdAndCheckedDate(checkEntity.getUserId(), checkEntity.getCheckedDate()).isPresent()) {
             throw CheckAlreadyExistsException.EXCEPTION;
         }

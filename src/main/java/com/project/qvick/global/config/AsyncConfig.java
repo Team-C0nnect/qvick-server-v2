@@ -15,14 +15,14 @@ class AsyncConfig implements AsyncConfigurer {
 
     @Bean
     public Executor asyncExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(20);
-        executor.setMaxPoolSize(50);
-        executor.setQueueCapacity(100);
-        executor.setThreadNamePrefix("TASK-POOL");
-        executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
-        executor.initialize();
-        return executor;
+        ThreadPoolTaskExecutor taskExecutor = new ThreadPoolTaskExecutor();
+        taskExecutor.setCorePoolSize(20);
+        taskExecutor.setMaxPoolSize(50);
+        taskExecutor.setQueueCapacity(100);
+        taskExecutor.setThreadNamePrefix("TASK-POOL");
+        taskExecutor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
+        taskExecutor.initialize();
+        return taskExecutor;
     }
 
 }
