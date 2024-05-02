@@ -29,7 +29,6 @@ public class CheckServiceImpl implements CheckService {
 
     @Override
     public void attendance(CodeRequest codeRequest) {
-
         CheckEntity checkEntity = checkMapper.createCheckEntity(userSecurity.getUser().getId(), LocalDate.now());
         if (checkRepository.findByUserIdAndCheckedDate(checkEntity.getUserId(), checkEntity.getCheckedDate()).isPresent()) {
             throw CheckAlreadyExistsException.EXCEPTION;
@@ -40,7 +39,6 @@ public class CheckServiceImpl implements CheckService {
             throw CheckCodeExpirationException.EXCEPTION;
         }
         throw CheckCodeError.EXCEPTION;
-
     }
 
     @Override
@@ -54,7 +52,6 @@ public class CheckServiceImpl implements CheckService {
             return ResponseEntity.ok().body(check);
         }
         return ResponseEntity.notFound().build();
-
     }
 
 }
