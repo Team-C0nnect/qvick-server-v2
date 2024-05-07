@@ -26,9 +26,9 @@ public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
     private final JwtExceptionFilter jwtExceptionFilter;
 
-    private static final String USER = "USER";
-    private static final String TEACHER = "TEACHER";
-    private static final String ADMIN = "ADMIN";
+    private static final String USER = "ROLE_USER";
+    private static final String TEACHER = "ROLE_TEACHER";
+    private static final String ADMIN = "ROLE_ADMIN";
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -42,13 +42,13 @@ public class SecurityConfig {
 
                                 .requestMatchers("/auth/**").permitAll()
 
-                                .requestMatchers("/outing-admin/**").hasAnyRole(ADMIN,TEACHER)
-                                .requestMatchers("/attendance/list").hasAnyRole(ADMIN,TEACHER)
+                                .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
+                                .requestMatchers("/attendance/list").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers("/attendance/code").permitAll()
-                                .requestMatchers("/sleepover-admin/**").hasAnyRole(ADMIN,TEACHER)
+                                .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
 
-                                .requestMatchers("/school/**").hasRole(ADMIN)
-                                .requestMatchers("/user-admin/**").hasRole(ADMIN)
+                                .requestMatchers("/school/**").hasAuthority(ADMIN)
+                                .requestMatchers("/user-admin/**").hasAuthority(ADMIN)
                                 .anyRequest().authenticated()
                 )
                 .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
