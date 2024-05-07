@@ -2,6 +2,7 @@ package com.project.qvick.domain.user.domain.repository.querydsl;
 
 
 import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.presentation.dto.request.SearchRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
 import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
 import com.project.qvick.global.common.dto.request.PageRequest;
@@ -14,6 +15,6 @@ public interface UserQueryRepository {
 
     List<User> userList(PageRequest request);
 
-    List<User>userSearch(String name, PageRequest request);
+    List<User>userSearch(SearchRequest request);
 
 }

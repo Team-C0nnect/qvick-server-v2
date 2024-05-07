@@ -1,6 +1,7 @@
 package com.project.qvick.domain.user.service.querydsl;
 
 import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.presentation.dto.request.SearchRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
 import com.project.qvick.domain.user.domain.repository.querydsl.UserQueryRepository;
 import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
@@ -29,8 +30,8 @@ public class UserQueryServiceImpl implements UserQueryService{
     }
 
     @Override
-    public List<User> userSearch(String name, PageRequest pageRequest){
-        return userQueryRepository.userSearch(name,pageRequest);
+    public List<User> userSearch(SearchRequest searchRequest){
+        return userQueryRepository.userSearch(searchRequest);
     }
 
 }

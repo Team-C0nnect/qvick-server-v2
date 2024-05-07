@@ -2,6 +2,7 @@ package com.project.qvick.domain.user.domain.repository.querydsl;
 
 import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.presentation.dto.request.SearchRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
 import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
 import com.project.qvick.global.common.dto.request.PageRequest;
@@ -47,11 +48,11 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
     }
 
     @Override
-    public List<User>userSearch(String name, PageRequest request){
+    public List<User>userSearch(SearchRequest request){
         return jpaQueryFactory
                 .select(userListConstructorExpression())
                 .from(userEntity)
-                .where(nameLike(name))
+                .where(nameLike(request.getName()))
                 .offset((request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
                 .orderBy(userEntity.id.asc())

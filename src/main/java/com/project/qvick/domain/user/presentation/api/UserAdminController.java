@@ -1,6 +1,7 @@
 package com.project.qvick.domain.user.presentation.api;
 
 import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.presentation.dto.request.SearchRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserApprovalPageRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
 import com.project.qvick.domain.user.presentation.dto.response.UserPageResponse;
@@ -14,6 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,20 +48,20 @@ public class UserAdminController {
 
     @Operation(summary = "승인 대기 유저 조회", description = "승인 대기 유저를 조회합니다.")
     @GetMapping("/await-user")
-    public ResponseEntity<List<UserPageResponse>> findWaitingUsers(UserApprovalPageRequest request){
+    public ResponseEntity<List<UserPageResponse>> findWaitingUsers(@ModelAttribute UserApprovalPageRequest request){
         return ResponseEntity.ok(userQueryService.findWaitingUsers(request));
     }
 
     @Operation(summary = "전체 유저 조회", description = "전체 유저를 조회합니다.")
     @GetMapping("/find-all")
-    public ResponseEntity<List<User>>userList(PageRequest pageRequest){
+    public ResponseEntity<List<User>>userList(@ModelAttribute PageRequest pageRequest){
         return ResponseEntity.ok(userQueryService.userList(pageRequest));
     }
 
     @Operation(summary = "유저 검색", description = "특정 유저를 이름을 기준으로 검색합니다.")
     @GetMapping("/search")
-    public ResponseEntity<List<User>>userSearch(String name, PageRequest pageRequest){
-        return ResponseEntity.ok(userQueryService.userSearch(name, pageRequest));
+    public ResponseEntity<List<User>>userSearch(@ModelAttribute SearchRequest searchRequest){
+        return ResponseEntity.ok(userQueryService.userSearch(searchRequest));
     }
 
 }
