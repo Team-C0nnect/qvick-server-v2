@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +43,7 @@ public class CheckController {
 
     @Operation(summary = "출석 명단", description = "출석 명단을 표시합니다")
     @GetMapping("/list")
-    public ResponseEntity<List<Check>> findCheck(PageRequest pageRequest) {
+    public ResponseEntity<List<Check>> findCheck(@ModelAttribute PageRequest pageRequest) {
         return ResponseEntity.status(HttpStatus.OK).body(checkQueryService.findCheck(pageRequest));
     }
 

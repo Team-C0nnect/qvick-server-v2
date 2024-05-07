@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,7 +38,7 @@ public class SchoolController {
 
     @Operation(summary = "학교 목록", description = "학교 목록을 표시합니다")
     @GetMapping("")
-    public ResponseEntity<List<School>> findCheck(@RequestBody PageRequest pageRequest) {
+    public ResponseEntity<List<School>> findCheck(@ModelAttribute PageRequest pageRequest) {
         return ResponseEntity.status(HttpStatus.OK).body(schoolQueryService.schoolList(pageRequest));
     }
 
