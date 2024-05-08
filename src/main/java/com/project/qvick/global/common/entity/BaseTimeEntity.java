@@ -1,4 +1,4 @@
-package com.project.qvick.global.entity;
+package com.project.qvick.global.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.EntityListeners;

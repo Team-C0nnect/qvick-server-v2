@@ -1,6 +1,6 @@
 package com.project.qvick.domain.school.domain;
 
-import com.project.qvick.global.entity.BaseTimeEntity;
+import com.project.qvick.global.common.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

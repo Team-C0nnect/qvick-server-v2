@@ -1,7 +1,7 @@
 package com.project.qvick.domain.outing.domain;
 
 import com.project.qvick.domain.outing.domain.enums.OutingStatus;
-import com.project.qvick.global.entity.BaseTimeEntity;
+import com.project.qvick.global.common.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
