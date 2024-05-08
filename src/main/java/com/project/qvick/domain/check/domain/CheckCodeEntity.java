@@ -13,12 +13,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
+@Getter
 @Entity
 @Table(name = "tb_check_code")
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Getter
 public class CheckCodeEntity extends BaseTimeEntity {
 
     @Id

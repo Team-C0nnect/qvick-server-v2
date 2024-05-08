@@ -48,12 +48,10 @@ public class CheckServiceImpl implements CheckService {
 
     @Override
     public ResponseEntity<Check> attendanceCheck() {
-
         Check check = checkRepository.findByUserId(
                 userSecurity.getUser().getId())
                 .map(checkMapper::toCheck)
                 .orElseThrow(()->CheckCodeError.EXCEPTION);
-
         if (checkRepository.findByUserIdAndCheckedDate(
                 userSecurity.getUser().getId(),
                 LocalDate.now()).isPresent()){
