@@ -26,14 +26,12 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
         return queryFactory
                 .select(userEntity.email)
                 .from(userEntity)
-                .leftJoin(checkEntity).on(
-                        checkEntity.userId.eq(userEntity.id)
-                                .and(checkEntity.checkedDate.eq(LocalDate.now()))
-                )
-                .where(
-                        checkEntity.id.isNull(),
-                        userEntity.userRole.eq(UserRole.USER)
-                )
+                .leftJoin(checkEntity)
+                .on(checkEntity.userId
+                        .eq(userEntity.id)
+                        .and(checkEntity.checkedDate.eq(LocalDate.now())))
+                .where(checkEntity.id.isNull(),
+                        userEntity.userRole.eq(UserRole.USER))
                 .offset((pageRequest.getPage() - 1) * pageRequest.getSize())
                 .limit(pageRequest.getSize())
                 .fetch();
