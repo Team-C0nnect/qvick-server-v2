@@ -42,15 +42,15 @@ public class SecurityConfig {
                                 .requestMatchers("/swagger-ui/**", "/v3/**").permitAll()
                                 .requestMatchers("/terms/**").permitAll()
                                 .requestMatchers("/auth/**").permitAll()
-                                .requestMatchers("/attendance/code").permitAll()
+                                .requestMatchers(POST,"/attendance/code").permitAll()
 
                                 .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers("/attendance/list").hasAnyAuthority(ADMIN,TEACHER)
+                                .requestMatchers(GET,"/attendance/list").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
 
                                 .requestMatchers(POST,"/attendance").hasAuthority(USER)
                                 .requestMatchers(POST,"/outing").hasAuthority(USER)
-                                .requestMatchers(POST,"sleepover").hasAuthority(USER)
+                                .requestMatchers(POST,"/sleepover").hasAuthority(USER)
                                 .requestMatchers(PATCH,"/user/stdId").hasAuthority(USER)
                                 .requestMatchers(PATCH,"/user/room").hasAuthority(USER)
 
