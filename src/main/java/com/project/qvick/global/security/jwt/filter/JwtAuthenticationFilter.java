@@ -1,7 +1,6 @@
 package com.project.qvick.global.security.jwt.filter;
 
 import com.project.qvick.global.security.jwt.JwtExtract;
-import com.project.qvick.global.security.jwt.JwtProvider;
 import groovy.util.logging.Slf4j;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
