@@ -51,6 +51,8 @@ public class SecurityConfig {
                                 .requestMatchers(POST,"/attendance").hasAuthority(USER)
                                 .requestMatchers(POST,"/outing").hasAuthority(USER)
                                 .requestMatchers(POST,"sleepover").hasAuthority(USER)
+                                .requestMatchers(PATCH,"/user/stdId").hasAuthority(USER)
+                                .requestMatchers(PATCH,"/user/room").hasAuthority(USER)
 
                                 .requestMatchers("/school/**").hasAuthority(ADMIN)
                                 .requestMatchers("/user-admin/**").hasAuthority(ADMIN)
