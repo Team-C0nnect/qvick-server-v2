@@ -17,6 +17,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import static org.springframework.http.HttpMethod.*;
+
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -44,8 +46,11 @@ public class SecurityConfig {
 
                                 .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers("/attendance/list").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers("/attendance/code").permitAll()
                                 .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
+
+                                .requestMatchers("/attendance/code").permitAll()
+
+                                .requestMatchers(POST,"/attendance").hasAuthority(USER)
 
                                 .requestMatchers("/school/**").hasAuthority(ADMIN)
                                 .requestMatchers("/user-admin/**").hasAuthority(ADMIN)
