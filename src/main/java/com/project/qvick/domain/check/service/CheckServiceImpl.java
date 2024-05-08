@@ -29,8 +29,13 @@ public class CheckServiceImpl implements CheckService {
 
     @Override
     public void attendance(CodeRequest codeRequest) {
-        CheckEntity checkEntity = checkMapper.createCheckEntity(userSecurity.getUser().getId(), LocalDate.now());
-        if (checkRepository.findByUserIdAndCheckedDate(checkEntity.getUserId(), checkEntity.getCheckedDate()).isPresent()) {
+        CheckEntity checkEntity = checkMapper.createCheckEntity(
+                userSecurity.getUser().getId(),
+                LocalDate.now());
+        if (checkRepository.findByUserIdAndCheckedDate(
+                checkEntity.getUserId(),
+                checkEntity.getCheckedDate())
+                .isPresent()) {
             throw CheckAlreadyExistsException.EXCEPTION;
         }
         if (checkCodeRepository.existsByCodeAndValid(codeRequest.getCode(), true)) {
@@ -44,11 +49,14 @@ public class CheckServiceImpl implements CheckService {
     @Override
     public ResponseEntity<Check> attendanceCheck() {
 
-        Check check = checkRepository.findByUserId(userSecurity.getUser().getId())
+        Check check = checkRepository.findByUserId(
+                userSecurity.getUser().getId())
                 .map(checkMapper::toCheck)
                 .orElseThrow(()->CheckCodeError.EXCEPTION);
 
-        if (checkRepository.findByUserIdAndCheckedDate(userSecurity.getUser().getId(),LocalDate.now()).isPresent()){
+        if (checkRepository.findByUserIdAndCheckedDate(
+                userSecurity.getUser().getId(),
+                LocalDate.now()).isPresent()){
             return ResponseEntity.ok().body(check);
         }
         return ResponseEntity.notFound().build();

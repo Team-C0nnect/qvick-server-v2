@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Builder
 public class CheckCodeResponse {
+
     private String code;
 
 }
