@@ -13,6 +13,7 @@ import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.repository.UserSecurity;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
+import com.project.qvick.global.security.jwt.JwtExtract;
 import com.project.qvick.global.security.jwt.JwtProvider;
 import com.project.qvick.global.security.jwt.enums.JwtType;
 import com.project.qvick.global.security.jwt.exception.TokenTypeException;
@@ -33,6 +34,7 @@ public class AuthServiceImpl implements AuthService{
     private final JwtProvider jwtProvider;
     private final FirebaseNotificationService firebaseNotificationService;
     private final UserSecurity userSecurity;
+    private final JwtExtract jwtExtract;
 
     @Override
     public void signUp(SignUpRequest request) {
@@ -69,8 +71,8 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public JsonWebTokenResponse refresh(String token) {
-        Jws<Claims> claims = jwtProvider.getClaims(jwtProvider.extractToken(token));
-        if (jwtProvider.isWrongType(claims, JwtType.REFRESH)) {
+        Jws<Claims> claims = jwtProvider.getClaims(jwtExtract.extractToken(token));
+        if (jwtExtract.isWrongType(claims, JwtType.REFRESH)) {
             throw TokenTypeException.EXCEPTION;
         }
         return JsonWebTokenResponse.builder()

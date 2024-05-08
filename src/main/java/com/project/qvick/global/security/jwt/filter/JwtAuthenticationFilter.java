@@ -1,5 +1,6 @@
 package com.project.qvick.global.security.jwt.filter;
 
+import com.project.qvick.global.security.jwt.JwtExtract;
 import com.project.qvick.global.security.jwt.JwtProvider;
 import groovy.util.logging.Slf4j;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -19,15 +20,15 @@ import java.io.IOException;
 @Slf4j
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-    private final JwtProvider jwtProvider;
+    private final JwtExtract jwtExtractor;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException, ExpiredJwtException {
 
-        String token = jwtProvider.extractTokenFromRequest(request);
+        String token = jwtExtractor.extractTokenFromRequest(request);
         if (token != null) {
-            SecurityContextHolder.getContext().setAuthentication(jwtProvider.getAuthentication(token));
+            SecurityContextHolder.getContext().setAuthentication(jwtExtractor.getAuthentication(token));
         }
         filterChain.doFilter(request, response);
     }
