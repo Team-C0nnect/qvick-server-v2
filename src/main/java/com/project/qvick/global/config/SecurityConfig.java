@@ -47,6 +47,8 @@ public class SecurityConfig {
                                 .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers(GET,"/attendance/list").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
+                                .requestMatchers(GET,"/user-admin/find-all").hasAnyAuthority(ADMIN,TEACHER)
+                                .requestMatchers(GET,"/user-admin/search").hasAnyAuthority(ADMIN,TEACHER)
 
                                 .requestMatchers(POST,"/attendance").hasAuthority(USER)
                                 .requestMatchers(POST,"/outing").hasAuthority(USER)
@@ -55,7 +57,10 @@ public class SecurityConfig {
                                 .requestMatchers(PATCH,"/user/room").hasAuthority(USER)
 
                                 .requestMatchers("/school/**").hasAuthority(ADMIN)
-                                .requestMatchers("/user-admin/**").hasAuthority(ADMIN)
+                                .requestMatchers(PATCH,"/user-admin/approve").hasAuthority(ADMIN)
+                                .requestMatchers(PATCH,"/user-admin/reject").hasAuthority(ADMIN)
+                                .requestMatchers(GET,"/user-admin/await-user").hasAuthority(ADMIN)
+
                                 .anyRequest().authenticated()
                 )
                 .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
