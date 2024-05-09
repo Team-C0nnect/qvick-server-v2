@@ -17,8 +17,8 @@ import java.util.Map;
 public class JwtExceptionFilter extends OncePerRequestFilter {
 
     @Override
-    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws IOException {
-
+    protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
+            throws IOException {
         try {
             filterChain.doFilter(request, response);
         } catch (IllegalArgumentException e) {
@@ -26,7 +26,6 @@ public class JwtExceptionFilter extends OncePerRequestFilter {
         } catch (ServletException e) {
             setErrorResponse(HttpStatus.BAD_REQUEST, response, e);
         }
-
     }
 
     public void setErrorResponse(HttpStatus status, HttpServletResponse response, Throwable ex) throws IOException {
