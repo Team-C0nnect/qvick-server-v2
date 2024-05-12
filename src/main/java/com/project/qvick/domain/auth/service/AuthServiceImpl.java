@@ -58,8 +58,8 @@ public class AuthServiceImpl implements AuthService{
     public JsonWebTokenResponse signIn(SignInRequest request) {
         if(userRepository.findByEmail(request.getEmail()).isEmpty())
             throw UserNotFoundException.EXCEPTION;
-        String adminPassword = userRepository.getByEmail(request.getEmail()).getPassword();
-        if (!encoder.matches(request.getPassword(), adminPassword))
+        String password = userRepository.getByEmail(request.getEmail()).getPassword();
+        if (!encoder.matches(request.getPassword(), password))
             throw PasswordWrongException.EXCEPTION;
         User user = userRepository
                 .findByEmail(request.getEmail())
