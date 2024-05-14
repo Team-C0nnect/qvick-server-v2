@@ -4,10 +4,12 @@ import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.RoomRequest;
 import com.project.qvick.domain.user.presentation.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.service.UserService;
+import com.project.qvick.global.common.util.user.UserUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
+    private final UserUtil userUtil;
 
     @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
     @PatchMapping("/stdId")
@@ -48,7 +51,7 @@ public class UserController {
     @Operation(summary = "유저 조회", description = "현재 로그인한 유저 정보를 조회합니다")
     @GetMapping("")
     public User findUser(){
-        return userService.findUser();
+        return userUtil.findUser();
     }
 
 }

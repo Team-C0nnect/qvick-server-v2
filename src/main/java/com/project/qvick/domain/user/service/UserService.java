@@ -12,8 +12,6 @@ public interface UserService {
 
     void rejectSignUp(UserSignUpRequest request);
 
-    User findUser();
-
     void editUserStdId(StdIdEditRequest request);
 
     void deleteUser();
