@@ -23,12 +23,6 @@ public class UserUtil {
         }
     }
 
-    public void userCheck(String email){
-        if (userRepository.findByEmail(email).isEmpty()){
-            throw UserNotFoundException.EXCEPTION;
-        }
-    }
-
     public void userCheckById(Long id){
         if (userRepository.findById(id).isEmpty()){
             throw UserNotFoundException.EXCEPTION;
