@@ -1,6 +1,6 @@
 package com.project.qvick.global.security.jwt;
 
-import com.project.qvick.domain.user.domain.repository.UserRepository;
+import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;

@@ -1,11 +1,9 @@
 package com.project.qvick.domain.check.service;
 
 import com.project.qvick.domain.check.domain.CheckCodeEntity;
-import com.project.qvick.domain.check.domain.repository.CheckCodeRepository;
+import com.project.qvick.domain.check.domain.repository.jpa.CheckCodeRepository;
 import com.project.qvick.domain.check.mapper.CheckCodeMapper;
 import com.project.qvick.domain.check.presentation.dto.response.CheckCodeResponse;
-import com.project.qvick.domain.user.domain.repository.UserRepository;
-import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;

@@ -1,7 +1,7 @@
 package com.project.qvick.domain.sleepover.service;
 
 import com.project.qvick.domain.sleepover.domain.enums.SleepoverStatus;
-import com.project.qvick.domain.sleepover.domain.repository.SleepoverRepository;
+import com.project.qvick.domain.sleepover.domain.repository.jpa.SleepoverRepository;
 import com.project.qvick.domain.sleepover.exception.SleepoverAlreadyExistsException;
 import com.project.qvick.domain.sleepover.exception.SleepoverNotFoundException;
 import com.project.qvick.domain.sleepover.mapper.SleepoverMapper;

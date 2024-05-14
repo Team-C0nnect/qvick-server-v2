@@ -1,4 +1,4 @@
-package com.project.qvick.domain.check.domain.repository;
+package com.project.qvick.domain.check.domain.repository.jpa;
 
 import com.project.qvick.domain.check.domain.CheckCodeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

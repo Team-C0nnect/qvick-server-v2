@@ -1,4 +1,4 @@
-package com.project.qvick.domain.school.domain.repository;
+package com.project.qvick.domain.school.domain.repository.jpa;
 
 import com.project.qvick.domain.school.domain.SchoolEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

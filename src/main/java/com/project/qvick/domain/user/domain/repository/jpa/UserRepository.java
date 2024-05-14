@@ -1,4 +1,4 @@
-package com.project.qvick.domain.user.domain.repository;
+package com.project.qvick.domain.user.domain.repository.jpa;
 
 import com.project.qvick.domain.user.domain.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

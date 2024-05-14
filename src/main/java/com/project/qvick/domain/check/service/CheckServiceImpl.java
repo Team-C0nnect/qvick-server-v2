@@ -1,8 +1,8 @@
 package com.project.qvick.domain.check.service;
 
 import com.project.qvick.domain.check.domain.CheckEntity;
-import com.project.qvick.domain.check.domain.repository.CheckCodeRepository;
-import com.project.qvick.domain.check.domain.repository.CheckRepository;
+import com.project.qvick.domain.check.domain.repository.jpa.CheckCodeRepository;
+import com.project.qvick.domain.check.domain.repository.jpa.CheckRepository;
 import com.project.qvick.domain.check.exception.CheckAlreadyExistsException;
 import com.project.qvick.domain.check.exception.CheckCodeError;
 import com.project.qvick.domain.check.exception.CheckCodeExpirationException;

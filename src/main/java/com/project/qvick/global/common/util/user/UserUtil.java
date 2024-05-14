@@ -1,11 +1,10 @@
 package com.project.qvick.global.common.util.user;
 
-import com.project.qvick.domain.user.domain.repository.UserRepository;
+import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.UserExistException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
-import com.project.qvick.domain.user.service.UserService;
 import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
