@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://qvick.ctoieiwsyz2m.ap-northeast-2.rds.amazonaws.com:3306/qvick?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    url: jdbc:mysql://${{ secrets.RDS_PATH }}:3306/qvick?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: qvick
-    password: qvick1234!
+    username: ${{ secrets.DB_USERNAME }}
+    password: ${{ secrets.DB_PASSWORD }}
 
   jpa:
     database: mysql
@@ -25,13 +25,13 @@ spring:
 
 application:
   jwt:
-    secretKey: 25432A462D4A614E645267556A586E3272357538782F413F4428472B4B625065
+    secretKey: ${{ secrets.JWT_SECRET_KEY }}
     expiration: 172800000    # 48시간
     refreshExpiration: 604800000   # 7일
 
 firebase:
   sdk:
-    path: qvick-410805-firebase-adminsdk-69qs0-203e4ce808.json
+    path: ${{ secrets.FIREBASE_SDK }}
   notification:
     non-check-title: ❗️
     non-check-message: 출석이 완료되지 않았습니다.
