@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: ${ secrets.RDS_PATH }
+    url: ${ url }
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username: ${ secrets.DB_USERNAME }
-    password: ${ secrets.DB_PASSWORD }
+    username: ${ username }
+    password: ${ password }
 
   jpa:
     database: mysql
@@ -18,13 +18,13 @@ spring:
 
 application:
   jwt:
-    secretKey: ${ secrets.JWT_SECRET_KEY }
+    secretKey: ${ secret_key }
     expiration: 172800000    # 48시간
     refreshExpiration: 604800000   # 7일
 
 firebase:
   sdk:
-    path: ${ secrets.FIREBASE_SDK }
+    path: ${ firebase_sdk }
   notification:
     non-check-title: ❗️
     non-check-message: 출석이 완료되지 않았습니다.

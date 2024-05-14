@@ -1,6 +1,5 @@
 name: CI/CD using github actions & docker
 
-
 on:
   push:
     branches: [ "main" ] # 해당 branch에 푸쉬 발생 시 업데이트
@@ -16,9 +15,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
 
-    - name: set chmod
-      run: chmod +x ./gradlew
-
     - name: set yml file
       uses: microsoft/variable-substitution@v1
       with:
@@ -29,6 +25,9 @@ jobs:
         spring.datasource.password: ${{ secrets.DB_PASSWORD }}
         application.jwt.secretKey: ${{ secrets.JWT_SECRET_KEY }}
         firebase.sdk.path: ${{ secrets.FIREBASE_SDK }}
+
+    - name: set chmod
+      run: chmod +x ./gradlew
 
     - name: Build with Gradle
       run: ./gradlew bootJar
