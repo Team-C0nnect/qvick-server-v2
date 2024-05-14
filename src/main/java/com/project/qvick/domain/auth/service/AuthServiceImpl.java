@@ -13,6 +13,7 @@ import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.repository.UserSecurity;
+import com.project.qvick.global.common.util.user.UserUtil;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
 import com.project.qvick.global.security.jwt.JwtExtract;
 import com.project.qvick.global.security.jwt.JwtProvider;
@@ -31,16 +32,16 @@ public class AuthServiceImpl implements AuthService{
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final UserUtil userUtil;
+    private final UserSecurity userSecurity;
     private final PasswordEncoder encoder;
     private final JwtProvider jwtProvider;
-    private final FirebaseNotificationService firebaseNotificationService;
-    private final UserSecurity userSecurity;
     private final JwtExtract jwtExtract;
+    private final FirebaseNotificationService firebaseNotificationService;
 
     @Override
     public void signUp(SignUpRequest request) {
-        if (userRepository.findByEmail(request.getEmail()).isPresent())
-            throw UserExistException.EXCEPTION;
+        userUtil.userExistCheck(request.getEmail());
         userRepository.save(userMapper.toCreate(
                 request,
                 encoder.encode(request.getPassword())));
@@ -48,8 +49,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public void adminSignUp(SignUpRequest request) {
-        if (userRepository.findByEmail(request.getEmail()).isPresent())
-            throw UserExistException.EXCEPTION;
+        userUtil.userExistCheck(request.getEmail());
         userRepository.save(userMapper.toCreateAdmin(
                 request,
                 encoder.encode(request.getPassword())));
@@ -57,8 +57,7 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public JsonWebTokenResponse signIn(SignInRequest request) {
-        if(userRepository.findByEmail(request.getEmail()).isEmpty())
-            throw UserNotFoundException.EXCEPTION;
+        userUtil.userCheck(request.getEmail());
         String password = userRepository.getByEmail(request.getEmail()).getPassword();
         if (!encoder.matches(request.getPassword(), password))
             throw PasswordWrongException.EXCEPTION;
