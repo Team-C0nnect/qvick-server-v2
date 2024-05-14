@@ -26,7 +26,7 @@ spring:
 application:
   jwt:
     secretKey: 25432A462D4A614E645267556A586E3272357538782F413F4428472B4B625065
-    expiration: 43200000    # 12시간
+    expiration: 172800000    # 48시간
     refreshExpiration: 604800000   # 7일
 
 firebase:
