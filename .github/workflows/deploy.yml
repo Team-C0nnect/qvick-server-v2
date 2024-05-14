@@ -22,7 +22,7 @@ jobs:
     - name: set yml file
       uses: microsoft/variable-substitution@v1
       with:
-        files: src/main/resources/application.yml
+        files: .src/main/resources/application.yml
       env:
         spring.datasource.url: ${{ secrets.RDS_PATH }}
         spring.datasource.username: ${{ secrets.DB_USERNAME }}
