@@ -18,7 +18,18 @@ jobs:
 
     - name: set chmod
       run: chmod +x ./gradlew
-        
+
+    - name: set yml file
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: src/main/resources/application.yml
+      env:
+        spring.datasource.url: ${{ secrets.RDS_PATH }}
+        spring.datasource.username: ${{ secrets.DB_USERNAME }}
+        spring.datasource.password: ${{ secrets.DB_PASSWORD }}
+        application.jwt.secretKey: ${{ secrets.JWT_SECRET_KEY }}
+        firebase.sdk.path: ${{ secrets.FIREBASE_SDK }}
+
     - name: Build with Gradle
       run: ./gradlew bootJar
 
