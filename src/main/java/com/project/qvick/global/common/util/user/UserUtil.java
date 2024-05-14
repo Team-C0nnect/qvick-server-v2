@@ -23,12 +23,6 @@ public class UserUtil {
         }
     }
 
-    public void userCheckById(Long id){
-        if (userRepository.findById(id).isEmpty()){
-            throw UserNotFoundException.EXCEPTION;
-        }
-    }
-
     public User findUser(){
         return userRepository
                 .findById(userSecurity.getUser().getId())
