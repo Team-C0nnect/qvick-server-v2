@@ -12,7 +12,7 @@ import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.repository.UserSecurity;
-import com.project.qvick.global.common.util.user.UserUtil;
+import com.project.qvick.domain.user.service.util.UserUtil;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
 import com.project.qvick.global.security.jwt.JwtExtract;
 import com.project.qvick.global.security.jwt.JwtProvider;

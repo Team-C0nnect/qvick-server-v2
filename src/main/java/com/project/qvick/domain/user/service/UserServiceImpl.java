@@ -8,7 +8,7 @@ import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.domain.user.presentation.dto.request.RoomRequest;
 import com.project.qvick.domain.user.presentation.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
-import com.project.qvick.global.common.util.user.UserUtil;
+import com.project.qvick.domain.user.service.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

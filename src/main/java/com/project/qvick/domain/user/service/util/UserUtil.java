@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.util.user;
+package com.project.qvick.domain.user.service.util;
 
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.UserExistException;
