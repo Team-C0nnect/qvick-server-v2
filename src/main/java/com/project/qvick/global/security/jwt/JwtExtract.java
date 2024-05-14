@@ -4,7 +4,7 @@ import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.mapper.UserMapper;
 import com.project.qvick.domain.user.presentation.dto.User;
-import com.project.qvick.global.security.auth.principal.CustomUserDetails;
+import com.project.qvick.global.security.auth.CustomUserDetails;
 import com.project.qvick.global.security.jwt.enums.JwtType;
 import com.project.qvick.global.security.jwt.exception.TokenTypeException;
 import io.jsonwebtoken.Claims;

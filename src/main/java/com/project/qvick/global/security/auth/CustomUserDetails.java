@@ -1,4 +1,4 @@
-package com.project.qvick.global.security.auth.principal;
+package com.project.qvick.global.security.auth;
 
 import com.project.qvick.domain.user.presentation.dto.User;
 import lombok.Getter;

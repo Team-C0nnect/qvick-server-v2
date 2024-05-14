@@ -4,6 +4,7 @@ import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequ
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
+import com.project.qvick.domain.auth.presentation.dto.response.RefreshTokenResponse;
 
 public interface AuthService {
 
@@ -14,7 +15,7 @@ public interface AuthService {
 
     JsonWebTokenResponse signIn(SignInRequest request);
 
-    JsonWebTokenResponse refresh(String token);
+    RefreshTokenResponse refresh(String token);
 
     void firebase(AuthenticationRequest request);
 

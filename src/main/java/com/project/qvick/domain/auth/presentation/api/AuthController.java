@@ -5,6 +5,7 @@ import com.project.qvick.domain.auth.presentation.dto.request.RefreshTokenReques
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
+import com.project.qvick.domain.auth.presentation.dto.response.RefreshTokenResponse;
 import com.project.qvick.domain.auth.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -47,7 +48,7 @@ public class AuthController {
 
     @Operation(summary = "토큰 재발급", description = "acess 토큰을 재발급 합니다")
     @PostMapping("/refresh")
-    public JsonWebTokenResponse refresh(RefreshTokenRequest request){
+    public RefreshTokenResponse refresh(RefreshTokenRequest request){
         return authService.refresh(request.getRefreshToken());
     }
 

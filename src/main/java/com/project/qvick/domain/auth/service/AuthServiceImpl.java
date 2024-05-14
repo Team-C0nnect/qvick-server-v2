@@ -4,6 +4,7 @@ import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequ
 import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
+import com.project.qvick.domain.auth.presentation.dto.response.RefreshTokenResponse;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.domain.repository.UserRepository;
 import com.project.qvick.domain.user.exception.PasswordWrongException;
@@ -72,12 +73,12 @@ public class AuthServiceImpl implements AuthService{
     }
 
     @Override
-    public JsonWebTokenResponse refresh(String token) {
+    public RefreshTokenResponse refresh(String token) {
         Jws<Claims> claims = jwtProvider.getClaims(jwtExtract.extractToken(token));
         if (jwtExtract.isWrongType(claims, JwtType.REFRESH)) {
             throw TokenTypeException.EXCEPTION;
         }
-        return JsonWebTokenResponse.builder()
+        return RefreshTokenResponse.builder()
                 .accessToken(jwtProvider.generateAccessToken(claims.getBody().getSubject(),
                         (UserRole) claims.getHeader().get("authority"))).build();
     }
