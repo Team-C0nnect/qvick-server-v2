@@ -24,7 +24,7 @@ application:
 
 firebase:
   sdk:
-    path: ${secrets.FIREBASE_SDK}
+    path: firebase-sdk.json
   notification:
     non-check-title: ❗️
     non-check-message: 출석이 완료되지 않았습니다.
