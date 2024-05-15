@@ -1,1 +1,0 @@
-# Qvick_Server
