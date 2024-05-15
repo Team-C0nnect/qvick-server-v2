@@ -4,6 +4,9 @@ on:
   push:
     branches: [ "main" ] # 해당 branch에 푸쉬 발생 시 업데이트
 
+permissions:
+  contents: read
+
 jobs:
   CI-CD:
     runs-on: ubuntu-latest
