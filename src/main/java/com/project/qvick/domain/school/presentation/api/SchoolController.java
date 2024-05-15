@@ -2,8 +2,8 @@ package com.project.qvick.domain.school.presentation.api;
 
 import com.project.qvick.domain.school.presentation.dto.School;
 import com.project.qvick.domain.school.presentation.dto.request.SchoolRequest;
-import com.project.qvick.domain.school.service.SchoolService;
-import com.project.qvick.domain.school.service.querydsl.SchoolQueryService;
+import com.project.qvick.domain.school.application.service.SchoolService;
+import com.project.qvick.domain.school.application.query.SchoolQueryService;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

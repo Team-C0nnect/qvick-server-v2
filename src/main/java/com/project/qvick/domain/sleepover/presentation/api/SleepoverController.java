@@ -1,7 +1,7 @@
 package com.project.qvick.domain.sleepover.presentation.api;
 
 import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverRequest;
-import com.project.qvick.domain.sleepover.service.SleepoverService;
+import com.project.qvick.domain.sleepover.application.service.SleepoverService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

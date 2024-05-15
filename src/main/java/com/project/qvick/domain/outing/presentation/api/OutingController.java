@@ -1,7 +1,7 @@
 package com.project.qvick.domain.outing.presentation.api;
 
 import com.project.qvick.domain.outing.presentation.dto.request.OutingRequest;
-import com.project.qvick.domain.outing.service.OutingService;
+import com.project.qvick.domain.outing.application.service.OutingService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

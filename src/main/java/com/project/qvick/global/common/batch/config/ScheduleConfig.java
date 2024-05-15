@@ -1,6 +1,6 @@
 package com.project.qvick.global.common.batch.config;
 
-import com.project.qvick.domain.check.service.querydsl.CheckQueryService;
+import com.project.qvick.domain.check.application.query.CheckQueryService;
 import com.project.qvick.global.common.batch.processor.AttendanceItemProcessor;
 import com.project.qvick.global.common.batch.reader.AttendanceItemReader;
 import com.project.qvick.global.common.batch.writer.AttendanceItemWriter;

@@ -3,11 +3,8 @@ package com.project.qvick.domain.outing.presentation.api;
 import com.project.qvick.domain.outing.presentation.dto.Outing;
 import com.project.qvick.domain.outing.presentation.dto.request.OutingPageRequest;
 import com.project.qvick.domain.outing.presentation.dto.request.OutingSettingRequest;
-import com.project.qvick.domain.outing.service.OutingService;
-import com.project.qvick.domain.outing.service.querydsl.OutingQueryService;
-import com.project.qvick.domain.sleepover.presentation.dto.Sleepover;
-import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverPageRequest;
-import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverSettingRequest;
+import com.project.qvick.domain.outing.application.service.OutingService;
+import com.project.qvick.domain.outing.application.query.OutingQueryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -47,7 +44,7 @@ public class OutingAdminController {
         service.accept(request.getOutingId());
     }
 
-    @Operation(summary = "외출 조회", description = "")
+    @Operation(summary = "외출 조회", description = "외출 명단을 조회합니다")
     @GetMapping("/findStudents")
     public ResponseEntity<List<Outing>> findStudents(@ModelAttribute OutingPageRequest request) {
         return ResponseEntity.ok(queryService.findOutStudents(request));

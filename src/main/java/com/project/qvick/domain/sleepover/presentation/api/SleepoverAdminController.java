@@ -3,8 +3,8 @@ package com.project.qvick.domain.sleepover.presentation.api;
 import com.project.qvick.domain.sleepover.presentation.dto.Sleepover;
 import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverPageRequest;
 import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverSettingRequest;
-import com.project.qvick.domain.sleepover.service.SleepoverService;
-import com.project.qvick.domain.sleepover.service.querydsl.SleepoverQueryService;
+import com.project.qvick.domain.sleepover.application.service.SleepoverService;
+import com.project.qvick.domain.sleepover.application.query.SleepoverQueryService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -44,7 +44,7 @@ public class SleepoverAdminController {
         sleepoverService.refuseSleepover(request.getSleepoverId());
     }
 
-    @Operation(summary = "외박 조회", description = "")
+    @Operation(summary = "외박 조회", description = "외박 명단을 조회합니다")
     @GetMapping("/findStudents")
     public ResponseEntity<List<Sleepover>> findStudents(@ModelAttribute SleepoverPageRequest request) {
         return ResponseEntity.ok(querydslService.findSleepoverStudents(request));

@@ -1,6 +1,6 @@
 package com.project.qvick.global.common.batch.reader;
 
-import com.project.qvick.domain.check.service.querydsl.CheckQueryService;
+import com.project.qvick.domain.check.application.query.CheckQueryService;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +20,7 @@ public class AttendanceItemReader implements ItemReader<List<String>> {
     private int page = 1;
 
     @Override
-    public List<String> read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+    public List<String> read() {
         log.info("....................... attendaceItemReader start");
         final List<String> nonCheckUserList = checkQueryService.findAllNonCheckUser(pageRequest(page));
         log.info("....................... nonAttendanceList : {} ", nonCheckUserList.size());
