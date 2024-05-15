@@ -31,9 +31,10 @@ jobs:
 
     - name: firebase.json set
       run: |
-          cd ./src/main/resources
-          touch ./firebase-sdk.json
-          echo "${{ secrets.FIREBASE_JSON }}" > ./firebase-sdk.json
+#          cd ./src/main/resources
+#          touch ./firebase-sdk.json
+#          echo "${{ secrets.FIREBASE_JSON }}" > ./firebase-sdk.json
+        echo "${{ secrets.FIREBASE_JSON }}" > src/main/resources/firebase-sdk.json
 
     - name: set chmod
       run: chmod +x ./gradlew
