@@ -1,6 +1,6 @@
 package com.project.qvick.domain.check.domain.repository.query;
 
-import com.project.qvick.domain.check.presentation.dto.Check;
+import com.project.qvick.domain.check.presentation.dto.CheckList;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import com.querydsl.core.types.ConstructorExpression;
@@ -38,10 +38,10 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
     }
 
     @Override
-    public List<Check> findCheck(PageRequest pageRequest) {
+    public List<CheckList> findCheck(PageRequest pageRequest) {
         return queryFactory
                 .select(checkProjection())
-                .from(checkEntity)
+                .from(checkEntity, userEntity)
                 .offset((pageRequest.getPage() - 1) * pageRequest.getSize())
                 .limit(pageRequest.getSize())
                 .orderBy(checkEntity.id.desc())
@@ -49,12 +49,14 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
     }
 
 
-    private ConstructorExpression<Check> checkProjection() {
+    private ConstructorExpression<CheckList> checkProjection() {
         return Projections.constructor(
-                Check.class,
-                checkEntity.id,
-                checkEntity.userId,
+                CheckList.class,
+                userEntity.stdId,
+                userEntity.name,
+                userEntity.email,
                 checkEntity.checkedDate
         );
     }
+
 }
