@@ -57,6 +57,7 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
                 checkEntity.stdId,
                 checkEntity.name,
                 checkEntity.email,
+                checkEntity.room,
                 checkEntity.checkedDate
         );
     }

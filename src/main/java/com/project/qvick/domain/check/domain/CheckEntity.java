@@ -38,6 +38,9 @@ public class CheckEntity extends BaseTimeEntity {
     private String email;
 
     @Column(nullable = false)
+    private String room;
+
+    @Column(nullable = false)
     private LocalDate checkedDate;
 
 }

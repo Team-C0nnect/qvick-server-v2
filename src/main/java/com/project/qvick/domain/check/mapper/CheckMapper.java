@@ -13,12 +13,14 @@ public class CheckMapper {
                                          String stdId,
                                          String name,
                                          String email,
+                                         String room,
                                          final LocalDate date) {
         return CheckEntity.builder()
                 .userId(userId)
                 .stdId(stdId)
                 .name(name)
                 .email(email)
+                .room(room)
                 .checkedDate(date)
                 .build();
     }

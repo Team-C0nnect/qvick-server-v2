@@ -20,6 +20,7 @@ public class Check {
     private String stdId;
     private String name;
     private String email;
+    private String room;
     private LocalDate checkedDate;
 
 }

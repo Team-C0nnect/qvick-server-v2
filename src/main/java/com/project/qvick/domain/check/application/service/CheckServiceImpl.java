@@ -34,6 +34,7 @@ public class CheckServiceImpl implements CheckService {
                 userSecurity.getUser().getStdId(),
                 userSecurity.getUser().getName(),
                 userSecurity.getUser().getEmail(),
+                userSecurity.getUser().getRoom(),
                 LocalDate.now());
         if (checkRepository.findByUserIdAndCheckedDate(
                 checkEntity.getUserId(),
