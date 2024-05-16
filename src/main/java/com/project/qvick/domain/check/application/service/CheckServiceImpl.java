@@ -31,6 +31,9 @@ public class CheckServiceImpl implements CheckService {
     public void attendance(CodeRequest codeRequest) {
         CheckEntity checkEntity = checkMapper.createCheckEntity(
                 userSecurity.getUser().getId(),
+                userSecurity.getUser().getStdId(),
+                userSecurity.getUser().getName(),
+                userSecurity.getUser().getEmail(),
                 LocalDate.now());
         if (checkRepository.findByUserIdAndCheckedDate(
                 checkEntity.getUserId(),

@@ -17,6 +17,9 @@ public class Check {
 
     private Long id;
     private Long userId;
+    private String stdId;
+    private String name;
+    private String email;
     private LocalDate checkedDate;
 
 }

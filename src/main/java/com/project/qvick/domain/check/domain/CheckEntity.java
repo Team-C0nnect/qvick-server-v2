@@ -29,6 +29,15 @@ public class CheckEntity extends BaseTimeEntity {
     private Long userId;
 
     @Column(nullable = false)
+    private String stdId;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private String email;
+
+    @Column(nullable = false)
     private LocalDate checkedDate;
 
 }

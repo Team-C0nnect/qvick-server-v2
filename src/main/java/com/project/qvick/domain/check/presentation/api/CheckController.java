@@ -1,12 +1,11 @@
 package com.project.qvick.domain.check.presentation.api;
 
-import com.project.qvick.domain.check.presentation.dto.Check;
-import com.project.qvick.domain.check.presentation.dto.CheckList;
-import com.project.qvick.domain.check.presentation.dto.request.CodeRequest;
-import com.project.qvick.domain.check.presentation.dto.response.CheckCodeResponse;
+import com.project.qvick.domain.check.application.query.CheckQueryService;
 import com.project.qvick.domain.check.application.service.CheckCodeService;
 import com.project.qvick.domain.check.application.service.CheckService;
-import com.project.qvick.domain.check.application.query.CheckQueryService;
+import com.project.qvick.domain.check.presentation.dto.Check;
+import com.project.qvick.domain.check.presentation.dto.request.CodeRequest;
+import com.project.qvick.domain.check.presentation.dto.response.CheckCodeResponse;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -44,7 +43,7 @@ public class CheckController {
 
     @Operation(summary = "출석 명단", description = "출석 명단을 표시합니다")
     @GetMapping("/list")
-    public ResponseEntity<List<CheckList>> findCheck(@ModelAttribute PageRequest pageRequest) {
+    public ResponseEntity<List<Check>> findCheck(@ModelAttribute PageRequest pageRequest) {
         return ResponseEntity.status(HttpStatus.OK).body(checkQueryService.findCheck(pageRequest));
     }
 

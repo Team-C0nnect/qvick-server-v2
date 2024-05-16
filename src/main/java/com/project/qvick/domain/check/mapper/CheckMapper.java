@@ -9,9 +9,16 @@ import java.time.LocalDate;
 @Component
 public class CheckMapper {
 
-    public CheckEntity createCheckEntity(final Long userId, final LocalDate date) {
+    public CheckEntity createCheckEntity(final Long userId,
+                                         String stdId,
+                                         String name,
+                                         String email,
+                                         final LocalDate date) {
         return CheckEntity.builder()
                 .userId(userId)
+                .stdId(stdId)
+                .name(name)
+                .email(email)
                 .checkedDate(date)
                 .build();
     }
