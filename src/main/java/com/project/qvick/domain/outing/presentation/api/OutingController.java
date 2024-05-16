@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/outing")
 @RequiredArgsConstructor
-@SecurityRequirement(name = "BearerAuthentication")
+@RequestMapping("/outing")
 @Tag(name = "외출", description = "외출")
+@SecurityRequirement(name = "BearerAuthentication")
 public class OutingController {
 
     private final OutingService service;

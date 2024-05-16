@@ -20,8 +20,8 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @Getter
 @SuperBuilder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "tb_user")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class UserEntity extends BaseTimeEntity {
 
     @Id

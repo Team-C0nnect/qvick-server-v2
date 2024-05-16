@@ -16,9 +16,9 @@ import java.time.LocalDate;
 
 @Entity
 @Getter
+@SuperBuilder
 @Table(name = "tb_check")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@SuperBuilder
 public class CheckEntity extends BaseTimeEntity {
 
     @Id

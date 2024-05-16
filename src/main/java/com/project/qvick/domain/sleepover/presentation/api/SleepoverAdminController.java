@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Tag(name = "외박 관리자 전용", description = "외박 관리자 전용")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/sleepover-admin")
+@Tag(name = "외박 관리자 전용", description = "외박 관리자 전용")
 public class SleepoverAdminController {
 
     private final SleepoverService sleepoverService;

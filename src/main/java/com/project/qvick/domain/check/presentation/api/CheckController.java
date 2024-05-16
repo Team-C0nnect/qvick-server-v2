@@ -24,11 +24,11 @@ import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+@RestController
+@RequiredArgsConstructor
+@RequestMapping("/attendance")
 @Tag(name = "출석 명단", description = "출석 명단")
 @SecurityRequirement(name = "BearerAuthentication")
-@RestController
-@RequestMapping("/attendance")
-@RequiredArgsConstructor
 public class CheckController {
 
     private final CheckService checkService;

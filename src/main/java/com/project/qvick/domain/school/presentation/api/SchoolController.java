@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/school")
 @Tag(name = "학교", description = "학교")
-@RequiredArgsConstructor
 public class SchoolController {
 
     private final SchoolService schoolService;

@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "인증", description = "인증")
 @RestController
-@RequestMapping("/auth")
 @RequiredArgsConstructor
+@RequestMapping("/auth")
+@Tag(name = "인증", description = "인증")
 public class AuthController {
 
     private final AuthService authService;

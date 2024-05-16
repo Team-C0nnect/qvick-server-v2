@@ -14,11 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "외박", description = "외박")
-@SecurityRequirement(name = "BearerAuthentication")
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/sleepover")
+@Tag(name = "외박", description = "외박")
+@SecurityRequirement(name = "BearerAuthentication")
 public class SleepoverController {
 
     private final SleepoverService sleepoverService;

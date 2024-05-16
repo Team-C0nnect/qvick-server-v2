@@ -16,10 +16,10 @@ import lombok.experimental.SuperBuilder;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "tb_sleepover")
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuperBuilder
+@Table(name = "tb_sleepover")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SleepoverEntity extends BaseTimeEntity {
 
     @Id

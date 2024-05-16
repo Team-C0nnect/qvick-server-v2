@@ -15,8 +15,8 @@ import lombok.experimental.SuperBuilder;
 @Entity
 @Getter
 @SuperBuilder
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "tb_school")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SchoolEntity extends BaseTimeEntity {
 
     @Id

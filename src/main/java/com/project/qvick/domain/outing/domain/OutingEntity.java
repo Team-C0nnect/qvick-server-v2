@@ -17,9 +17,9 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SuperBuilder
 @Table(name = "tb_Outing")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OutingEntity extends BaseTimeEntity {
 
     @Id

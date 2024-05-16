@@ -10,9 +10,9 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class Check {
 
     private Long id;
