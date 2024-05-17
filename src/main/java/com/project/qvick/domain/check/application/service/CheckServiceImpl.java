@@ -16,6 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
@@ -35,7 +36,7 @@ public class CheckServiceImpl implements CheckService {
                 userSecurity.getUser().getName(),
                 userSecurity.getUser().getEmail(),
                 userSecurity.getUser().getRoom(),
-                LocalDate.now());
+                LocalDateTime.now());
         if (checkRepository.findByUserIdAndCheckedDate(
                 checkEntity.getUserId(),
                 checkEntity.getCheckedDate())
@@ -58,7 +59,7 @@ public class CheckServiceImpl implements CheckService {
                 .orElseThrow(()->CheckCodeError.EXCEPTION);
         if (checkRepository.findByUserIdAndCheckedDate(
                 userSecurity.getUser().getId(),
-                LocalDate.now()).isPresent()){
+                LocalDateTime.now()).isPresent()){
             return ResponseEntity.ok().body(check);
         }
         return ResponseEntity.notFound().build();

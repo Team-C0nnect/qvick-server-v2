@@ -4,7 +4,7 @@ import com.project.qvick.domain.check.domain.CheckEntity;
 import com.project.qvick.domain.check.presentation.dto.Check;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Component
 public class CheckMapper {
@@ -14,7 +14,7 @@ public class CheckMapper {
                                          String name,
                                          String email,
                                          String room,
-                                         final LocalDate date) {
+                                         final LocalDateTime date) {
         return CheckEntity.builder()
                 .userId(userId)
                 .stdId(stdId)

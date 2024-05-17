@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -21,6 +21,6 @@ public class Check {
     private String name;
     private String email;
     private String room;
-    private LocalDate checkedDate;
+    private LocalDateTime checkedDate;
 
 }

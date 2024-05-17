@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.project.qvick.domain.check.domain.QCheckEntity.checkEntity;
@@ -29,7 +30,7 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
                 .leftJoin(checkEntity)
                 .on(checkEntity.userId
                         .eq(userEntity.id)
-                        .and(checkEntity.checkedDate.eq(LocalDate.now())))
+                        .and(checkEntity.checkedDate.eq(LocalDateTime.now())))
                 .where(checkEntity.id.isNull(),
                         userEntity.userRole.eq(UserRole.USER))
                 .offset((pageRequest.getPage() - 1) * pageRequest.getSize())

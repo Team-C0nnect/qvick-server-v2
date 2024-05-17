@@ -1,6 +1,6 @@
 package com.project.qvick.domain.check.domain;
 
-import com.project.qvick.global.common.entity.BaseTimeEntity;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -12,14 +12,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @SuperBuilder
 @Table(name = "tb_check")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CheckEntity extends BaseTimeEntity {
+public class CheckEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,6 +41,7 @@ public class CheckEntity extends BaseTimeEntity {
     private String room;
 
     @Column(nullable = false)
-    private LocalDate checkedDate;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    private LocalDateTime checkedDate;
 
 }
