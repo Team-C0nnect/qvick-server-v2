@@ -2,6 +2,8 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: prod
   datasource:
     url: ${secrets.RDS_PATH}
     driver-class-name: com.mysql.cj.jdbc.Driver
