@@ -9,6 +9,7 @@ import com.project.qvick.domain.check.exception.CheckCodeExpirationException;
 import com.project.qvick.domain.check.mapper.CheckMapper;
 import com.project.qvick.domain.check.presentation.dto.Check;
 import com.project.qvick.domain.check.presentation.dto.request.CodeRequest;
+import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,12 +31,13 @@ public class CheckServiceImpl implements CheckService {
 
     @Override
     public void attendance(CodeRequest codeRequest) {
+        User user = userSecurity.getUser();
         CheckEntity checkEntity = checkMapper.createCheckEntity(
-                userSecurity.getUser().getId(),
-                userSecurity.getUser().getStdId(),
-                userSecurity.getUser().getName(),
-                userSecurity.getUser().getEmail(),
-                userSecurity.getUser().getRoom(),
+                user.getId(),
+                user.getStdId(),
+                user.getName(),
+                user.getEmail(),
+                user.getRoom(),
                 LocalDateTime.now());
         if (checkRepository.findByUserIdAndCheckedDate(
                 checkEntity.getUserId(),
