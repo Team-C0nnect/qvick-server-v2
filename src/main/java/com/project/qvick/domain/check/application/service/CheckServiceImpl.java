@@ -9,6 +9,7 @@ import com.project.qvick.domain.check.exception.CheckCodeExpirationException;
 import com.project.qvick.domain.check.mapper.CheckMapper;
 import com.project.qvick.domain.check.presentation.dto.Check;
 import com.project.qvick.domain.check.presentation.dto.request.CodeRequest;
+import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.domain.user.presentation.dto.User;
 import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
@@ -27,11 +28,11 @@ public class CheckServiceImpl implements CheckService {
     private final CheckRepository checkRepository;
     private final CheckCodeRepository checkCodeRepository;
     private final CheckMapper checkMapper;
-    private final UserSecurity userSecurity;
+    private final UserUtil userUtil;
 
     @Override
     public void attendance(CodeRequest codeRequest) {
-        User user = userSecurity.getUser();
+        User user = userUtil.findUser();
         CheckEntity checkEntity = checkMapper.createCheckEntity(
                 user.getId(),
                 user.getStdId(),
@@ -55,12 +56,13 @@ public class CheckServiceImpl implements CheckService {
 
     @Override
     public ResponseEntity<Check> attendanceCheck() {
+        User user = userUtil.findUser();
         Check check = checkRepository.findByUserId(
-                userSecurity.getUser().getId())
+                user.getId())
                 .map(checkMapper::toCheck)
                 .orElseThrow(()->CheckCodeError.EXCEPTION);
         if (checkRepository.findByUserIdAndCheckedDate(
-                userSecurity.getUser().getId(),
+                user.getId(),
                 LocalDateTime.now()).isPresent()){
             return ResponseEntity.ok().body(check);
         }
