@@ -6,9 +6,10 @@ spring:
     active: prod
   datasource:
     url: ${secrets.RDS_PATH}
-    driver-class-name: com.mysql.cj.jdbc.Driver
     username: ${secrets.DB_USERNAME}
     password: ${secrets.DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
 
   jpa:
     database: mysql
