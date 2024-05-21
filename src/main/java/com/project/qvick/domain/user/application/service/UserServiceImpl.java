@@ -1,14 +1,11 @@
 package com.project.qvick.domain.user.application.service;
 
-import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
-import com.project.qvick.domain.user.exception.UserForbiddenException;
-import com.project.qvick.domain.user.domain.mapper.UserMapper;
+import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.RoomRequest;
 import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
-import com.project.qvick.domain.user.client.dto.request.UserSignUpRequest;
-import com.project.qvick.domain.user.application.util.UserUtil;
+import com.project.qvick.domain.user.domain.mapper.UserMapper;
+import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
