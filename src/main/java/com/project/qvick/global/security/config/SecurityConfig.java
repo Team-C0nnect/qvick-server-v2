@@ -1,4 +1,4 @@
-package com.project.qvick.global.config;
+package com.project.qvick.global.security.config;
 
 import com.project.qvick.global.security.jwt.filter.JwtAuthenticationFilter;
 import com.project.qvick.global.security.jwt.filter.JwtExceptionFilter;
