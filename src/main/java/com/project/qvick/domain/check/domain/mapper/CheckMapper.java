@@ -1,7 +1,7 @@
 package com.project.qvick.domain.check.domain.mapper;
 
-import com.project.qvick.domain.check.domain.CheckEntity;
 import com.project.qvick.domain.check.client.dto.Check;
+import com.project.qvick.domain.check.domain.CheckEntity;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;

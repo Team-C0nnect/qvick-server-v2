@@ -3,7 +3,6 @@ package com.project.qvick.domain.user.client.api;
 import com.project.qvick.domain.user.application.query.UserQueryService;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.SearchRequest;
-import com.project.qvick.domain.user.client.dto.response.UserPageResponse;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;

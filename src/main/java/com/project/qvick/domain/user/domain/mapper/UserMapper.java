@@ -1,9 +1,9 @@
 package com.project.qvick.domain.user.domain.mapper;
 
 import com.project.qvick.domain.auth.client.dto.request.SignUpRequest;
+import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.domain.UserEntity;
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.domain.user.client.dto.User;
 import org.springframework.stereotype.Component;
 
 @Component
