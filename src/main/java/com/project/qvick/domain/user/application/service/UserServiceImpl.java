@@ -21,24 +21,6 @@ public class UserServiceImpl implements UserService {
     private final UserUtil userUtil;
 
     @Override
-    public void acceptSignUp(UserSignUpRequest request) {
-        User user = userUtil.findUser();
-        if(user.getUserRole().equals(UserRole.ADMIN) || user.getUserRole().equals(UserRole.TEACHER)){
-            user.setUserRole(UserRole.USER);
-        }
-        throw UserForbiddenException.EXCEPTION;
-    }
-
-    @Override
-    public void rejectSignUp(UserSignUpRequest request) {
-        User user  = userUtil.findUser();
-        if(user.getUserRole().equals(UserRole.GUEST)){
-            userRepository.deleteById(request.getId());
-        }
-        throw UserForbiddenException.EXCEPTION;
-    }
-
-    @Override
     public void editUserStdId(StdIdEditRequest request) {
         User user = userUtil.findUser();
         user.setStdId(request.getStdId());

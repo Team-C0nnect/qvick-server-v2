@@ -30,21 +30,7 @@ import java.util.List;
 @Tag(name = "유저 관리자", description = "유저 관리자 API")
 public class UserAdminController {
 
-    private final UserService userService;
     private final UserQueryService userQueryService;
-
-    @Operation(summary = "유저 승인", description = "유저를 승인합니다")
-    @PatchMapping("/approve")
-    @ResponseStatus(HttpStatus.OK)
-    public void userApprove(@Validated @RequestBody UserSignUpRequest request){
-        userService.acceptSignUp(request);
-    }
-
-    @Operation(summary = "유저 거부", description = "유저를 거부합니다")
-    @PatchMapping("/reject")
-    public void userReject(@Validated @RequestBody UserSignUpRequest request){
-        userService.rejectSignUp(request);
-    }
 
     @Operation(summary = "승인 대기 유저 조회", description = "승인 대기 유저를 조회합니다.")
     @GetMapping("/await-user")

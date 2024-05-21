@@ -13,6 +13,7 @@ import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.global.common.repository.UserSecurity;
 import com.project.qvick.domain.user.application.util.UserUtil;
+import com.project.qvick.global.exception.BadRequestException;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
 import com.project.qvick.global.security.jwt.JwtExtract;
 import com.project.qvick.global.security.jwt.JwtProvider;
@@ -32,7 +33,6 @@ public class AuthServiceImpl implements AuthService{
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final UserUtil userUtil;
-    private final UserSecurity userSecurity;
     private final PasswordEncoder encoder;
     private final JwtProvider jwtProvider;
     private final JwtExtract jwtExtract;
@@ -62,7 +62,7 @@ public class AuthServiceImpl implements AuthService{
         User user = userRepository
                 .findByEmail(request.getEmail())
                 .map(userMapper::toUser)
-                .orElseThrow(()->UserNotFoundException.EXCEPTION);
+                .orElseThrow(() -> UserNotFoundException.EXCEPTION);
         return JsonWebTokenResponse.builder()
                 .accessToken(jwtProvider.generateAccessToken(request.getEmail(),user.getUserRole()))
                 .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), user.getUserRole()))
@@ -82,12 +82,10 @@ public class AuthServiceImpl implements AuthService{
 
     @Override
     public void firebase(AuthenticationRequest request){
-        User user = userRepository.findById(userSecurity.getUser().getId())
-                .map(userMapper::toUser)
-                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+        User user = userUtil.findUser();
         if(StringUtils.hasText(request.getFcmToken())){
             firebaseNotificationService.saveToken(user.getEmail(), request.getFcmToken());
-        }
+        }throw BadRequestException.EXCEPTION;
     }
 
 }
