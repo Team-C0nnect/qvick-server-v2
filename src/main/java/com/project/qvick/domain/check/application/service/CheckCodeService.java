@@ -1,6 +1,6 @@
 package com.project.qvick.domain.check.application.service;
 
-import com.project.qvick.domain.check.presentation.dto.response.CheckCodeResponse;
+import com.project.qvick.domain.check.client.dto.response.CheckCodeResponse;
 
 import java.util.concurrent.CompletableFuture;
 

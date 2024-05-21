@@ -1,16 +1,16 @@
 package com.project.qvick.domain.auth.service;
 
-import com.project.qvick.domain.auth.presentation.dto.request.AuthenticationRequest;
-import com.project.qvick.domain.auth.presentation.dto.request.SignInRequest;
-import com.project.qvick.domain.auth.presentation.dto.request.SignUpRequest;
-import com.project.qvick.domain.auth.presentation.dto.response.JsonWebTokenResponse;
-import com.project.qvick.domain.auth.presentation.dto.response.RefreshTokenResponse;
+import com.project.qvick.domain.auth.client.dto.request.AuthenticationRequest;
+import com.project.qvick.domain.auth.client.dto.request.SignInRequest;
+import com.project.qvick.domain.auth.client.dto.request.SignUpRequest;
+import com.project.qvick.domain.auth.client.dto.response.JsonWebTokenResponse;
+import com.project.qvick.domain.auth.client.dto.response.RefreshTokenResponse;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.PasswordWrongException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
-import com.project.qvick.domain.user.mapper.UserMapper;
-import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.domain.mapper.UserMapper;
+import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.global.common.repository.UserSecurity;
 import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;

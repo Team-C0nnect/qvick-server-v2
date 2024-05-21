@@ -1,8 +1,8 @@
 package com.project.qvick.domain.user.application.service;
 
-import com.project.qvick.domain.user.presentation.dto.request.RoomRequest;
-import com.project.qvick.domain.user.presentation.dto.request.StdIdEditRequest;
-import com.project.qvick.domain.user.presentation.dto.request.UserSignUpRequest;
+import com.project.qvick.domain.user.client.dto.request.RoomRequest;
+import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
+import com.project.qvick.domain.user.client.dto.request.UserSignUpRequest;
 
 
 public interface UserService {

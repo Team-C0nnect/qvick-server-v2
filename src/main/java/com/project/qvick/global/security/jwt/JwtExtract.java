@@ -2,8 +2,8 @@ package com.project.qvick.global.security.jwt;
 
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
-import com.project.qvick.domain.user.mapper.UserMapper;
-import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.domain.mapper.UserMapper;
+import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.global.security.auth.CustomUserDetails;
 import com.project.qvick.global.security.jwt.enums.JwtType;
 import com.project.qvick.global.security.jwt.exception.TokenTypeException;

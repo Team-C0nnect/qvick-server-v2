@@ -1,8 +1,8 @@
 package com.project.qvick.domain.outing.application.query;
 
 import com.project.qvick.domain.outing.domain.repository.query.OutingQueryRepositoryImpl;
-import com.project.qvick.domain.outing.presentation.dto.Outing;
-import com.project.qvick.domain.outing.presentation.dto.request.OutingPageRequest;
+import com.project.qvick.domain.outing.client.dto.Outing;
+import com.project.qvick.domain.outing.client.dto.request.OutingPageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

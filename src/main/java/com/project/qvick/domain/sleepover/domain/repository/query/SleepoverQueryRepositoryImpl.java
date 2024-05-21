@@ -1,8 +1,8 @@
 package com.project.qvick.domain.sleepover.domain.repository.query;
 
 import com.project.qvick.domain.sleepover.domain.enums.SleepoverStatus;
-import com.project.qvick.domain.sleepover.presentation.dto.Sleepover;
-import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverPageRequest;
+import com.project.qvick.domain.sleepover.client.dto.Sleepover;
+import com.project.qvick.domain.sleepover.client.dto.request.SleepoverPageRequest;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;

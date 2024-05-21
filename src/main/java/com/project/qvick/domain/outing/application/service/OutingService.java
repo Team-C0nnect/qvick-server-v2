@@ -1,6 +1,6 @@
 package com.project.qvick.domain.outing.application.service;
 
-import com.project.qvick.domain.outing.presentation.dto.Outing;
+import com.project.qvick.domain.outing.client.dto.Outing;
 
 public interface OutingService {
 

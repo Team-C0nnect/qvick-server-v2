@@ -1,8 +1,8 @@
 package com.project.qvick.domain.sleepover.application.query;
 
 import com.project.qvick.domain.sleepover.domain.repository.query.SleepoverQueryRepositoryImpl;
-import com.project.qvick.domain.sleepover.presentation.dto.Sleepover;
-import com.project.qvick.domain.sleepover.presentation.dto.request.SleepoverPageRequest;
+import com.project.qvick.domain.sleepover.client.dto.Sleepover;
+import com.project.qvick.domain.sleepover.client.dto.request.SleepoverPageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

@@ -6,18 +6,16 @@ import com.project.qvick.domain.check.domain.repository.jpa.CheckRepository;
 import com.project.qvick.domain.check.exception.CheckAlreadyExistsException;
 import com.project.qvick.domain.check.exception.CheckCodeError;
 import com.project.qvick.domain.check.exception.CheckCodeExpirationException;
-import com.project.qvick.domain.check.mapper.CheckMapper;
-import com.project.qvick.domain.check.presentation.dto.Check;
-import com.project.qvick.domain.check.presentation.dto.request.CodeRequest;
+import com.project.qvick.domain.check.domain.mapper.CheckMapper;
+import com.project.qvick.domain.check.client.dto.Check;
+import com.project.qvick.domain.check.client.dto.request.CodeRequest;
 import com.project.qvick.domain.user.application.util.UserUtil;
-import com.project.qvick.domain.user.presentation.dto.User;
-import com.project.qvick.global.common.repository.UserSecurity;
+import com.project.qvick.domain.user.client.dto.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Service

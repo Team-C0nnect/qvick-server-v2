@@ -1,6 +1,6 @@
 package com.project.qvick.domain.check.domain.repository.query;
 
-import com.project.qvick.domain.check.presentation.dto.Check;
+import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import com.querydsl.core.types.ConstructorExpression;
@@ -9,7 +9,6 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 

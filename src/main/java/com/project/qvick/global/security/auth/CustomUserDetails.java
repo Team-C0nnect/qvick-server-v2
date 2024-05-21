@@ -1,6 +1,6 @@
 package com.project.qvick.global.security.auth;
 
-import com.project.qvick.domain.user.presentation.dto.User;
+import com.project.qvick.domain.user.client.dto.User;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
