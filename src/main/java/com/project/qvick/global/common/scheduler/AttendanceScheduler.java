@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.batch;
+package com.project.qvick.global.common.scheduler;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

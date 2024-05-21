@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.batch.writer;
+package com.project.qvick.global.common.scheduler.writer;
 
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
 import lombok.RequiredArgsConstructor;
