@@ -48,7 +48,6 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
                 .fetch();
     }
 
-
     private ConstructorExpression<Check> checkProjection() {
         return Projections.constructor(
                 Check.class,
