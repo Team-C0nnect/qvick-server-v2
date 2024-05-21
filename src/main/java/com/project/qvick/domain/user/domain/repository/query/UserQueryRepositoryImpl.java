@@ -2,7 +2,6 @@ package com.project.qvick.domain.user.domain.repository.query;
 
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.SearchRequest;
-import com.project.qvick.domain.user.client.dto.response.UserPageResponse;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
@@ -10,7 +9,6 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 
 import java.util.List;
 
@@ -38,7 +36,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
         return jpaQueryFactory
                 .select(userListConstructorExpression())
                 .from(userEntity)
-                .where(nameLike(request.getName()))
+                .where(eqName(request.getName()))
                 .offset((request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
                 .orderBy(userEntity.id.asc())
@@ -57,8 +55,11 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
         );
     }
 
-    private BooleanExpression nameLike(String name) {
-        return StringUtils.hasText(name) ? userEntity.name.contains(name) : null;
+    private BooleanExpression eqName(String name) {
+        if(name.isEmpty()){
+            return null;
+        }
+        return userEntity.name.eq(name);
     }
 
 }
