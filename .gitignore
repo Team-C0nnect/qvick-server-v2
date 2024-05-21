@@ -6,6 +6,7 @@ build/
 !**/src/test/**/build/
 /src/main/resources/application-local.yml
 /src/main/resources/firebase-sdk.json
+.DS_Store
 
 ### STS ###
 .apt_generated
