@@ -3,7 +3,7 @@ package com.project.qvick.domain.school.application.service;
 import com.project.qvick.domain.school.domain.repository.jpa.SchoolRepository;
 import com.project.qvick.domain.school.exception.SchoolExistException;
 import com.project.qvick.domain.school.domain.mapper.SchoolMapper;
-import com.project.qvick.domain.school.presentation.dto.request.SchoolRequest;
+import com.project.qvick.domain.school.client.dto.request.SchoolRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

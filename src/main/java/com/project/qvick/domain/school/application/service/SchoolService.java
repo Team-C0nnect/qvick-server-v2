@@ -1,6 +1,6 @@
 package com.project.qvick.domain.school.application.service;
 
-import com.project.qvick.domain.school.presentation.dto.request.SchoolRequest;
+import com.project.qvick.domain.school.client.dto.request.SchoolRequest;
 
 public interface SchoolService {
 

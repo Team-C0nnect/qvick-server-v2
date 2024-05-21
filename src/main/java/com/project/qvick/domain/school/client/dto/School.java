@@ -1,4 +1,4 @@
-package com.project.qvick.domain.school.presentation.dto;
+package com.project.qvick.domain.school.client.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

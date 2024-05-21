@@ -1,6 +1,6 @@
 package com.project.qvick.domain.school.domain.repository.query;
 
-import com.project.qvick.domain.school.presentation.dto.School;
+import com.project.qvick.domain.school.client.dto.School;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;

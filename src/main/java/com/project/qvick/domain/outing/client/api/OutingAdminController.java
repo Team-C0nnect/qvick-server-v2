@@ -24,7 +24,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/outing-admin")
-@Tag(name = "외출 관리자", description = "외출 관리자")
+@Tag(name = "외출 관리자", description = "외출 관리자 API")
 public class OutingAdminController {
 
     private final OutingService service;

@@ -27,7 +27,7 @@ import java.util.concurrent.ExecutionException;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/attendance")
-@Tag(name = "출석 명단", description = "출석 명단")
+@Tag(name = "출석", description = "출석 API")
 @SecurityRequirement(name = "BearerAuthentication")
 public class CheckController {
 

@@ -27,7 +27,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/user-admin")
-@Tag(name = "유저 관리자 API", description = "유저 관리자 API")
+@Tag(name = "유저 관리자", description = "유저 관리자 API")
 public class UserAdminController {
 
     private final UserService userService;

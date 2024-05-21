@@ -24,7 +24,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/sleepover-admin")
-@Tag(name = "외박 관리자 전용", description = "외박 관리자 전용")
+@Tag(name = "외박 관리자", description = "외박 관리자 API")
 public class SleepoverAdminController {
 
     private final SleepoverService sleepoverService;

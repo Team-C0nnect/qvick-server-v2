@@ -1,7 +1,7 @@
-package com.project.qvick.domain.school.presentation.api;
+package com.project.qvick.domain.school.client.api;
 
-import com.project.qvick.domain.school.presentation.dto.School;
-import com.project.qvick.domain.school.presentation.dto.request.SchoolRequest;
+import com.project.qvick.domain.school.client.dto.School;
+import com.project.qvick.domain.school.client.dto.request.SchoolRequest;
 import com.project.qvick.domain.school.application.service.SchoolService;
 import com.project.qvick.domain.school.application.query.SchoolQueryService;
 import com.project.qvick.global.common.dto.request.PageRequest;
@@ -23,7 +23,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/school")
-@Tag(name = "학교", description = "학교")
+@Tag(name = "학교", description = "학교 API")
 public class SchoolController {
 
     private final SchoolService schoolService;

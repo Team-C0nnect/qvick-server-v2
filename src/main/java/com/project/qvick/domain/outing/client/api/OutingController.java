@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/outing")
-@Tag(name = "외출", description = "외출")
+@Tag(name = "외출", description = "외출 API")
 @SecurityRequirement(name = "BearerAuthentication")
 public class OutingController {
 

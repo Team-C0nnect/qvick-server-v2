@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@Tag(name = "약관", description = "약관")
+@Tag(name = "약관", description = "약관 API")
 @RequestMapping("/terms")
 public class TermController {
 
