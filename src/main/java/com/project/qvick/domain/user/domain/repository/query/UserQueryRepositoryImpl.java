@@ -1,9 +1,7 @@
 package com.project.qvick.domain.user.domain.repository.query;
 
-import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.SearchRequest;
-import com.project.qvick.domain.user.client.dto.request.UserApprovalPageRequest;
 import com.project.qvick.domain.user.client.dto.response.UserPageResponse;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import com.querydsl.core.types.ConstructorExpression;
@@ -23,18 +21,6 @@ import static com.project.qvick.domain.user.domain.QUserEntity.userEntity;
 public class UserQueryRepositoryImpl implements UserQueryRepository{
 
     private final JPAQueryFactory jpaQueryFactory;
-
-    @Override
-    public List<UserPageResponse> findWaitingUsers(UserApprovalPageRequest request) {
-        return jpaQueryFactory
-                .select(userConstructorExpression())
-                .from(userEntity)
-                .where(inApprovals(request.getApproval()))
-                .offset((request.getPage() - 1) * request.getSize())
-                .limit(request.getSize())
-                .orderBy(userEntity.id.asc())
-                .fetch();
-    }
 
     @Override
     public List<User> userList(PageRequest request){
@@ -59,13 +45,6 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
                 .fetch();
     }
 
-    private ConstructorExpression<UserPageResponse> userConstructorExpression() {
-        return Projections.constructor(UserPageResponse.class,
-                userEntity.id,
-                userEntity.name,
-                userEntity.approval);
-    }
-
     private ConstructorExpression<User> userListConstructorExpression(){
         return Projections.constructor(User.class,
                 userEntity.id,
@@ -74,13 +53,8 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
                 userEntity.password,
                 userEntity.stdId,
                 userEntity.room,
-                userEntity.approval,
                 userEntity.userRole
         );
-    }
-
-    private BooleanExpression inApprovals(Approval approval){
-        return userEntity.approval.in(approval);
     }
 
     private BooleanExpression nameLike(String name) {

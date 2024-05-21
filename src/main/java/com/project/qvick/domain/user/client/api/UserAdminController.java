@@ -3,7 +3,6 @@ package com.project.qvick.domain.user.client.api;
 import com.project.qvick.domain.user.application.query.UserQueryService;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.SearchRequest;
-import com.project.qvick.domain.user.client.dto.request.UserApprovalPageRequest;
 import com.project.qvick.domain.user.client.dto.response.UserPageResponse;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,12 +23,6 @@ import java.util.List;
 public class UserAdminController {
 
     private final UserQueryService userQueryService;
-
-    @Operation(summary = "승인 대기 유저 조회", description = "승인 대기 유저를 조회합니다.")
-    @GetMapping("/await-user")
-    public ResponseEntity<List<UserPageResponse>> findWaitingUsers(@ModelAttribute UserApprovalPageRequest request){
-        return ResponseEntity.ok(userQueryService.findWaitingUsers(request));
-    }
 
     @Operation(summary = "전체 유저 조회", description = "전체 유저를 조회합니다.")
     @GetMapping("/find-all")

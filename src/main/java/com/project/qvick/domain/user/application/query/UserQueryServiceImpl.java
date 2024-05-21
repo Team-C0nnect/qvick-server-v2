@@ -2,7 +2,6 @@ package com.project.qvick.domain.user.application.query;
 
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.SearchRequest;
-import com.project.qvick.domain.user.client.dto.request.UserApprovalPageRequest;
 import com.project.qvick.domain.user.domain.repository.query.UserQueryRepository;
 import com.project.qvick.domain.user.client.dto.response.UserPageResponse;
 import com.project.qvick.global.common.dto.request.PageRequest;
@@ -18,11 +17,6 @@ import java.util.List;
 public class UserQueryServiceImpl implements UserQueryService{
 
     private final UserQueryRepository userQueryRepository;
-
-    @Override
-    public List<UserPageResponse> findWaitingUsers(UserApprovalPageRequest request) {
-        return userQueryRepository.findWaitingUsers(request);
-    }
 
     @Override
     public List<User> userList(PageRequest pageRequest){

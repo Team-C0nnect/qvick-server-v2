@@ -1,6 +1,5 @@
 package com.project.qvick.domain.user.domain;
 
-import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.global.common.entity.BaseTimeEntity;
 import jakarta.persistence.Column;
@@ -46,10 +45,6 @@ public class UserEntity extends BaseTimeEntity {
     @Column(nullable = false,
             length = 3)
     private String room;
-
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Approval approval;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)

@@ -2,7 +2,6 @@ package com.project.qvick.domain.user.domain.mapper;
 
 import com.project.qvick.domain.auth.client.dto.request.SignUpRequest;
 import com.project.qvick.domain.user.domain.UserEntity;
-import com.project.qvick.domain.user.domain.enums.Approval;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.client.dto.User;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,6 @@ public class UserMapper {
                 .email(entity.getEmail())
                 .stdId(entity.getStdId())
                 .room(entity.getRoom())
-                .approval(entity.getApproval())
                 .build();
     }
 
@@ -29,7 +27,6 @@ public class UserMapper {
                 .password(password)
                 .stdId(signUpRequest.getStdId())
                 .room(signUpRequest.getRoom())
-                .approval(Approval.ACCEPT)
                 .userRole(UserRole.USER)
                 .build();
     }
@@ -41,7 +38,6 @@ public class UserMapper {
                 .password(password)
                 .stdId(signUpRequest.getStdId())
                 .room(signUpRequest.getRoom())
-                .approval(Approval.ACCEPT)
                 .userRole(UserRole.ADMIN)
                 .build();
     }
@@ -50,7 +46,6 @@ public class UserMapper {
         return UserEntity.builder()
                 .stdId(user.getStdId())
                 .room(user.getRoom())
-                .approval(Approval.ACCEPT)
                 .userRole(UserRole.USER)
                 .build();
     }
