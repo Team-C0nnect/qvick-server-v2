@@ -1,5 +1,6 @@
-package com.project.qvick.global.exception;
+package com.project.qvick.global.exception.handler;
 
+import com.project.qvick.global.exception.BusinessException;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
