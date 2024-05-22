@@ -27,30 +27,30 @@ public class UserController {
     private final UserService userService;
     private final UserUtil userUtil;
 
-    @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
+    @GetMapping("")
+    @Operation(summary = "유저 조회", description = "현재 로그인한 유저 정보를 조회합니다")
+    public User findUser(){
+        return userUtil.findUser();
+    }
+
     @PatchMapping("/stdId")
+    @Operation(summary = "회원 학번 수정", description = "회원 학번을 수정합니다")
     @ResponseStatus(HttpStatus.OK)
     public void editUser(@Validated @RequestBody StdIdEditRequest request){
         userService.editUserStdId(request);
     }
 
-    @Operation(summary = "회원 호실 수정", description = "회원 호실을 수정합니다")
     @PatchMapping("/room")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "회원 호실 수정", description = "회원 호실을 수정합니다")
     public void editUser(@Validated @RequestBody RoomRequest request){
         userService.editRoom(request);
     }
 
-    @Operation(summary = "회원탈퇴", description = "회원 탈퇴를 진행합니다")
     @DeleteMapping("")
+    @Operation(summary = "회원탈퇴", description = "회원 탈퇴를 진행합니다")
     public void deleteUser(){
         userService.deleteUser();
-    }
-
-    @Operation(summary = "유저 조회", description = "현재 로그인한 유저 정보를 조회합니다")
-    @GetMapping("")
-    public User findUser(){
-        return userUtil.findUser();
     }
 
 }

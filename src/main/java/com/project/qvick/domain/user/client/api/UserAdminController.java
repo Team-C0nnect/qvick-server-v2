@@ -23,14 +23,14 @@ public class UserAdminController {
 
     private final UserQueryService userQueryService;
 
-    @Operation(summary = "전체 유저 조회", description = "전체 유저를 조회합니다.")
     @GetMapping("/find-all")
+    @Operation(summary = "전체 유저 조회", description = "전체 유저를 조회합니다")
     public ResponseEntity<List<User>>userList(@ModelAttribute PageRequest pageRequest){
         return ResponseEntity.ok(userQueryService.userList(pageRequest));
     }
 
-    @Operation(summary = "유저 검색", description = "특정 유저를 이름을 기준으로 검색합니다.")
     @GetMapping("/search")
+    @Operation(summary = "유저 검색", description = "특정 유저를 이름을 기준으로 검색합니다")
     public ResponseEntity<List<User>>userSearch(@ModelAttribute SearchRequest searchRequest){
         return ResponseEntity.ok(userQueryService.userSearch(searchRequest));
     }

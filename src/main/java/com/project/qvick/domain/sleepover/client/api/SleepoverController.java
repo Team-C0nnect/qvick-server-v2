@@ -23,9 +23,9 @@ public class SleepoverController {
 
     private final SleepoverService sleepoverService;
 
-    @Operation(summary = "외박 신청")
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "외박 신청", description = "외박을 신청합니다")
     public void registerSleepover(@Validated @RequestBody SleepoverRequest request){
         sleepoverService.registerSleepover(request.toSleepover());
     }

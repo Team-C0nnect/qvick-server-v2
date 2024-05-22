@@ -2,6 +2,7 @@ package com.project.qvick.domain.outing.client.api;
 
 import com.project.qvick.domain.outing.client.dto.request.OutingRequest;
 import com.project.qvick.domain.outing.application.service.OutingService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class OutingController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "외출 신청", description = "외출을 신청합니다")
     public void register(@Validated @RequestBody OutingRequest request){
         service.register(request.toOuting());
     }

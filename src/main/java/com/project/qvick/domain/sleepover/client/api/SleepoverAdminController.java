@@ -30,24 +30,24 @@ public class SleepoverAdminController {
     private final SleepoverService sleepoverService;
     private final SleepoverQueryService querydslService;
 
-    @Operation(summary = "외박 승인")
+    @GetMapping("/findStudents")
+    @Operation(summary = "외박 조회", description = "외박 명단을 조회합니다")
+    public ResponseEntity<List<Sleepover>> findStudents(@ModelAttribute SleepoverPageRequest request) {
+        return ResponseEntity.ok(querydslService.findSleepoverStudents(request));
+    }
+
     @PutMapping("/accept")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "외박 승인", description = "외박을 승인합니다")
     public void acceptSleepover(@RequestBody SleepoverSettingRequest request) {
         sleepoverService.acceptSleepover(request.getSleepoverId());
     }
 
-    @Operation(summary = "외박 거절")
     @PutMapping("/refuse")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "외박 거절", description = "외박을 거절합니다")
     public void refuseSleepover(@Validated @RequestBody SleepoverSettingRequest request) {
         sleepoverService.refuseSleepover(request.getSleepoverId());
-    }
-
-    @Operation(summary = "외박 조회", description = "외박 명단을 조회합니다")
-    @GetMapping("/findStudents")
-    public ResponseEntity<List<Sleepover>> findStudents(@ModelAttribute SleepoverPageRequest request) {
-        return ResponseEntity.ok(querydslService.findSleepoverStudents(request));
     }
 
 }

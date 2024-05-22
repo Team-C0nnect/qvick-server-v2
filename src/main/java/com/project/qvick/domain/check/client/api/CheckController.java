@@ -36,28 +36,28 @@ public class CheckController {
     private final CheckQueryService checkQueryService;
     private final CheckCodeService checkCodeService;
 
-    @Operation(summary = "출석 체크", description = "출석 체크")
     @PostMapping("")
+    @Operation(summary = "출석 체크", description = "출석 체크")
     public void attendanceCheck(@RequestBody CodeRequest codeRequest) {
         checkService.attendance(codeRequest);
     }
 
-    @Operation(summary = "출석 명단", description = "출석 명단을 표시합니다")
-    @GetMapping("/list")
-    public ResponseEntity<List<Check>> findCheck(@ModelAttribute PageRequest pageRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(checkQueryService.findCheck(pageRequest));
-    }
-
-    @Operation(summary = "출석 코드 생성", description = "출석 코드 생성합니다")
     @PostMapping("/code")
+    @Operation(summary = "출석 코드 생성", description = "출석 코드 생성합니다")
     public ResponseEntity<CheckCodeResponse> generateCheckCode() throws ExecutionException, InterruptedException {
         CompletableFuture<CheckCodeResponse> codeResponseFuture = checkCodeService.generate();
         CheckCodeResponse codes = codeResponseFuture.get();
         return ResponseEntity.status(HttpStatus.CREATED).body(codes);
     }
 
-    @Operation(summary = "출석 확인", description = "출석 상태를 확인합니다")
+    @GetMapping("/list")
+    @Operation(summary = "출석 명단", description = "출석 명단을 표시합니다")
+    public ResponseEntity<List<Check>> findCheck(@ModelAttribute PageRequest pageRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(checkQueryService.findCheck(pageRequest));
+    }
+
     @GetMapping("")
+    @Operation(summary = "출석 확인", description = "출석 상태를 확인합니다")
     public ResponseEntity<Check> attendanceCheck(){
         return checkService.attendanceCheck();
     }

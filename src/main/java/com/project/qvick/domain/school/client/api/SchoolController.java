@@ -36,8 +36,8 @@ public class SchoolController {
         schoolService.registerSchool(schoolRequest);
     }
 
-    @Operation(summary = "학교 목록", description = "학교 목록을 표시합니다")
     @GetMapping("")
+    @Operation(summary = "학교 목록", description = "학교 목록을 표시합니다")
     public ResponseEntity<List<School>> findCheck(@ModelAttribute PageRequest pageRequest) {
         return ResponseEntity.status(HttpStatus.OK).body(schoolQueryService.schoolList(pageRequest));
     }

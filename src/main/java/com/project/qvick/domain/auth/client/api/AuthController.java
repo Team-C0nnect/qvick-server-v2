@@ -26,34 +26,34 @@ public class AuthController {
 
     private final AuthService authService;
 
-    @Operation(summary = "유저 회원가입", description = "유저 회원가입")
     @PostMapping("/sign-up")
+    @Operation(summary = "유저 회원가입", description = "유저 회원가입")
     @ResponseStatus(HttpStatus.CREATED)
     public void signUp(@Validated @RequestBody SignUpRequest signUpRequest){
         authService.signUp(signUpRequest);
     }
 
-    @Operation(summary = "관리자 회원가입", description = "관리자 회원가입")
     @PostMapping("/sign-up/admin")
     @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "관리자 회원가입", description = "관리자 회원가입")
     public void adminSignUp(@Validated @RequestBody SignUpRequest signUpRequest){
         authService.adminSignUp(signUpRequest);
     }
 
-    @Operation(summary = "로그인", description = "로그인")
     @PostMapping("/sign-in")
+    @Operation(summary = "로그인", description = "로그인")
     public JsonWebTokenResponse signIn(@Validated @RequestBody SignInRequest signInRequest){
         return authService.signIn(signInRequest);
     }
 
-    @Operation(summary = "토큰 재발급", description = "acess 토큰을 재발급 합니다")
     @PostMapping("/refresh")
+    @Operation(summary = "토큰 재발급", description = "acess 토큰을 재발급 합니다")
     public RefreshTokenResponse refresh(RefreshTokenRequest request){
         return authService.refresh(request.getRefreshToken());
     }
 
-    @Operation(summary = "firebase 인증", description = "firebase 인증 서비스")
     @PostMapping("/firebase")
+    @Operation(summary = "firebase 인증", description = "firebase 인증 서비스")
     public void firebase(AuthenticationRequest request){
         authService.firebase(request);
     }

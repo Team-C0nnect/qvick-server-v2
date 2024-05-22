@@ -30,24 +30,24 @@ public class OutingAdminController {
     private final OutingService service;
     private final OutingQueryService queryService;
 
-    @Operation(summary = "외출 승인")
+    @GetMapping("/findStudents")
+    @Operation(summary = "외출 조회", description = "외출 명단을 조회합니다")
+    public ResponseEntity<List<Outing>> findStudents(@ModelAttribute OutingPageRequest request) {
+        return ResponseEntity.ok(queryService.findOutStudents(request));
+    }
+
     @PutMapping("/accept")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "외출 승인", description = "외출을 승인합니다")
     public void acceptSleepover(@RequestBody OutingSettingRequest request) {
         service.accept(request.getOutingId());
     }
 
-    @Operation(summary = "외출 거절")
     @PutMapping("/refuse")
     @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "외출 거절", description = "외출을 거절합니다")
     public void refuseSleepover(@Validated @RequestBody OutingSettingRequest request) {
         service.accept(request.getOutingId());
-    }
-
-    @Operation(summary = "외출 조회", description = "외출 명단을 조회합니다")
-    @GetMapping("/findStudents")
-    public ResponseEntity<List<Outing>> findStudents(@ModelAttribute OutingPageRequest request) {
-        return ResponseEntity.ok(queryService.findOutStudents(request));
     }
 
 }
