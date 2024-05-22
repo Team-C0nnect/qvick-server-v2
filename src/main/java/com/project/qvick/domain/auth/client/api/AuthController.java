@@ -1,6 +1,6 @@
 package com.project.qvick.domain.auth.client.api;
 
-import com.project.qvick.domain.auth.client.dto.request.AuthenticationRequest;
+import com.project.qvick.domain.auth.client.dto.request.FirebaseRequest;
 import com.project.qvick.domain.auth.client.dto.request.RefreshTokenRequest;
 import com.project.qvick.domain.auth.client.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.client.dto.request.SignUpRequest;
@@ -54,7 +54,7 @@ public class AuthController {
 
     @PostMapping("/firebase")
     @Operation(summary = "firebase 인증", description = "firebase 인증 서비스")
-    public void firebase(AuthenticationRequest request){
+    public void firebase(FirebaseRequest request){
         authService.firebase(request);
     }
 

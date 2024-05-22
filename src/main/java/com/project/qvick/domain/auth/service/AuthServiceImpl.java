@@ -1,6 +1,6 @@
 package com.project.qvick.domain.auth.service;
 
-import com.project.qvick.domain.auth.client.dto.request.AuthenticationRequest;
+import com.project.qvick.domain.auth.client.dto.request.FirebaseRequest;
 import com.project.qvick.domain.auth.client.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.client.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.client.dto.response.JsonWebTokenResponse;
@@ -80,7 +80,7 @@ public class AuthServiceImpl implements AuthService{
     }
 
     @Override
-    public void firebase(AuthenticationRequest request){
+    public void firebase(FirebaseRequest request){
         User user = userUtil.findUser();
         if(StringUtils.hasText(request.getFcmToken())){
             firebaseNotificationService.saveToken(user.getEmail(), request.getFcmToken());

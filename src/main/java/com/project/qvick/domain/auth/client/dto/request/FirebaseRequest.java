@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Setter
 @Getter
-public class AuthenticationRequest {
+public class FirebaseRequest {
 
     @Schema(description = "FCM Token")
     private String fcmToken;
