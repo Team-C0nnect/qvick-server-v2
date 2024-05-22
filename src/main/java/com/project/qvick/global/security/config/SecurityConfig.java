@@ -43,11 +43,12 @@ public class SecurityConfig {
                                 .requestMatchers("/terms/**").permitAll()
                                 .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers(POST,"/attendance/code").permitAll()
+                                .requestMatchers(DELETE,"/user").permitAll()
 
                                 .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
+                                .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers(GET,"/attendance/check").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers(GET,"/attendance/non-check").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers(GET,"/user-admin/find-all").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers(GET,"/user-admin/search").hasAnyAuthority(ADMIN,TEACHER)
 
@@ -58,15 +59,14 @@ public class SecurityConfig {
                                 .requestMatchers(PATCH,"/user/room").hasAuthority(USER)
 
                                 .requestMatchers("/school/**").hasAuthority(ADMIN)
+                                .requestMatchers(GET,"/user-admin/await-user").hasAuthority(ADMIN)
                                 .requestMatchers(PATCH,"/user-admin/approve").hasAuthority(ADMIN)
                                 .requestMatchers(PATCH,"/user-admin/reject").hasAuthority(ADMIN)
-                                .requestMatchers(GET,"/user-admin/await-user").hasAuthority(ADMIN)
 
                                 .anyRequest().authenticated()
                 )
                 .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtExceptionFilter, JwtAuthenticationFilter.class);
-
         return http.build();
     }
 
@@ -78,15 +78,12 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-
         configuration.addAllowedOriginPattern("*");
         configuration.addAllowedHeader("*");
         configuration.addAllowedMethod("*");
         configuration.setAllowCredentials(true);
-
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
-
         return source;
     }
 
