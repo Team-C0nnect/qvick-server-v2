@@ -45,7 +45,8 @@ public class SecurityConfig {
                                 .requestMatchers(POST,"/attendance/code").permitAll()
 
                                 .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers(GET,"/attendance/list").hasAnyAuthority(ADMIN,TEACHER)
+                                .requestMatchers(GET,"/attendance/check").hasAnyAuthority(ADMIN,TEACHER)
+                                .requestMatchers(GET,"/attendance/non-check").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers(GET,"/user-admin/find-all").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers(GET,"/user-admin/search").hasAnyAuthority(ADMIN,TEACHER)
