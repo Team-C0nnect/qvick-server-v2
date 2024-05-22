@@ -50,10 +50,16 @@ public class CheckController {
         return ResponseEntity.status(HttpStatus.CREATED).body(codes);
     }
 
-    @GetMapping("/list")
-    @Operation(summary = "출석 명단", description = "출석 명단을 표시합니다")
-    public ResponseEntity<List<Check>> findCheck(@ModelAttribute PageRequest pageRequest) {
+    @GetMapping("/check")
+    @Operation(summary = "출석 명단", description = "출석 학생 명단을 표시합니다")
+    public ResponseEntity<List<Check>> findCheckUser(@ModelAttribute PageRequest pageRequest) {
         return ResponseEntity.status(HttpStatus.OK).body(checkQueryService.findCheck(pageRequest));
+    }
+
+    @GetMapping("/non-check")
+    @Operation(summary = "미출석 명단", description = "미출석 학생 명단을 표시합니다")
+    public ResponseEntity<List<String>> findNonCheckUser(@ModelAttribute PageRequest pageRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(checkQueryService.findAllNonCheckUser(pageRequest));
     }
 
     @GetMapping("")
