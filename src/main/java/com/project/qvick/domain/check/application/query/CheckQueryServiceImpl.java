@@ -14,7 +14,6 @@ public class CheckQueryServiceImpl implements CheckQueryService {
 
     private final CheckQueryRepository checkQueryRepository;
 
-
     @Override
     public List<Check> findCheck(PageRequest pageRequest) {
         return checkQueryRepository.findCheck(pageRequest);
