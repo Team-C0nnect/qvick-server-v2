@@ -43,7 +43,6 @@ public class CheckServiceImpl implements CheckService {
         } else {
             throw CheckCodeExpirationException.EXCEPTION;
         }
-        throw CheckCodeError.EXCEPTION;
     }
 
     @Override
