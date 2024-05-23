@@ -11,7 +11,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*") // 필요한 출처를 명시
+                .allowedOriginPatterns("*") // 필요한 출처를 명시
                 .allowedMethods("*")
                 .allowedHeaders("*")
                 .allowCredentials(true)
@@ -24,7 +24,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("*")
+                        .allowedOriginPatterns("*")
                         .allowedMethods("*")
                         .allowedHeaders("*")
                         .allowCredentials(true)
@@ -32,4 +32,5 @@ public class WebMvcConfig implements WebMvcConfigurer {
             }
         };
     }
+
 }
