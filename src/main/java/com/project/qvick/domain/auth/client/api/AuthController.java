@@ -54,7 +54,7 @@ public class AuthController {
 
     @PostMapping("/firebase")
     @Operation(summary = "firebase 인증", description = "firebase 인증 서비스")
-    public void firebase(FirebaseRequest request){
+    public void firebase(@Validated @RequestBody FirebaseRequest request){
         authService.firebase(request);
     }
 

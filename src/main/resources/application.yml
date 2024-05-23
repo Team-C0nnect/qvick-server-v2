@@ -10,7 +10,6 @@ spring:
     password: ${secrets.DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
-
   jpa:
     database: mysql
     database-platform: org.hibernate.dialect.MySQL8Dialect
