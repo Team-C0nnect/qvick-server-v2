@@ -44,25 +44,25 @@ public class SecurityConfig {
                                 .requestMatchers(POST,"/attendance/code").permitAll()
                                 .requestMatchers(DELETE,"/user").permitAll()
 
-                                .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers(GET,"/attendance/check").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers(GET,"/attendance/non-check").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers(GET,"/user-admin/find-all").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers(GET,"/user-admin/search").hasAnyAuthority(ADMIN,TEACHER)
+//                                .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
+//                                .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
+//                                .requestMatchers(GET,"/attendance/check").hasAnyAuthority(ADMIN,TEACHER)
+//                                .requestMatchers(GET,"/attendance/non-check").hasAnyAuthority(ADMIN,TEACHER)
+//                                .requestMatchers(GET,"/user-admin/find-all").hasAnyAuthority(ADMIN,TEACHER)
+//                                .requestMatchers(GET,"/user-admin/search").hasAnyAuthority(ADMIN,TEACHER)
+//
+//                                .requestMatchers(POST,"/attendance").hasAuthority(USER)
+//                                .requestMatchers(POST,"/outing").hasAuthority(USER)
+//                                .requestMatchers(POST,"/sleepover").hasAuthority(USER)
+//                                .requestMatchers(PATCH,"/user/stdId").hasAuthority(USER)
+//                                .requestMatchers(PATCH,"/user/room").hasAuthority(USER)
+//
+//                                .requestMatchers("/school/**").hasAuthority(ADMIN)
+//                                .requestMatchers(GET,"/user-admin/await-user").hasAuthority(ADMIN)
+//                                .requestMatchers(PATCH,"/user-admin/approve").hasAuthority(ADMIN)
+//                                .requestMatchers(PATCH,"/user-admin/reject").hasAuthority(ADMIN)
 
-                                .requestMatchers(POST,"/attendance").hasAuthority(USER)
-                                .requestMatchers(POST,"/outing").hasAuthority(USER)
-                                .requestMatchers(POST,"/sleepover").hasAuthority(USER)
-                                .requestMatchers(PATCH,"/user/stdId").hasAuthority(USER)
-                                .requestMatchers(PATCH,"/user/room").hasAuthority(USER)
-
-                                .requestMatchers("/school/**").hasAuthority(ADMIN)
-                                .requestMatchers(GET,"/user-admin/await-user").hasAuthority(ADMIN)
-                                .requestMatchers(PATCH,"/user-admin/approve").hasAuthority(ADMIN)
-                                .requestMatchers(PATCH,"/user-admin/reject").hasAuthority(ADMIN)
-
-                                .anyRequest().authenticated()
+                                .anyRequest().permitAll()
                 )
                 .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtExceptionFilter, JwtAuthenticationFilter.class);
