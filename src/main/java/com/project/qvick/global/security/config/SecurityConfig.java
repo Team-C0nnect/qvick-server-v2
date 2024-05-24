@@ -62,7 +62,7 @@ public class SecurityConfig {
 //                                .requestMatchers(PATCH,"/user-admin/approve").hasAuthority(ADMIN)
 //                                .requestMatchers(PATCH,"/user-admin/reject").hasAuthority(ADMIN)
 
-                                .anyRequest().permitAll()
+                                .anyRequest().authenticated()
                 )
                 .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(jwtExceptionFilter, JwtAuthenticationFilter.class);
