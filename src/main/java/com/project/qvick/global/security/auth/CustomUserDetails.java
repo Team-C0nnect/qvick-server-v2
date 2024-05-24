@@ -16,24 +16,24 @@ public class CustomUserDetails implements UserDetails {
     private final User user;
     private final Collection<? extends GrantedAuthority> authorities;
 
-//    private CustomUserDetails(final User user, final Collection<? extends GrantedAuthority> authorities) {
-//        this.user = user;
-//        this.authorities = authorities;
-//    }
+    private CustomUserDetails(final User user, final Collection<? extends GrantedAuthority> authorities) {
+        this.user = user;
+        this.authorities = authorities;
+    }
 
     public CustomUserDetails(final User user) {
         this.user = user;
         this.authorities = Collections.singleton(() -> user.getUserRole().getKey());
     }
 
-//    public static CustomUserDetails create(User user) {
-//        return new CustomUserDetails(user, Collections.singleton((GrantedAuthority) user.getUserRole()::getKey));
-//    }
+    public static CustomUserDetails create(User user) {
+        return new CustomUserDetails(user, Collections.singleton((GrantedAuthority) user.getUserRole()::getKey));
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//        return Collections.singleton((GrantedAuthority) user.getUserRole()::getKey);
-        return authorities;
+        return Collections.singleton(() -> user.getUserRole().getKey());
+//        return authorities;
     }
 
     @Override
