@@ -1,19 +1,16 @@
 package com.project.qvick.domain.check.application.service;
 
-import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.domain.check.client.dto.request.CodeRequest;
 import com.project.qvick.domain.check.domain.CheckEntity;
 import com.project.qvick.domain.check.domain.mapper.CheckMapper;
 import com.project.qvick.domain.check.domain.repository.jpa.CheckCodeRepository;
 import com.project.qvick.domain.check.domain.repository.jpa.CheckRepository;
 import com.project.qvick.domain.check.exception.CheckAlreadyExistsException;
-import com.project.qvick.domain.check.exception.CheckCodeError;
 import com.project.qvick.domain.check.exception.CheckCodeExpirationException;
 import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.domain.user.client.dto.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -43,21 +40,6 @@ public class CheckServiceImpl implements CheckService {
         } else {
             throw CheckCodeExpirationException.EXCEPTION;
         }
-    }
-
-    @Override
-    public ResponseEntity<Check> attendanceCheck() {
-        User user = userUtil.findUser();
-        Check check = checkRepository.findByUserId(
-                user.getId())
-                .map(checkMapper::toCheck)
-                .orElseThrow(()->CheckCodeError.EXCEPTION);
-        if (checkRepository.findByUserIdAndCheckedDate(
-                user.getId(),
-                LocalDateTime.now()).isPresent()){
-            return ResponseEntity.ok().body(check);
-        }
-        return ResponseEntity.notFound().build();
     }
 
 }

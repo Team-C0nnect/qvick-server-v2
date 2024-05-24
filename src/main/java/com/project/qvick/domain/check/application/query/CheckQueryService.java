@@ -11,5 +11,7 @@ public interface CheckQueryService {
 
     List<String> findAllNonCheckUser(PageRequest pageRequest);
 
+    Check findCheckById();
+
 }
 

@@ -1,6 +1,7 @@
 package com.project.qvick.domain.check.domain.repository.query;
 
 import com.project.qvick.domain.check.client.dto.Check;
+import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import com.querydsl.core.types.ConstructorExpression;
@@ -9,6 +10,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,6 +22,10 @@ import static com.project.qvick.domain.user.domain.QUserEntity.userEntity;
 public class CheckQueryRepositoryImpl implements CheckQueryRepository {
 
     private final JPAQueryFactory queryFactory;
+
+    LocalDate today = LocalDate.now();
+    LocalDateTime startOfDay = today.atStartOfDay();
+    LocalDateTime endOfDay = today.plusDays(1).atStartOfDay().minusNanos(1);
 
     @Override
     public List<String> findAllNonCheckUser(PageRequest pageRequest) {
@@ -46,6 +52,15 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
                 .limit(pageRequest.getSize())
                 .orderBy(checkEntity.id.desc())
                 .fetch();
+    }
+
+    @Override
+    public Check findCheckById(User user) {
+        return queryFactory
+                .select(checkProjection())
+                .from(checkEntity)
+                .where(checkEntity.userId.eq(user.getId()).and(checkEntity.checkedDate.between(startOfDay,endOfDay)))
+                .fetchOne();
     }
 
     private ConstructorExpression<Check> checkProjection() {
