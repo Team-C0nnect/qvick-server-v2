@@ -54,8 +54,8 @@ public class CheckController {
 
     @GetMapping("")
     @Operation(summary = "출석 확인", description = "출석 상태를 확인합니다")
-    public ResponseEntity<Check> attendanceCheck(){
-        return ResponseEntity.status(HttpStatus.OK).body(checkService.attendanceCheck().getBody());
+    public Check attendanceCheck(){
+        return checkQueryService.findCheckById();
     }
 
     @GetMapping("/check")
