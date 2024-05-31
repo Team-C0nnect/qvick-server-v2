@@ -22,10 +22,4 @@ public class CheckMapper {
                 .build();
     }
 
-    public Check toCheck(CheckEntity entity){
-        return Check.builder()
-                .checkedDate(entity.getCheckedDate())
-                .build();
-    }
-
 }
