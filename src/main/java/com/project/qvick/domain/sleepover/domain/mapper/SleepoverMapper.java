@@ -3,11 +3,12 @@ package com.project.qvick.domain.sleepover.domain.mapper;
 import com.project.qvick.domain.sleepover.domain.SleepoverEntity;
 import com.project.qvick.domain.sleepover.domain.enums.SleepoverStatus;
 import com.project.qvick.domain.sleepover.client.dto.Sleepover;
+import com.project.qvick.global.annotation.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 
-@Component
+@Mapper
 public class SleepoverMapper {
 
     public Sleepover toSleepover(SleepoverEntity entity){

@@ -3,9 +3,10 @@ package com.project.qvick.domain.outing.domain.mapper;
 import com.project.qvick.domain.outing.domain.OutingEntity;
 import com.project.qvick.domain.outing.domain.enums.OutingStatus;
 import com.project.qvick.domain.outing.client.dto.Outing;
+import com.project.qvick.global.annotation.Mapper;
 import org.springframework.stereotype.Component;
 
-@Component
+@Mapper
 public class OutingMapper {
 
     public Outing toOuting(OutingEntity entity){

@@ -1,11 +1,12 @@
 package com.project.qvick.domain.check.domain.mapper;
 
 import com.project.qvick.domain.check.domain.CheckCodeEntity;
+import com.project.qvick.global.annotation.Mapper;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
-@Component
+@Mapper
 public class CheckCodeMapper {
 
     public CheckCodeEntity createCheckCodeEntity(final Long userId) {
