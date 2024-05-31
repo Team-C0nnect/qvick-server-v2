@@ -8,9 +8,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 public class UserPageResponse {
 
     private Long id;
