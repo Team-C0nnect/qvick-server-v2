@@ -19,12 +19,17 @@ public class CheckCodeServiceImpl implements CheckCodeService {
     private final CheckCodeRepository checkCodeRepository;
     private final CheckCodeMapper checkCodeMapper;
 
-    @Override
     @Async
+    @Override
     public CompletableFuture<CheckCodeResponse> generate() {
         checkCodeRepository.updateAllInvalidCheckCode(1L);
-        CheckCodeEntity checkCodeEntity = checkCodeRepository.save(checkCodeMapper.createCheckCodeEntity(1L));
-        return CompletableFuture.completedFuture(CheckCodeResponse.builder().code(checkCodeEntity.getCode()).build());
+        CheckCodeEntity checkCodeEntity = checkCodeRepository
+                .save(checkCodeMapper.createCheckCodeEntity(1L));
+        return CompletableFuture.completedFuture(
+                CheckCodeResponse.builder()
+                .code(checkCodeEntity.getCode())
+                .build()
+        );
     }
 
 }
