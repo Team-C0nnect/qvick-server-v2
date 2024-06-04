@@ -1,5 +1,6 @@
 package com.project.qvick.domain.post.application.service;
 
+import com.project.qvick.domain.post.client.dto.request.PostDeleteRequest;
 import com.project.qvick.domain.post.client.dto.request.PostRegisterRequest;
 import com.project.qvick.domain.post.domain.mapper.PostMapper;
 import com.project.qvick.domain.post.domain.repository.jpa.PostRepository;
@@ -18,6 +19,11 @@ public class PostServiceImpl implements PostService{
     @Override
     public void postRegister(PostRegisterRequest request) {
         postRepository.save(postMapper.toEntity(request,userUtil.findUser().getName()));
+    }
+
+    @Override
+    public void postDelete(PostDeleteRequest request){
+        postRepository.deleteById(request.getPostId());
     }
 
 }

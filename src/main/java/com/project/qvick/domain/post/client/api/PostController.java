@@ -1,10 +1,13 @@
 package com.project.qvick.domain.post.client.api;
 
 import com.project.qvick.domain.post.application.service.PostService;
+import com.project.qvick.domain.post.client.dto.request.PostDeleteRequest;
 import com.project.qvick.domain.post.client.dto.request.PostRegisterRequest;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,9 +24,15 @@ public class PostController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED)
-    @Tag(name = "공지사항 등록", description = "공지사항을 등록합니다.")
+    @Operation(summary = "공시사항 등록", description = "공지사항을 등록합니다")
     public void postRegister(@RequestBody PostRegisterRequest request){
         postService.postRegister(request);
+    }
+
+    @DeleteMapping("")
+    @Operation(summary = "공지사항 삭제", description = "공지사항을 삭제합니다")
+    public void postDelete(@RequestBody PostDeleteRequest request){
+        postService.postDelete(request);
     }
 
 }
