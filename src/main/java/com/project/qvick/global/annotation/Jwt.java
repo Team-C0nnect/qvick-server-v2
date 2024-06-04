@@ -1,6 +1,5 @@
 package com.project.qvick.global.annotation;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.lang.annotation.ElementType;
