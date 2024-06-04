@@ -4,6 +4,7 @@ import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.client.dto.User;
+import com.project.qvick.global.annotation.Jwt;
 import com.project.qvick.global.security.auth.CustomUserDetails;
 import com.project.qvick.global.security.jwt.enums.JwtType;
 import com.project.qvick.global.security.jwt.exception.TokenTypeException;
@@ -18,7 +19,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-@Component
+@Jwt
 @RequiredArgsConstructor
 public class JwtExtract {
 

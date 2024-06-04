@@ -1,6 +1,7 @@
 package com.project.qvick.global.security.jwt;
 
 import com.project.qvick.domain.user.domain.enums.UserRole;
+import com.project.qvick.global.annotation.Jwt;
 import com.project.qvick.global.security.jwt.config.JwtProperties;
 import com.project.qvick.global.security.jwt.enums.JwtType;
 import io.jsonwebtoken.Claims;
@@ -11,11 +12,10 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.UnsupportedJwtException;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
 import java.util.Date;
 
-@Component
+@Jwt
 @RequiredArgsConstructor
 public class JwtProvider {
 

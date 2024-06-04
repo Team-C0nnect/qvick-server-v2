@@ -1,6 +1,7 @@
 package com.project.qvick.global.security.jwt.filter;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.project.qvick.global.annotation.Jwt;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,7 +14,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+@Jwt
 public class JwtExceptionFilter extends OncePerRequestFilter {
 
     @Override
