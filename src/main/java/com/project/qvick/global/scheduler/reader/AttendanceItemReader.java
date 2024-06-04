@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.scheduler.reader;
+package com.project.qvick.global.scheduler.reader;
 
 import com.project.qvick.domain.check.application.query.CheckQueryService;
 import com.project.qvick.global.common.dto.request.PageRequest;

@@ -1,9 +1,9 @@
-package com.project.qvick.global.common.scheduler.config;
+package com.project.qvick.global.scheduler.config;
 
 import com.project.qvick.domain.check.application.query.CheckQueryService;
-import com.project.qvick.global.common.scheduler.processor.AttendanceItemProcessor;
-import com.project.qvick.global.common.scheduler.reader.AttendanceItemReader;
-import com.project.qvick.global.common.scheduler.writer.AttendanceItemWriter;
+import com.project.qvick.global.scheduler.processor.AttendanceItemProcessor;
+import com.project.qvick.global.scheduler.reader.AttendanceItemReader;
+import com.project.qvick.global.scheduler.writer.AttendanceItemWriter;
 import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
