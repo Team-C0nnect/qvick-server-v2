@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class SearchRequest extends PageRequest {
+public class UserSearchRequest extends PageRequest {
 
     private String name;
 

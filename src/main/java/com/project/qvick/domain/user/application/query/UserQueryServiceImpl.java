@@ -1,9 +1,8 @@
 package com.project.qvick.domain.user.application.query;
 
 import com.project.qvick.domain.user.client.dto.User;
-import com.project.qvick.domain.user.client.dto.request.SearchRequest;
+import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
 import com.project.qvick.domain.user.domain.repository.query.UserQueryRepository;
-import com.project.qvick.domain.user.client.dto.response.UserPageResponse;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,7 +23,7 @@ public class UserQueryServiceImpl implements UserQueryService{
     }
 
     @Override
-    public List<User> userSearch(SearchRequest searchRequest){
+    public List<User> userSearch(UserSearchRequest searchRequest){
         return userQueryRepository.userSearch(searchRequest);
     }
 

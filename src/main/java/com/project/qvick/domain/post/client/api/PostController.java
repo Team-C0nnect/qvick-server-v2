@@ -5,6 +5,7 @@ import com.project.qvick.domain.post.application.service.PostService;
 import com.project.qvick.domain.post.client.dto.Post;
 import com.project.qvick.domain.post.client.dto.request.PostDeleteRequest;
 import com.project.qvick.domain.post.client.dto.request.PostRegisterRequest;
+import com.project.qvick.domain.post.client.dto.request.PostSearchRequest;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -49,6 +50,12 @@ public class PostController {
     @Operation(summary = "공지사항 목록", description = "등록된 모든 공지사항 목록을 표시합니다")
     public ResponseEntity<List<Post>> postList(@ModelAttribute PageRequest pageRequest){
         return ResponseEntity.ok().body(postQueryService.postList(pageRequest));
+    }
+
+    @GetMapping("/search")
+    @Operation(summary = "공지사항 검색", description = "제목을 기준으로 검색된 공지사항 목록을 표시합니다")
+    public ResponseEntity<List<Post>> postSearch(@ModelAttribute PostSearchRequest postSearchRequest){
+        return ResponseEntity.ok().body(postQueryService.postSearch(postSearchRequest));
     }
 
     @DeleteMapping("")

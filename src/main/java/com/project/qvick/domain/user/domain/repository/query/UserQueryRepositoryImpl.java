@@ -1,8 +1,9 @@
 package com.project.qvick.domain.user.domain.repository.query;
 
 import com.project.qvick.domain.user.client.dto.User;
-import com.project.qvick.domain.user.client.dto.request.SearchRequest;
+import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
 import com.project.qvick.global.common.dto.request.PageRequest;
+import com.project.qvick.global.exception.BadRequestException;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -32,7 +33,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
     }
 
     @Override
-    public List<User>userSearch(SearchRequest request){
+    public List<User>userSearch(UserSearchRequest request){
         return jpaQueryFactory
                 .select(userListConstructorExpression())
                 .from(userEntity)
@@ -57,7 +58,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
 
     private BooleanExpression eqName(String name) {
         if(name.isEmpty()){
-            return null;
+            throw BadRequestException.EXCEPTION;
         }
         return userEntity.name.eq(name);
     }

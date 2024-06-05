@@ -2,7 +2,7 @@ package com.project.qvick.domain.user.client.api;
 
 import com.project.qvick.domain.user.application.query.UserQueryService;
 import com.project.qvick.domain.user.client.dto.User;
-import com.project.qvick.domain.user.client.dto.request.SearchRequest;
+import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -31,7 +31,7 @@ public class UserAdminController {
 
     @GetMapping("/search")
     @Operation(summary = "유저 검색", description = "특정 유저를 이름을 기준으로 검색합니다")
-    public ResponseEntity<List<User>>userSearch(@ModelAttribute SearchRequest searchRequest){
+    public ResponseEntity<List<User>>userSearch(@ModelAttribute UserSearchRequest searchRequest){
         return ResponseEntity.ok(userQueryService.userSearch(searchRequest));
     }
 
