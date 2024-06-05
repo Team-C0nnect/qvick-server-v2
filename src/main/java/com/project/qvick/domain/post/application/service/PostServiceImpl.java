@@ -1,12 +1,12 @@
 package com.project.qvick.domain.post.application.service;
 
+import com.project.qvick.domain.post.application.util.PostUtil;
 import com.project.qvick.domain.post.client.dto.Post;
 import com.project.qvick.domain.post.client.dto.request.PostDeleteRequest;
+import com.project.qvick.domain.post.client.dto.request.PostEditRequest;
 import com.project.qvick.domain.post.client.dto.request.PostRegisterRequest;
 import com.project.qvick.domain.post.domain.mapper.PostMapper;
 import com.project.qvick.domain.post.domain.repository.jpa.PostRepository;
-import com.project.qvick.domain.post.exception.PostNotFoundException;
-import com.project.qvick.domain.user.application.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -16,19 +16,24 @@ public class PostServiceImpl implements PostService{
 
     private final PostRepository postRepository;
     private final PostMapper postMapper;
-    private final UserUtil userUtil;
+    private final PostUtil postUtil;
 
     @Override
     public void postRegister(PostRegisterRequest request) {
-        postRepository.save(postMapper.toEntity(request,userUtil.findUser().getName()));
+        postUtil.savePost(request);
     }
 
     @Override
     public Post postFind(Long postId) {
-        return postRepository
-                .findById(postId)
-                .map(postMapper::toPost)
-                .orElseThrow(()-> PostNotFoundException.EXCEPTION);
+        return postUtil.findPost(postId);
+    }
+
+    @Override
+    public void postEdit(PostEditRequest request){
+        Post post = postUtil.findPost(request.getPostId());
+        post.setTitle(request.getTitle());
+        post.setContent(request.getContent());
+        postRepository.save(postMapper.toEntity(post));
     }
 
     @Override
