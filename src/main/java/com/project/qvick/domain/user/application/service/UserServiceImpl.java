@@ -36,4 +36,9 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userMapper.toEdit(user));
     }
 
+    @Override
+    public User findUser(){
+        return userUtil.findUser();
+    }
+
 }

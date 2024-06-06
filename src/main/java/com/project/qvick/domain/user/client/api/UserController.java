@@ -25,12 +25,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
-    private final UserUtil userUtil;
 
     @GetMapping("")
     @Operation(summary = "유저 조회", description = "현재 로그인한 유저 정보를 조회합니다")
     public User findUser(){
-        return userUtil.findUser();
+        return userService.findUser();
     }
 
     @PatchMapping("/stdId")
