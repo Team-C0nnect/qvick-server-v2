@@ -51,9 +51,10 @@ public class SecurityConfig {
                                 .requestMatchers(GET,"/attendance/non-check").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers(GET,"/user-admin/find-all").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers(GET,"/user-admin/search").hasAnyAuthority(ADMIN,TEACHER)
-                                .requestMatchers(POST,"/post").hasAnyAuthority(ADMIN, TEACHER)
-                                .requestMatchers(PATCH,"/post").hasAnyAuthority(ADMIN, TEACHER)
-                                .requestMatchers(DELETE,"/post").hasAnyAuthority(ADMIN, TEACHER)
+
+                                .requestMatchers(POST,"/post").hasAuthority(TEACHER)
+                                .requestMatchers(PATCH,"/post").hasAuthority(TEACHER)
+                                .requestMatchers(DELETE,"/post").hasAuthority(TEACHER)
 
                                 .requestMatchers(POST,"/attendance").hasAuthority(USER)
                                 .requestMatchers(POST,"/outing").hasAuthority(USER)
