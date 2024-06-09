@@ -40,6 +40,13 @@ public class AuthController {
         authService.adminSignUp(signUpRequest);
     }
 
+    @PostMapping("/sign-up/teacher")
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "선생님 회원가입", description = "선생님 회원가입")
+    public void teacherSignUp(@Validated @RequestBody SignUpRequest signUpRequest){
+        authService.teacherSignUp(signUpRequest);
+    }
+
     @PostMapping("/sign-in")
     @Operation(summary = "로그인", description = "로그인")
     public JsonWebTokenResponse signIn(@Validated @RequestBody SignInRequest signInRequest){

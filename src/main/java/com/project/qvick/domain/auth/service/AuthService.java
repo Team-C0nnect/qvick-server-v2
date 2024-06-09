@@ -13,6 +13,8 @@ public interface AuthService {
 
     void adminSignUp(SignUpRequest request);
 
+    void teacherSignUp(SignUpRequest request);
+
     JsonWebTokenResponse signIn(SignInRequest request);
 
     RefreshTokenResponse refresh(String token);

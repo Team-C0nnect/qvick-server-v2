@@ -49,7 +49,19 @@ public class AuthServiceImpl implements AuthService {
         userUtil.userExistCheck(request.getEmail());
         userRepository.save(userMapper.toCreateAdmin(
                 request,
-                encoder.encode(request.getPassword())));
+                encoder.encode(request.getPassword())
+            )
+        );
+    }
+
+    @Override
+    public void teacherSignUp(SignUpRequest request) {
+        userUtil.userExistCheck(request.getEmail());
+        userRepository.save(userMapper.toCreateTeacher(
+                request,
+                encoder.encode(request.getPassword())
+            )
+        );
     }
 
     @Override

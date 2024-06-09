@@ -43,6 +43,17 @@ public class UserMapper {
                 .build();
     }
 
+    public UserEntity toCreateTeacher(SignUpRequest signUpRequest, String password){
+        return UserEntity.builder()
+                .name(signUpRequest.getName())
+                .email(signUpRequest.getEmail())
+                .password(password)
+                .stdId(signUpRequest.getStdId())
+                .room(signUpRequest.getRoom())
+                .userRole(UserRole.TEACHER)
+                .build();
+    }
+
     public UserEntity toEdit(User user){
         return UserEntity.builder()
                 .stdId(user.getStdId())
