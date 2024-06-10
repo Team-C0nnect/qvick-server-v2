@@ -34,7 +34,7 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder encoder;
     private final JwtProvider jwtProvider;
     private final JwtExtract jwtExtract;
-    private final FirebaseNotificationService firebaseNotificationService;
+//    private final FirebaseNotificationService firebaseNotificationService;
 
     @Override
     public void signUp(SignUpRequest request) {
@@ -80,12 +80,12 @@ public class AuthServiceImpl implements AuthService {
                         (UserRole) claims.getHeader().get("authority"))).build();
     }
 
-    @Override
-    public void firebase(FirebaseRequest request){
-        User user = userUtil.findUser();
-        if(StringUtils.hasText(request.getFcmToken())){
-            firebaseNotificationService.saveToken(user.getEmail(), request.getFcmToken());
-        }
-    }
+//    @Override
+//    public void firebase(FirebaseRequest request){
+//        User user = userUtil.findUser();
+//        if(StringUtils.hasText(request.getFcmToken())){
+//            firebaseNotificationService.saveToken(user.getEmail(), request.getFcmToken());
+//        }
+//    }
 
 }

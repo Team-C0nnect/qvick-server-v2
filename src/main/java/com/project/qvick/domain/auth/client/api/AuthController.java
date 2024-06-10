@@ -59,10 +59,10 @@ public class AuthController {
         return authService.refresh(request.getRefreshToken());
     }
 
-    @PostMapping("/firebase")
-    @Operation(summary = "firebase 인증", description = "firebase 인증 서비스")
-    public void firebase(@Validated @RequestBody FirebaseRequest request){
-        authService.firebase(request);
-    }
+//    @PostMapping("/firebase")
+//    @Operation(summary = "firebase 인증", description = "firebase 인증 서비스")
+//    public void firebase(@Validated @RequestBody FirebaseRequest request){
+//        authService.firebase(request);
+//    }
 
 }
