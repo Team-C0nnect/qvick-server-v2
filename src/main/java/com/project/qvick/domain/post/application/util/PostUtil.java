@@ -1,16 +1,15 @@
 package com.project.qvick.domain.post.application.util;
 
 import com.project.qvick.domain.post.client.dto.Post;
-import com.project.qvick.domain.post.client.dto.request.PostEditRequest;
 import com.project.qvick.domain.post.client.dto.request.PostRegisterRequest;
 import com.project.qvick.domain.post.domain.mapper.PostMapper;
 import com.project.qvick.domain.post.domain.repository.jpa.PostRepository;
 import com.project.qvick.domain.post.exception.PostNotFoundException;
 import com.project.qvick.domain.user.application.util.UserUtil;
+import com.project.qvick.global.annotation.Util;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Component;
 
-@Component
+@Util
 @RequiredArgsConstructor
 public class PostUtil {
 
