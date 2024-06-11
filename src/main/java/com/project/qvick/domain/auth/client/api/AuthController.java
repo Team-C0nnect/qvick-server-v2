@@ -54,7 +54,7 @@ public class AuthController {
     }
 
     @PostMapping("/refresh")
-    @Operation(summary = "토큰 재발급", description = "acess 토큰을 재발급 합니다")
+    @Operation(summary = "토큰 재발급", description = "access 토큰을 재발급 합니다")
     public RefreshTokenResponse refresh(RefreshTokenRequest request){
         return authService.refresh(request.getRefreshToken());
     }
