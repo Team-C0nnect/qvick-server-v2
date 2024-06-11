@@ -35,7 +35,7 @@ public class UserMapper {
                 .room(signUpRequest.getRoom())
                 .userRole(UserRole.USER)
                 .isChecked(false)
-                .checkedDate(null)
+                .checkedDate(LocalDateTime.now())
                 .build();
     }
 
