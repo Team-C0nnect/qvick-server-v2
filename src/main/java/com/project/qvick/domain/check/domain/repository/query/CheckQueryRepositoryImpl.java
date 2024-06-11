@@ -42,8 +42,7 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
                 .on(checkEntity.userId
                         .eq(userEntity.id)
                         .and(checkEntity.checkedDate.between(startOfDay, endOfDay)))
-                .where(checkEntity.id.isNull(),
-                        userEntity.userRole.eq(UserRole.USER))
+                .where(userEntity.userRole.eq(UserRole.USER))
                 .offset((pageRequest.getPage() - 1) * pageRequest.getSize())
                 .limit(pageRequest.getSize())
                 .fetch();
