@@ -80,7 +80,9 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
         return queryFactory
                 .select(checkProjection())
                 .from(checkEntity)
-                .where(checkEntity.userId.eq(user.getId()).and(checkEntity.checkedDate.between(startOfDay,endOfDay)))
+                .where(checkEntity.userId
+                        .eq(user.getId())
+                        .and(checkEntity.checkedDate.between(startOfDay,endOfDay)))
                 .fetchOne();
     }
 

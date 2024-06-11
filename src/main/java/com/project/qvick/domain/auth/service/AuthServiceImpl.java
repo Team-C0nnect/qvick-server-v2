@@ -77,12 +77,14 @@ public class AuthServiceImpl implements AuthService {
                         (UserRole) claims.getHeader().get("authority"))).build();
     }
 
-//    @Override
-//    public void firebase(FirebaseRequest request){
-//        User user = userUtil.findUser();
-//        if(StringUtils.hasText(request.getFcmToken())){
-//            firebaseNotificationService.saveToken(user.getEmail(), request.getFcmToken());
-//        }
-//    }
+/*
+    @Override
+    public void firebase(FirebaseRequest request){
+        User user = userUtil.findUser();
+        if(StringUtils.hasText(request.getFcmToken())){
+            firebaseNotificationService.saveToken(user.getEmail(), request.getFcmToken());
+        }
+    }
+*/
 
 }
