@@ -1,0 +1,61 @@
+name: CI/CD using github actions & docker
+
+on:
+  push:
+    branches: [ "main" ] # 해당 branch에 푸쉬 발생 시 업데이트
+
+permissions:
+  contents: read
+
+jobs:
+  CI-CD:
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v3
+    - name: Set up JDK 17
+      uses: actions/setup-java@v2
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: set yml file
+      uses: microsoft/variable-substitution@v1
+      with:
+        files: src/main/resources/application.yml
+      env:
+        spring.datasource.url: ${{ secrets.RDS_PATH }}
+        spring.datasource.username: ${{ secrets.DB_USERNAME }}
+        spring.datasource.password: ${{ secrets.DB_PASSWORD }}
+        application.jwt.secretKey: ${{ secrets.JWT_SECRET_KEY }}
+
+    - name: firebase.json set
+      run: |
+        echo "${{ secrets.FIREBASE_JSON }}" | base64 --decode > src/main/resources/firebase-sdk.json
+
+    - name: set chmod
+      run: chmod +x ./gradlew
+
+    - name: Build with Gradle
+      run: ./gradlew bootJar
+
+    - name: Docker build & push to prod
+      run: |
+        docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+        docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2 .
+        docker push ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
+
+    - name: Deploy to prod
+      uses: appleboy/ssh-action@master
+      id: deploy-prod
+      with:
+        host: ${{ secrets.HOST_PROD }} # EC2 퍼블릭 IPv4 DNS
+        username: ubuntu
+        key: ${{ secrets.PRIVATE_KEY }} # EC2 private key
+        envs: GITHUB_SHA
+        script: |
+          docker stop qvick
+          docker rm qvick
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
+          docker pull ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
+          docker run -d -p 8080:8080 --name qvick ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
