@@ -1,6 +1,5 @@
 package com.project.qvick.domain.auth.client.api;
 
-import com.project.qvick.domain.auth.client.dto.request.FirebaseRequest;
 import com.project.qvick.domain.auth.client.dto.request.RefreshTokenRequest;
 import com.project.qvick.domain.auth.client.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.client.dto.request.SignUpRequest;
