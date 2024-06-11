@@ -44,6 +44,7 @@ public class SecurityConfig {
                                 .requestMatchers("/auth/**").permitAll()
                                 .requestMatchers(POST,"/attendance/code").permitAll()
                                 .requestMatchers(DELETE,"/user").permitAll()
+                                .requestMatchers(GET,"/attendance/non-check").permitAll()
 
                                 .requestMatchers("/outing-admin/**").hasAnyAuthority(ADMIN,TEACHER)
                                 .requestMatchers("/sleepover-admin/**").hasAnyAuthority(ADMIN,TEACHER)
