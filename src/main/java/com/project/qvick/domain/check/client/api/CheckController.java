@@ -66,8 +66,8 @@ public class CheckController {
 
     @GetMapping("/non-check")
     @Operation(summary = "미출석 명단", description = "미출석 학생 명단을 표시합니다")
-    public ResponseEntity<List<String>> findNonCheckUser(@ModelAttribute PageRequest pageRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(checkQueryService.findAllNonCheckUser(pageRequest));
+    public ResponseEntity<List<Check>> findNonCheckUser(@ModelAttribute PageRequest pageRequest) {
+        return ResponseEntity.status(HttpStatus.OK).body(checkQueryService.findNonCheckUser(pageRequest));
     }
 
 }

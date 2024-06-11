@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 import static com.project.qvick.domain.check.domain.QCheckEntity.checkEntity;
@@ -23,21 +24,25 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
 
     private final JPAQueryFactory queryFactory;
 
+    // 현재 날짜 구하기
     LocalDate today = LocalDate.now();
+
+    // 오늘의 시작 시간 (00:00:00)
     LocalDateTime startOfDay = today.atStartOfDay();
-    LocalDateTime endOfDay = today.plusDays(1).atStartOfDay().minusNanos(1);
+
+    // 오늘의 끝 시간 (23:59:59.999999999)
+    LocalDateTime endOfDay = today.atTime(LocalTime.MAX);
 
     @Override
     public List<String> findAllNonCheckUser(PageRequest pageRequest) {
         return queryFactory
-                .select(userEntity.email)
+                .select(checkEntity.email)
                 .from(userEntity)
                 .leftJoin(checkEntity)
                 .on(checkEntity.userId
                         .eq(userEntity.id)
-                        .and(checkEntity.checkedDate.eq(LocalDateTime.now())))
-                .where(checkEntity.id.isNull(),
-                        userEntity.userRole.eq(UserRole.USER))
+                        .and(checkEntity.checkedDate.between(startOfDay, endOfDay)))
+                .where(userEntity.userRole.eq(UserRole.USER))
                 .offset((pageRequest.getPage() - 1) * pageRequest.getSize())
                 .limit(pageRequest.getSize())
                 .fetch();
@@ -51,6 +56,22 @@ public class CheckQueryRepositoryImpl implements CheckQueryRepository {
                 .offset((pageRequest.getPage() - 1) * pageRequest.getSize())
                 .limit(pageRequest.getSize())
                 .orderBy(checkEntity.id.desc())
+                .fetch();
+    }
+
+    @Override
+    public List<Check> findNonCheckUser(PageRequest pageRequest) {
+        return queryFactory
+                .select(checkProjection())
+                .from(userEntity)
+                .leftJoin(checkEntity)
+                .on(checkEntity.userId
+                        .eq(userEntity.id)
+                        .and(checkEntity.checkedDate.between(startOfDay, endOfDay))
+                )
+                .where(userEntity.userRole.eq(UserRole.USER))
+                .offset((pageRequest.getPage() - 1) * pageRequest.getSize())
+                .limit(pageRequest.getSize())
                 .fetch();
     }
 

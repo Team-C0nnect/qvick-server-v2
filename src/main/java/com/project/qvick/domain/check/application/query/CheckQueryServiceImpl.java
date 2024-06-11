@@ -26,6 +26,11 @@ public class CheckQueryServiceImpl implements CheckQueryService {
     }
 
     @Override
+    public List<Check> findNonCheckUser(PageRequest request) {
+        return checkQueryRepository.findNonCheckUser(request);
+    }
+
+    @Override
     public Check findCheckById() {
         return checkQueryRepository.findCheckById(userUtil.findUser());
     }

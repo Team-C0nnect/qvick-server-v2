@@ -1,6 +1,7 @@
 package com.project.qvick.global.scheduler.config;
 
 import com.project.qvick.domain.check.application.query.CheckQueryService;
+import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.global.scheduler.processor.AttendanceItemProcessor;
 import com.project.qvick.global.scheduler.reader.AttendanceItemReader;
 import com.project.qvick.global.scheduler.writer.AttendanceItemWriter;

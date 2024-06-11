@@ -1,6 +1,7 @@
 package com.project.qvick.global.scheduler.reader;
 
 import com.project.qvick.domain.check.application.query.CheckQueryService;
+import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
