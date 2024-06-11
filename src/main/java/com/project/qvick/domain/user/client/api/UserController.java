@@ -13,6 +13,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -50,6 +51,12 @@ public class UserController {
     @Operation(summary = "회원탈퇴", description = "회원 탈퇴를 진행합니다")
     public void deleteUser(){
         userService.deleteUser();
+    }
+
+    @PostMapping("/attendance")
+    @Operation(summary = "출석체크", description = "출석 체크를 진행합니다.")
+    public void check(){
+        userService.check();
     }
 
 }

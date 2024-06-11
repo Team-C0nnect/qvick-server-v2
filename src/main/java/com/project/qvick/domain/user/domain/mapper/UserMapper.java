@@ -7,6 +7,8 @@ import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.global.annotation.Mapper;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Mapper
 public class UserMapper {
 
@@ -14,10 +16,13 @@ public class UserMapper {
         return User.builder()
                 .id(entity.getId())
                 .name(entity.getName())
+                .password(entity.getPassword())
                 .userRole(entity.getUserRole())
                 .email(entity.getEmail())
                 .stdId(entity.getStdId())
                 .room(entity.getRoom())
+                .isChecked(entity.isChecked())
+                .checkedDate(entity.getCheckedDate())
                 .build();
     }
 
@@ -29,6 +34,8 @@ public class UserMapper {
                 .stdId(signUpRequest.getStdId())
                 .room(signUpRequest.getRoom())
                 .userRole(UserRole.USER)
+                .isChecked(false)
+                .checkedDate(null)
                 .build();
     }
 
@@ -40,6 +47,8 @@ public class UserMapper {
                 .stdId(signUpRequest.getStdId())
                 .room(signUpRequest.getRoom())
                 .userRole(UserRole.ADMIN)
+                .isChecked(true)
+                .checkedDate(null)
                 .build();
     }
 
@@ -51,14 +60,22 @@ public class UserMapper {
                 .stdId(signUpRequest.getStdId())
                 .room(signUpRequest.getRoom())
                 .userRole(UserRole.TEACHER)
+                .isChecked(true)
+                .checkedDate(null)
                 .build();
     }
 
     public UserEntity toEdit(User user){
         return UserEntity.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .password(user.getPassword())
                 .stdId(user.getStdId())
                 .room(user.getRoom())
                 .userRole(UserRole.USER)
+                .isChecked(user.isChecked())
+                .checkedDate(user.getCheckedDate())
                 .build();
     }
 

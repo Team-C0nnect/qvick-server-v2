@@ -14,4 +14,6 @@ public interface UserService {
     void editRoom(RoomRequest request);
 
     User findUser();
+
+    void check();
 }

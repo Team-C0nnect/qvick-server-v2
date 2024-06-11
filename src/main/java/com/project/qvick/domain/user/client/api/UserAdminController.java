@@ -41,4 +41,16 @@ public class UserAdminController {
         return ResponseEntity.ok(userQueryService.userSearch(searchRequest));
     }
 
+    @GetMapping("/check")
+    @Operation(summary = "출석 체크 조회", description = "출석 확인자 명단을 조회합니다.")
+    public ResponseEntity<List<User>>checkList(@ModelAttribute PageRequest pageRequest){
+        return ResponseEntity.ok(userQueryService.checkUsers(pageRequest));
+    }
+
+    @GetMapping("/non-check")
+    @Operation(summary = "출석 체크 조회", description = "출석 확인자 명단을 조회합니다.")
+    public ResponseEntity<List<User>>nonCheckList(@ModelAttribute PageRequest pageRequest){
+        return ResponseEntity.ok(userQueryService.nonCheckUsers(pageRequest));
+    }
+
 }

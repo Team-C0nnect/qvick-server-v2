@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @Builder
@@ -21,5 +23,7 @@ public class User {
     private String stdId;
     private String room;
     private UserRole userRole;
+    private boolean isChecked;
+    private LocalDateTime checkedDate;
 
 }

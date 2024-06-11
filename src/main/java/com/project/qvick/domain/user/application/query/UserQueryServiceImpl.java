@@ -32,4 +32,14 @@ public class UserQueryServiceImpl implements UserQueryService{
         return userQueryRepository.studentList(pageRequest);
     }
 
+    @Override
+    public List<User> checkUsers(PageRequest pageRequest) {
+        return userQueryRepository.checkUsers(pageRequest);
+    }
+
+    @Override
+    public List<User> nonCheckUsers(PageRequest pageRequest) {
+        return userQueryRepository.nonCheckUsers(pageRequest);
+    }
+
 }

@@ -57,6 +57,30 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
                 .fetch();
     }
 
+    @Override
+    public List<User> checkUsers(PageRequest request) {
+        return jpaQueryFactory
+                .select(userListConstructorExpression())
+                .from(userEntity)
+                .where(userEntity.isChecked.eq(true))
+                .offset((request.getPage() - 1) * request.getSize())
+                .limit(request.getSize())
+                .orderBy(userEntity.id.asc())
+                .fetch();
+    }
+
+    @Override
+    public List<User> nonCheckUsers(PageRequest request) {
+        return jpaQueryFactory
+                .select(userListConstructorExpression())
+                .from(userEntity)
+                .where(userEntity.isChecked.eq(false))
+                .offset((request.getPage() - 1) * request.getSize())
+                .limit(request.getSize())
+                .orderBy(userEntity.id.asc())
+                .fetch();
+    }
+
     private ConstructorExpression<User> userListConstructorExpression(){
         return Projections.constructor(User.class,
                 userEntity.id,
@@ -65,7 +89,9 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
                 userEntity.password,
                 userEntity.stdId,
                 userEntity.room,
-                userEntity.userRole
+                userEntity.userRole,
+                userEntity.isChecked,
+                userEntity.checkedDate
         );
     }
 
