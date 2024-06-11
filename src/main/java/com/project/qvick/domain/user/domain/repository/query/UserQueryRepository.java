@@ -13,4 +13,5 @@ public interface UserQueryRepository {
 
     List<User>userSearch(UserSearchRequest request);
 
+    List<User>studentList(PageRequest request);
 }

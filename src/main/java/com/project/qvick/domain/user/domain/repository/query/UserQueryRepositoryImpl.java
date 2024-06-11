@@ -2,6 +2,7 @@ package com.project.qvick.domain.user.domain.repository.query;
 
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
+import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import com.project.qvick.global.exception.BadRequestException;
 import com.querydsl.core.types.ConstructorExpression;
@@ -38,6 +39,18 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
                 .select(userListConstructorExpression())
                 .from(userEntity)
                 .where(eqName(request.getName()))
+                .offset((request.getPage() - 1) * request.getSize())
+                .limit(request.getSize())
+                .orderBy(userEntity.id.asc())
+                .fetch();
+    }
+
+    @Override
+    public List<User>studentList(PageRequest request){
+        return jpaQueryFactory
+                .select(userListConstructorExpression())
+                .from(userEntity)
+                .where(userEntity.userRole.eq(UserRole.USER))
                 .offset((request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
                 .orderBy(userEntity.id.asc())

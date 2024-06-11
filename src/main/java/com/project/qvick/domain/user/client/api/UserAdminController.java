@@ -29,6 +29,12 @@ public class UserAdminController {
         return ResponseEntity.ok(userQueryService.userList(pageRequest));
     }
 
+    @GetMapping("/student-all")
+    @Operation(summary = "전체 학생 조회", description = "전체 학생을 조회합니다")
+    public ResponseEntity<List<User>>studentList(@ModelAttribute PageRequest pageRequest){
+        return ResponseEntity.ok(userQueryService.studentList(pageRequest));
+    }
+
     @GetMapping("/search")
     @Operation(summary = "유저 검색", description = "특정 유저를 이름을 기준으로 검색합니다")
     public ResponseEntity<List<User>>userSearch(@ModelAttribute UserSearchRequest searchRequest){

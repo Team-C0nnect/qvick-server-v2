@@ -11,4 +11,6 @@ public interface UserQueryService {
     List<User> userList(PageRequest pageRequest);
 
     List<User> userSearch(UserSearchRequest searchRequest);
+
+    List<User> studentList(PageRequest pageRequest);
 }

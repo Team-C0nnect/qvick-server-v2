@@ -27,4 +27,9 @@ public class UserQueryServiceImpl implements UserQueryService{
         return userQueryRepository.userSearch(searchRequest);
     }
 
+    @Override
+    public List<User> studentList(PageRequest pageRequest){
+        return userQueryRepository.studentList(pageRequest);
+    }
+
 }
