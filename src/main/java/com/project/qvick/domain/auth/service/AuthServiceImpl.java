@@ -1,6 +1,5 @@
 package com.project.qvick.domain.auth.service;
 
-import com.project.qvick.domain.auth.client.dto.request.FirebaseRequest;
 import com.project.qvick.domain.auth.client.dto.request.SignInRequest;
 import com.project.qvick.domain.auth.client.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.client.dto.response.JsonWebTokenResponse;
@@ -12,7 +11,6 @@ import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.PasswordWrongException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
-import com.project.qvick.global.infra.firebase.service.FirebaseNotificationService;
 import com.project.qvick.global.security.jwt.JwtExtract;
 import com.project.qvick.global.security.jwt.JwtProvider;
 import com.project.qvick.global.security.jwt.enums.JwtType;
@@ -22,7 +20,6 @@ import io.jsonwebtoken.Jws;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 @Service
 @RequiredArgsConstructor
