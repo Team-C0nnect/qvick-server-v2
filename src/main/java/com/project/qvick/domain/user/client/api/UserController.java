@@ -1,5 +1,6 @@
 package com.project.qvick.domain.user.client.api;
 
+import com.project.qvick.domain.check.client.dto.request.CodeRequest;
 import com.project.qvick.domain.user.application.service.UserService;
 import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.domain.user.client.dto.User;
@@ -9,6 +10,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,8 +57,14 @@ public class UserController {
 
     @PostMapping("/attendance")
     @Operation(summary = "출석체크", description = "출석 체크를 진행합니다.")
-    public void check(){
-        userService.check();
+    public void check(@RequestBody CodeRequest request){
+        userService.check(request);
+    }
+
+    @GetMapping("/status")
+    @Operation(summary = "상태 확인", description = "출석 상태를 확인합니다.")
+    public ResponseEntity<HttpStatus> isChecked() {
+        return ResponseEntity.status(userService.isChecked() ? HttpStatus.OK : HttpStatus.BAD_REQUEST).body(userService.isChecked() ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 
 }

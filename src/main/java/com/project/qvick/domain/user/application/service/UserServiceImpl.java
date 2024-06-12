@@ -1,6 +1,9 @@
 package com.project.qvick.domain.user.application.service;
 
+import com.project.qvick.domain.check.client.dto.request.CodeRequest;
+import com.project.qvick.domain.check.domain.repository.jpa.CheckCodeRepository;
 import com.project.qvick.domain.check.exception.CheckAlreadyExistsException;
+import com.project.qvick.domain.check.exception.CheckCodeError;
 import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.RoomRequest;
@@ -21,6 +24,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final UserUtil userUtil;
+    private final CheckCodeRepository checkCodeRepository;
 
     @Override
     public void editUserStdId(StdIdEditRequest request) {
@@ -47,16 +51,27 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void check() {
+    public void check(CodeRequest request) {
         User user = userUtil.findUser();
         if(user.isChecked()){
             throw CheckAlreadyExistsException.EXCEPTION;
         }
-        else {
-            user.setChecked(true);
-            user.setCheckedDate(LocalDateTime.now());
-            userRepository.save(userMapper.toEdit(user));
+        else{
+            if (checkCodeRepository.existsByCodeAndValid(request.getCode(), true)) {
+                user.setChecked(true);
+                userRepository.save(userMapper.toEdit(user));
+            } else {
+                throw CheckCodeError.EXCEPTION;
+            }
         }
+    }
+
+    public boolean isChecked(){
+        User user = userUtil.findUser();
+        if(user.isChecked()){
+            return true;
+        }
+        return false;
     }
 
 }
