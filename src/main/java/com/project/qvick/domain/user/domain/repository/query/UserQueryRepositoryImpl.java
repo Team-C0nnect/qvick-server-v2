@@ -70,6 +70,13 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
     }
 
     @Override
+    public void updateChecked(){
+            jpaQueryFactory.update(userEntity)
+                    .set(userEntity.isChecked, false)
+                    .execute();
+    }
+
+    @Override
     public List<User> nonCheckUsers(PageRequest request) {
         return jpaQueryFactory
                 .select(userListConstructorExpression())

@@ -5,6 +5,7 @@ import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
 import com.project.qvick.domain.user.domain.repository.query.UserQueryRepository;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,6 +36,12 @@ public class UserQueryServiceImpl implements UserQueryService{
     @Override
     public List<User> checkUsers(PageRequest pageRequest) {
         return userQueryRepository.checkUsers(pageRequest);
+    }
+
+    @Override
+    @Scheduled(cron = "0 0 20 * * *")  // 매일 오후 8시에 실행
+    public void updateChecked() {
+        userQueryRepository.updateChecked();
     }
 
     @Override
