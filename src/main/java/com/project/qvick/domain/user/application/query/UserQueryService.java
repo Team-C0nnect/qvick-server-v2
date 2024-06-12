@@ -17,4 +17,6 @@ public interface UserQueryService {
     List<User> checkUsers(PageRequest pageRequest);
 
     List<User> nonCheckUsers(PageRequest pageRequest);
+
+    void updateChecked();
 }
