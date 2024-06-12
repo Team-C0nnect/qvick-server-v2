@@ -1,5 +1,7 @@
 package com.project.qvick.domain.user.application.service;
 
+import com.project.qvick.domain.check.application.service.CheckService;
+import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.domain.check.client.dto.request.CodeRequest;
 import com.project.qvick.domain.check.domain.repository.jpa.CheckCodeRepository;
 import com.project.qvick.domain.check.exception.CheckAlreadyExistsException;
@@ -25,6 +27,7 @@ public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserUtil userUtil;
     private final CheckCodeRepository checkCodeRepository;
+    private final CheckService checkService;
 
     @Override
     public void editUserStdId(StdIdEditRequest request) {
@@ -60,6 +63,7 @@ public class UserServiceImpl implements UserService {
             if (checkCodeRepository.existsByCodeAndValid(request.getCode(), true)) {
                 user.setChecked(true);
                 userRepository.save(userMapper.toEdit(user));
+                checkService.register(new Check(user.getName(),user.getStdId(),user.getRoom(),user.isChecked(),user.getCheckedDate()));
             } else {
                 throw CheckCodeError.EXCEPTION;
             }

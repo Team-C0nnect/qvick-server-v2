@@ -1,5 +1,7 @@
 package com.project.qvick.domain.user.client.api;
 
+import com.project.qvick.domain.check.application.service.query.CheckQueryService;
+import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.domain.user.application.query.UserQueryService;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
@@ -22,6 +24,7 @@ import java.util.List;
 public class UserAdminController {
 
     private final UserQueryService userQueryService;
+    private final CheckQueryService checkQueryService;
 
     @GetMapping("/find-all")
     @Operation(summary = "전체 유저 조회", description = "전체 유저를 조회합니다")
@@ -43,8 +46,8 @@ public class UserAdminController {
 
     @GetMapping("/check")
     @Operation(summary = "출석 체크 조회", description = "출석 확인자 명단을 조회합니다.")
-    public ResponseEntity<List<User>>checkList(@ModelAttribute PageRequest pageRequest){
-        return ResponseEntity.ok(userQueryService.checkUsers(pageRequest));
+    public ResponseEntity<List<Check>>checkList(@ModelAttribute PageRequest pageRequest){
+        return ResponseEntity.ok(checkQueryService.findAllCheckUsers(pageRequest));
     }
 
     @GetMapping("/non-check")
