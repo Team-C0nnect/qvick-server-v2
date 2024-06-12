@@ -43,7 +43,7 @@ public class UserQueryServiceImpl implements UserQueryService{
 
     @Override
     @Transactional
-    @Scheduled(cron = "0 30 20 * * *")  // 매일 오후 8시에 실행
+    @Scheduled(cron = "0 0 1 * * *")  // 매일 오후 8시에 실행
     public void updateChecked() {
         userQueryRepository.updateChecked();
     }
