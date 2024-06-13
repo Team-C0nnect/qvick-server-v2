@@ -6,6 +6,8 @@ import com.project.qvick.domain.auth.client.dto.request.SignUpRequest;
 import com.project.qvick.domain.auth.client.dto.response.JsonWebTokenResponse;
 import com.project.qvick.domain.auth.client.dto.response.RefreshTokenResponse;
 import com.project.qvick.domain.auth.service.AuthService;
+import com.project.qvick.global.common.response.BaseResponse;
+import com.project.qvick.global.common.response.BaseResponseData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -27,35 +29,39 @@ public class AuthController {
 
     @PostMapping("/sign-up")
     @Operation(summary = "유저 회원가입", description = "유저 회원가입")
-    @ResponseStatus(HttpStatus.CREATED)
-    public void signUp(@Validated @RequestBody SignUpRequest signUpRequest){
+    public BaseResponse signUp(@Validated @RequestBody SignUpRequest signUpRequest){
         authService.signUp(signUpRequest);
+        return BaseResponse.created("회원가입이 완료되었습니다.");
     }
 
     @PostMapping("/sign-up/admin")
-    @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "관리자 회원가입", description = "관리자 회원가입")
-    public void adminSignUp(@Validated @RequestBody SignUpRequest signUpRequest){
+    public BaseResponse adminSignUp(@Validated @RequestBody SignUpRequest signUpRequest){
         authService.adminSignUp(signUpRequest);
+        return BaseResponse.created("회원가입이 완료되었습니다.");
     }
 
     @PostMapping("/sign-up/teacher")
-    @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "선생님 회원가입", description = "선생님 회원가입")
-    public void teacherSignUp(@Validated @RequestBody SignUpRequest signUpRequest){
+    public BaseResponse teacherSignUp(@Validated @RequestBody SignUpRequest signUpRequest){
         authService.teacherSignUp(signUpRequest);
+        return BaseResponse.created("회원가입이 완료되었습니다.");
     }
 
     @PostMapping("/sign-in")
     @Operation(summary = "로그인", description = "로그인")
-    public JsonWebTokenResponse signIn(@Validated @RequestBody SignInRequest signInRequest){
-        return authService.signIn(signInRequest);
+    public BaseResponseData<JsonWebTokenResponse> signIn(@Validated @RequestBody SignInRequest signInRequest){
+        return BaseResponseData.ok(
+                "로그인 성공",
+                authService.signIn(signInRequest));
     }
 
     @PostMapping("/refresh")
     @Operation(summary = "토큰 재발급", description = "access 토큰을 재발급 합니다")
-    public RefreshTokenResponse refresh(RefreshTokenRequest request){
-        return authService.refresh(request.getRefreshToken());
+    public BaseResponseData<RefreshTokenResponse> refresh(RefreshTokenRequest request){
+        return BaseResponseData.ok(
+                "토큰 재발급 성공",
+                authService.refresh(request.getRefreshToken()));
     }
 
 //    @PostMapping("/firebase")
