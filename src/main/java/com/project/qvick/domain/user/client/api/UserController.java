@@ -4,6 +4,7 @@ import com.project.qvick.domain.check.client.dto.request.CodeRequest;
 import com.project.qvick.domain.user.application.service.UserService;
 import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.domain.user.client.dto.User;
+import com.project.qvick.domain.user.client.dto.request.PasswordEditRequest;
 import com.project.qvick.domain.user.client.dto.request.RoomRequest;
 import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
 import io.swagger.v3.oas.annotations.Operation;
@@ -29,6 +30,18 @@ public class UserController {
 
     private final UserService userService;
 
+    @PostMapping("/attendance")
+    @Operation(summary = "출석체크", description = "출석 체크를 진행합니다.")
+    public void check(@RequestBody CodeRequest request){
+        userService.check(request);
+    }
+
+    @GetMapping("/status")
+    @Operation(summary = "상태 확인", description = "출석 상태를 확인합니다.")
+    public ResponseEntity<HttpStatus> isChecked() {
+        return ResponseEntity.status(userService.isChecked() ? HttpStatus.OK : HttpStatus.BAD_REQUEST).body(userService.isChecked() ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
+    }
+
     @GetMapping("")
     @Operation(summary = "유저 조회", description = "현재 로그인한 유저 정보를 조회합니다")
     public User findUser(){
@@ -49,22 +62,16 @@ public class UserController {
         userService.editRoom(request);
     }
 
+    @PatchMapping("/password")
+    @Operation(summary = "비밀번호 변경", description = "현재 로그인한 유저의 비밀번호를 변경합니다")
+    public void editPassword(PasswordEditRequest request){
+        userService.editPassword(request);
+    }
+
     @DeleteMapping("")
     @Operation(summary = "회원탈퇴", description = "회원 탈퇴를 진행합니다")
     public void deleteUser(){
         userService.deleteUser();
-    }
-
-    @PostMapping("/attendance")
-    @Operation(summary = "출석체크", description = "출석 체크를 진행합니다.")
-    public void check(@RequestBody CodeRequest request){
-        userService.check(request);
-    }
-
-    @GetMapping("/status")
-    @Operation(summary = "상태 확인", description = "출석 상태를 확인합니다.")
-    public ResponseEntity<HttpStatus> isChecked() {
-        return ResponseEntity.status(userService.isChecked() ? HttpStatus.OK : HttpStatus.BAD_REQUEST).body(userService.isChecked() ? HttpStatus.OK : HttpStatus.BAD_REQUEST);
     }
 
 }

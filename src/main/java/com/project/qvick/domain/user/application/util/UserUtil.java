@@ -33,6 +33,13 @@ public class UserUtil {
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
     }
 
+    public User findUserByEmail(String email){
+        return userRepository
+                .findByEmail(email)
+                .map(userMapper::toUser)
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+    }
+
     public void saveUser(SignUpRequest request){
         userRepository.save(userMapper.toCreate(
                 request, encoder.encode(request.getPassword())
