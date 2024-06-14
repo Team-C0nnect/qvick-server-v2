@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,7 +47,7 @@ public class PostController {
 
     @GetMapping("")
     @Operation(summary = "공지사항 조회", description = "하나의 공지사항을 ID를 기준으로 조회합니다.")
-    public BaseResponseData<Post> postFind(@PathVariable Long postId){
+    public BaseResponseData<Post> postFind(@RequestParam Long postId){
         return BaseResponseData.ok(
                 "공지사항 조회 성공",
                 postService.postFind(postId));
