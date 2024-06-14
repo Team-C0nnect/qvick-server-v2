@@ -8,16 +8,17 @@ import com.project.qvick.domain.check.exception.CheckAlreadyExistsException;
 import com.project.qvick.domain.check.exception.CheckCodeError;
 import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.domain.user.client.dto.User;
+import com.project.qvick.domain.user.client.dto.request.AdminPasswordEditRequest;
+import com.project.qvick.domain.user.client.dto.request.PasswordEditRequest;
 import com.project.qvick.domain.user.client.dto.request.RoomRequest;
 import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
-import com.project.qvick.domain.user.domain.UserEntity;
 import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
+import com.project.qvick.domain.user.exception.PasswordWrongException;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.time.LocalDateTime;
 
 @RequiredArgsConstructor
 @Service
@@ -28,6 +29,7 @@ public class UserServiceImpl implements UserService {
     private final UserUtil userUtil;
     private final CheckCodeRepository checkCodeRepository;
     private final CheckService checkService;
+    private final PasswordEncoder encoder;
 
     @Override
     public void editUserStdId(StdIdEditRequest request) {
@@ -68,6 +70,22 @@ public class UserServiceImpl implements UserService {
                 throw CheckCodeError.EXCEPTION;
             }
         }
+    }
+
+    @Override
+    public void editPassword(PasswordEditRequest request){
+        User user = userUtil.findUser();
+        if(!encoder.matches(request.getOldPassword(), user.getPassword()))
+            throw PasswordWrongException.EXCEPTION;
+        user.setPassword(encoder.encode(request.getNewPassword()));
+        userRepository.save(userMapper.toEdit(user));
+    }
+
+    @Override
+    public void adminEditPassword(AdminPasswordEditRequest request){
+        User user = userUtil.findUserByEmail(request.getEmail());
+        user.setPassword(encoder.encode(request.getNewPassword()));
+        userRepository.save(userMapper.toEdit(user));
     }
 
     public boolean isChecked(){
