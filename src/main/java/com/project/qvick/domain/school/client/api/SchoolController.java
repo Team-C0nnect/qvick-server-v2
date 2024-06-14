@@ -5,6 +5,8 @@ import com.project.qvick.domain.school.client.dto.request.SchoolRequest;
 import com.project.qvick.domain.school.application.service.SchoolService;
 import com.project.qvick.domain.school.application.query.SchoolQueryService;
 import com.project.qvick.global.common.dto.request.PageRequest;
+import com.project.qvick.global.common.response.BaseResponse;
+import com.project.qvick.global.common.response.BaseResponseData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -30,16 +32,18 @@ public class SchoolController {
     private final SchoolQueryService schoolQueryService;
 
     @PostMapping("")
-    @ResponseStatus(HttpStatus.CREATED)
     @Operation(summary = "학교 등록", description = "학교를 등록합니다")
-    public void registerSchool(@RequestBody SchoolRequest schoolRequest){
+    public BaseResponse registerSchool(@RequestBody SchoolRequest schoolRequest){
         schoolService.registerSchool(schoolRequest);
+        return BaseResponse.created("학교가 등록되었습니다.");
     }
 
     @GetMapping("")
     @Operation(summary = "학교 목록", description = "학교 목록을 표시합니다")
-    public ResponseEntity<List<School>> findCheck(@ModelAttribute PageRequest pageRequest) {
-        return ResponseEntity.status(HttpStatus.OK).body(schoolQueryService.schoolList(pageRequest));
+    public BaseResponseData<List<School>> findCheck(@ModelAttribute PageRequest pageRequest) {
+        return BaseResponseData.ok(
+                "학교 목록을 성공적으로 불러왔습니다.",
+                schoolQueryService.schoolList(pageRequest));
     }
 
 }
