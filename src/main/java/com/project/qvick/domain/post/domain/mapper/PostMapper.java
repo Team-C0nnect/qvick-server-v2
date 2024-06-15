@@ -9,9 +9,11 @@ public class PostMapper {
 
     public PostEntity toEntity(Post post) {
         return PostEntity.builder()
+                .id(post.getId())
                 .title(post.getTitle())
                 .content(post.getContent())
                 .author(post.getAuthor())
+                .createdDateTime(post.getCreateDateTime())
                 .build();
     }
 
@@ -21,6 +23,7 @@ public class PostMapper {
                 .title(postEntity.getTitle())
                 .content(postEntity.getContent())
                 .author(postEntity.getAuthor())
+                .createDateTime(postEntity.getCreatedDateTime())
                 .build();
     }
 
