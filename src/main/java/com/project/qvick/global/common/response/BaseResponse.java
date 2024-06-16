@@ -23,8 +23,4 @@ public class BaseResponse {
         return new BaseResponse(HttpStatus.CREATED.value(), message);
     }
 
-    public static BaseResponse noContent(String message) {
-        return new BaseResponse(HttpStatus.NO_CONTENT.value(), message);
-    }
-
 }
