@@ -42,8 +42,8 @@ jobs:
     - name: Docker build & push to prod
       run: |
         docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-        docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2 .
-        docker push ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
+        docker build -f Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/qvick:1.0.0 .
+        docker push ${{ secrets.DOCKER_USERNAME }}/qvick:1.0.0
 
     - name: Deploy to prod
       uses: appleboy/ssh-action@master
@@ -56,6 +56,6 @@ jobs:
         script: |
           docker stop qvick
           docker rm qvick
-          docker rmi ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
-          docker pull ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
-          docker run -d -p 8080:8080 --name qvick ${{ secrets.DOCKER_USERNAME }}/qvick:0.0.2
+          docker rmi ${{ secrets.DOCKER_USERNAME }}/qvick:1.0.0
+          docker pull ${{ secrets.DOCKER_USERNAME }}/qvick:1.0.0
+          docker run -d -p 8080:8080 --name qvick ${{ secrets.DOCKER_USERNAME }}/qvick:1.0.0
