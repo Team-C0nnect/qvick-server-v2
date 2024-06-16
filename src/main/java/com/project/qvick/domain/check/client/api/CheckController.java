@@ -2,7 +2,7 @@ package com.project.qvick.domain.check.client.api;
 
 import com.project.qvick.domain.check.application.service.CheckCodeService;
 import com.project.qvick.domain.check.client.dto.response.CheckCodeResponse;
-import com.project.qvick.global.common.response.BaseResponseData;
+import com.project.qvick.global.common.dto.response.BaseResponseData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;

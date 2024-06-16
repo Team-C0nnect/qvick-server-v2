@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.response;
+package com.project.qvick.global.common.dto.response;
 
 import lombok.Builder;
 import lombok.Getter;
