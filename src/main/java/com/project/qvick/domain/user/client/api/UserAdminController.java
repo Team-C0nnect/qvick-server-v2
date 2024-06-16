@@ -1,6 +1,6 @@
 package com.project.qvick.domain.user.client.api;
 
-import com.project.qvick.domain.check.application.service.query.CheckQueryService;
+import com.project.qvick.domain.check.application.query.CheckQueryService;
 import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.domain.user.application.query.UserQueryService;
 import com.project.qvick.domain.user.application.service.UserService;

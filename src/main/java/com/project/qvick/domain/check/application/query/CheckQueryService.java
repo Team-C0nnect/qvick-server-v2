@@ -1,4 +1,4 @@
-package com.project.qvick.domain.check.application.service.query;
+package com.project.qvick.domain.check.application.query;
 
 import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.global.common.dto.request.PageRequest;
