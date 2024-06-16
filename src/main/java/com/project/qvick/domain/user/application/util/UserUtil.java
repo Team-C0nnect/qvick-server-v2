@@ -8,7 +8,6 @@ import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.global.annotation.Util;
 import com.project.qvick.global.common.repository.UserSecurity;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Util
 @RequiredArgsConstructor
@@ -24,9 +23,16 @@ public class UserUtil {
         }
     }
 
-    public User findUser(){
+    public User getUser(){
         return userRepository
                 .findById(userSecurity.getUser().getId())
+                .map(userMapper::toUser)
+                .orElseThrow(()-> UserNotFoundException.EXCEPTION);
+    }
+
+    public User findUser(String stdId){
+        return userRepository
+                .findByStdId(stdId)
                 .map(userMapper::toUser)
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
     }

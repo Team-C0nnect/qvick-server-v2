@@ -4,7 +4,6 @@ import com.project.qvick.domain.check.client.dto.request.CodeRequest;
 import com.project.qvick.domain.user.application.service.UserService;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.PasswordEditRequest;
-import com.project.qvick.domain.user.client.dto.request.RoomRequest;
 import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
 import com.project.qvick.global.common.dto.response.BaseResponse;
 import com.project.qvick.global.common.dto.response.BaseResponseData;
@@ -59,14 +58,6 @@ public class UserController {
     public BaseResponse editUser(@Validated @RequestBody StdIdEditRequest request){
         userService.editUserStdId(request);
         return BaseResponse.ok("학번을 성공적으로 수정하였습니다.");
-    }
-
-    @PatchMapping("/room")
-    @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "회원 호실 수정", description = "회원 호실을 수정합니다")
-    public BaseResponse editUser(@Validated @RequestBody RoomRequest request){
-        userService.editRoom(request);
-        return BaseResponse.ok("호실을 성공적으로 수정하였습니다.");
     }
 
     @PatchMapping("/password")

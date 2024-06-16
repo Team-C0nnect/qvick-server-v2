@@ -28,7 +28,7 @@ public class PostUtil {
         Post post = Post.builder()
                 .title(request.getTitle())
                 .content(request.getContent())
-                .author(userUtil.findUser().getName())
+                .author(userUtil.getUser().getName())
                 .build();
         postRepository.save(postMapper.toEntity(post));
     }

@@ -14,5 +14,6 @@ public class RoomRequest {
     @NotBlank
     @Length(max = 4, min = 4)
     private String room;
+    private String stdId;
 
 }

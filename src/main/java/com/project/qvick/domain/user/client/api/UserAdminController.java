@@ -6,6 +6,7 @@ import com.project.qvick.domain.user.application.query.UserQueryService;
 import com.project.qvick.domain.user.application.service.UserService;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.AdminPasswordEditRequest;
+import com.project.qvick.domain.user.client.dto.request.RoomRequest;
 import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
 import com.project.qvick.global.common.dto.request.PageRequest;
 import com.project.qvick.global.common.dto.response.BaseResponse;
@@ -13,10 +14,14 @@ import com.project.qvick.global.common.dto.response.BaseResponseData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -76,6 +81,14 @@ public class UserAdminController {
     public BaseResponse editPassword(AdminPasswordEditRequest request){
         userService.adminEditPassword(request);
         return BaseResponse.ok("비밀번호가 변경되었습니다.");
+    }
+
+    @PatchMapping("/room")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "회원 호실 수정", description = "회원 호실을 수정합니다")
+    public BaseResponse editUser(@Validated @RequestBody RoomRequest request){
+        userService.editRoom(request);
+        return BaseResponse.ok("호실을 성공적으로 수정하였습니다.");
     }
 
 }

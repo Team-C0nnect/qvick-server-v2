@@ -15,7 +15,6 @@ import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.PasswordWrongException;
-import com.project.qvick.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,31 +32,31 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editUserStdId(StdIdEditRequest request) {
-        User user = userUtil.findUser();
+        User user = userUtil.getUser();
         user.setStdId(request.getStdId());
         userRepository.save(userMapper.toEdit(user));
     }
 
     @Override
     public void deleteUser() {
-        userRepository.deleteById(userUtil.findUser().getId());
+        userRepository.deleteById(userUtil.getUser().getId());
     }
 
     @Override
     public void editRoom(RoomRequest request){
-        User user = userUtil.findUser();
+        User user = userUtil.findUser(request.getStdId());
         user.setRoom(request.getRoom());
         userRepository.save(userMapper.toEdit(user));
     }
 
     @Override
     public User findUser(){
-        return userUtil.findUser();
+        return userUtil.getUser();
     }
 
     @Override
     public void check(CodeRequest request) {
-        User user = userUtil.findUser();
+        User user = userUtil.getUser();
         if(user.isChecked()){
             throw CheckAlreadyExistsException.EXCEPTION;
         }
@@ -74,7 +73,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editPassword(PasswordEditRequest request){
-        User user = userUtil.findUser();
+        User user = userUtil.getUser();
         if(!encoder.matches(request.getOldPassword(), user.getPassword()))
             throw PasswordWrongException.EXCEPTION;
         user.setPassword(encoder.encode(request.getNewPassword()));
@@ -89,7 +88,7 @@ public class UserServiceImpl implements UserService {
     }
 
     public boolean isChecked(){
-        User user = userUtil.findUser();
+        User user = userUtil.getUser();
         if(user.isChecked()){
             return true;
         }
