@@ -14,9 +14,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Builder
 public class Check {
+
     private String name;
     private String stdId;
     private String room;
     private boolean isChecked;
     private LocalDateTime checkedDate;
+
 }
