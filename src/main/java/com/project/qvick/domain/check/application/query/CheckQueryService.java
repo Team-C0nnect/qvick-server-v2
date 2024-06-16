@@ -6,5 +6,7 @@ import com.project.qvick.global.common.dto.request.PageRequest;
 import java.util.List;
 
 public interface CheckQueryService {
+
     List<Check> findAllCheckUsers(PageRequest request);
+
 }
