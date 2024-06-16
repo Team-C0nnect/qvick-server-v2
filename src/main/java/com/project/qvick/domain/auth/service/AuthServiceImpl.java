@@ -10,7 +10,6 @@ import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.PasswordWrongException;
-import com.project.qvick.domain.user.exception.UserNotFoundException;
 import com.project.qvick.global.security.jwt.JwtExtract;
 import com.project.qvick.global.security.jwt.JwtProvider;
 import com.project.qvick.global.security.jwt.enums.JwtType;
@@ -82,15 +81,5 @@ public class AuthServiceImpl implements AuthService {
                 .accessToken(jwtProvider.generateAccessToken(claims.getBody().getSubject(),
                         (UserRole) claims.getHeader().get("authority"))).build();
     }
-
-/*
-    @Override
-    public void firebase(FirebaseRequest request){
-        User user = userUtil.findUser();
-        if(StringUtils.hasText(request.getFcmToken())){
-            firebaseNotificationService.saveToken(user.getEmail(), request.getFcmToken());
-        }
-    }
-*/
 
 }
