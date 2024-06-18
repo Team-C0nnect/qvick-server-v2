@@ -16,11 +16,13 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -84,11 +86,17 @@ public class UserAdminController {
     }
 
     @PatchMapping("/room")
-    @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "회원 호실 수정", description = "회원 호실을 수정합니다")
     public BaseResponse editUser(@Validated @RequestBody RoomEditRequest request){
         userService.editRoom(request);
         return BaseResponse.ok("호실을 성공적으로 수정하였습니다.");
+    }
+
+    @DeleteMapping("")
+    @Operation(summary = "회원 삭제", description = "해당 이메일을 가진 유저를 삭제합니다.")
+    public BaseResponse deleteUser(@RequestParam String email){
+        userService.adminDeleteUser(email);
+        return BaseResponse.ok("회원이 삭제되었습니다.");
     }
 
 }

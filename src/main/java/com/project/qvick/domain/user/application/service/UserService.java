@@ -24,5 +24,7 @@ public interface UserService {
 
     void adminEditPassword(AdminPasswordEditRequest request);
 
+    void adminDeleteUser(String email);
+
     boolean isChecked();
 }

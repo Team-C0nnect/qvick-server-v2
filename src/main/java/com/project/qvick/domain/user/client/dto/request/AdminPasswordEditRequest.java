@@ -5,8 +5,9 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class AdminPasswordEditRequest extends PasswordEditRequest {
+public class AdminPasswordEditRequest {
 
+    private String newPassword;
     private String email;
 
 }

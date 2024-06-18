@@ -15,6 +15,7 @@ import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.PasswordWrongException;
+import com.project.qvick.domain.user.exception.UserNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -85,6 +86,13 @@ public class UserServiceImpl implements UserService {
         User user = userUtil.findUserByEmail(request.getEmail());
         user.setPassword(encoder.encode(request.getNewPassword()));
         userRepository.save(userMapper.toEdit(user));
+    }
+
+    @Override
+    public void adminDeleteUser(String email){
+        if(userRepository.findByEmail(email).isEmpty())
+            throw UserNotFoundException.EXCEPTION;
+        userRepository.deleteByEmail(email);
     }
 
     public boolean isChecked(){
