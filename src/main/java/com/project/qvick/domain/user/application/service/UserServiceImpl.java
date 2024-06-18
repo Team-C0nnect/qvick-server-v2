@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editRoom(RoomRequest request){
-        User user = userUtil.findUser(request.getStdId());
+        User user = userUtil.findUserByStdId(request.getStdId());
         user.setRoom(request.getRoom());
         userRepository.save(userMapper.toEdit(user));
     }

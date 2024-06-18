@@ -30,7 +30,7 @@ public class UserUtil {
                 .orElseThrow(()-> UserNotFoundException.EXCEPTION);
     }
 
-    public User findUser(String stdId){
+    public User findUserByStdId(String stdId){
         return userRepository
                 .findByStdId(stdId)
                 .map(userMapper::toUser)
