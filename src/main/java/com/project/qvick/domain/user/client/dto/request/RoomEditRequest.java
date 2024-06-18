@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.Length;
 
 @Getter
 @Setter
-public class RoomRequest {
+public class RoomEditRequest {
 
     @Schema(description = "수정할 호실")
     @NotBlank
