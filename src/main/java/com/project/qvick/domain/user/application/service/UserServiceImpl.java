@@ -10,7 +10,7 @@ import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.AdminPasswordEditRequest;
 import com.project.qvick.domain.user.client.dto.request.PasswordEditRequest;
-import com.project.qvick.domain.user.client.dto.request.RoomRequest;
+import com.project.qvick.domain.user.client.dto.request.RoomEditRequest;
 import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
 import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editRoom(RoomRequest request){
+    public void editRoom(RoomEditRequest request){
         User user = userUtil.findUserByStdId(request.getStdId());
         user.setRoom(request.getRoom());
         userRepository.save(userMapper.toEdit(user));

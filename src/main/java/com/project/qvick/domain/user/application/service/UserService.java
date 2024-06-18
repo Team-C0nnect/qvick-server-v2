@@ -4,7 +4,7 @@ import com.project.qvick.domain.check.client.dto.request.CodeRequest;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.AdminPasswordEditRequest;
 import com.project.qvick.domain.user.client.dto.request.PasswordEditRequest;
-import com.project.qvick.domain.user.client.dto.request.RoomRequest;
+import com.project.qvick.domain.user.client.dto.request.RoomEditRequest;
 import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
 
 
@@ -14,7 +14,7 @@ public interface UserService {
 
     void deleteUser();
 
-    void editRoom(RoomRequest request);
+    void editRoom(RoomEditRequest request);
 
     User findUser();
 
