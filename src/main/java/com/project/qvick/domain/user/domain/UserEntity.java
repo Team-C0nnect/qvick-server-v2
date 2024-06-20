@@ -11,12 +11,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.LocalDateTime;
@@ -25,9 +23,9 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @SuperBuilder
+@DynamicUpdate
 @Table(name = "tb_user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@DynamicUpdate
 public class UserEntity extends BaseTimeEntity {
 
     @Id
