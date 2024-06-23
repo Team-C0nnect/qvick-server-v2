@@ -30,7 +30,6 @@ public class AuthServiceImpl implements AuthService {
     private final PasswordEncoder encoder;
     private final JwtProvider jwtProvider;
     private final JwtExtract jwtExtract;
-//    private final FirebaseNotificationService firebaseNotificationService;
 
     @Override
     public void signUp(SignUpRequest request) {
