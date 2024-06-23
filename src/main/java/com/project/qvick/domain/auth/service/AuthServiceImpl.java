@@ -61,13 +61,14 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public JsonWebTokenResponse signIn(SignInRequest request) {
-        String password = userRepository.getByEmail(request.getEmail()).getPassword();
+        User user = userUtil.findUserByEmail(request.getEmail());
+        String password = user.getPassword();
         if (!encoder.matches(request.getPassword(), password))
             throw PasswordWrongException.EXCEPTION;
-        User user = userUtil.findUserByEmail(request.getEmail());
         return JsonWebTokenResponse.builder()
                 .accessToken(jwtProvider.generateAccessToken(request.getEmail(),user.getUserRole()))
                 .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), user.getUserRole()))
+                .userRole(user.getUserRole())
                 .build();
     }
 
