@@ -30,7 +30,7 @@ application:
 springdoc:
   api-docs:
     enabled: true
-    version: openapi_3_1
+    version: openapi_3_0
     path: /v3/api-docs
   default-consumes-media-type: application/json
   auto-tag-classes: true
