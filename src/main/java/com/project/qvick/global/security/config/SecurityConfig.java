@@ -64,11 +64,6 @@ public class SecurityConfig {
                                 .requestMatchers(PATCH,"/user/stdId").hasAuthority(USER)
                                 .requestMatchers(PATCH,"/user/room").hasAuthority(USER)
 
-                                .requestMatchers("/school/**").hasAuthority(ADMIN)
-                                .requestMatchers(GET,"/user-admin/await-user").hasAuthority(ADMIN)
-                                .requestMatchers(PATCH,"/user-admin/approve").hasAuthority(ADMIN)
-                                .requestMatchers(PATCH,"/user-admin/reject").hasAuthority(ADMIN)
-
                                 .anyRequest().authenticated()
                 )
                 .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
