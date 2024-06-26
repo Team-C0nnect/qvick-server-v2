@@ -1,6 +1,5 @@
 package com.project.qvick.domain.user.application.service;
 
-import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.domain.check.client.dto.request.CodeRequest;
 import com.project.qvick.domain.check.domain.repository.jpa.CheckCodeRepository;
 import com.project.qvick.domain.check.exception.CheckAlreadyExistsException;
@@ -60,7 +59,7 @@ public class UserServiceImpl implements UserService {
         if(user.isChecked()){
             throw CheckAlreadyExistsException.EXCEPTION;
         } else{
-            if (checkCodeRepository.existsByCodeAndValid(request.getCode(), true)) {
+            if (checkCodeRepository.existsByCodeAndValid(request.code(), true)) {
                 user.setChecked(true);
                 userRepository.save(userMapper.toEdit(user));
             } else {throw CheckCodeError.EXCEPTION;}
