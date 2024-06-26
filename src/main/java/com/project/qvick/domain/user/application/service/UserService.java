@@ -30,4 +30,5 @@ public interface UserService {
     boolean isChecked();
 
     void fixStatus(AdminSetStatusRequest setStatusRequest);
+
 }
