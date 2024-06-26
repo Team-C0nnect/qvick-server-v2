@@ -9,6 +9,7 @@ import com.project.qvick.domain.check.exception.CheckCodeError;
 import com.project.qvick.domain.user.application.util.UserUtil;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.AdminPasswordEditRequest;
+import com.project.qvick.domain.user.client.dto.request.AdminSetStatusRequest;
 import com.project.qvick.domain.user.client.dto.request.PasswordEditRequest;
 import com.project.qvick.domain.user.client.dto.request.RoomEditRequest;
 import com.project.qvick.domain.user.client.dto.request.StdIdEditRequest;
@@ -27,8 +28,8 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final UserUtil userUtil;
-    private final CheckCodeRepository checkCodeRepository;
     private final CheckService checkService;
+    private final CheckCodeRepository checkCodeRepository;
     private final PasswordEncoder encoder;
 
     @Override
@@ -101,6 +102,13 @@ public class UserServiceImpl implements UserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void fixStatus(AdminSetStatusRequest setStatusRequest) {
+        User user = userUtil.findUserByEmail(setStatusRequest.getEmail());
+        user.setChecked(setStatusRequest.getStatus() == 1 ? false : true);
+        userRepository.save(userMapper.toEdit(user));
     }
 
 }

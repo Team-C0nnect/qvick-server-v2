@@ -6,6 +6,7 @@ import com.project.qvick.domain.user.application.query.UserQueryService;
 import com.project.qvick.domain.user.application.service.UserService;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.AdminPasswordEditRequest;
+import com.project.qvick.domain.user.client.dto.request.AdminSetStatusRequest;
 import com.project.qvick.domain.user.client.dto.request.RoomEditRequest;
 import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
 import com.project.qvick.global.common.dto.request.PageRequest;
@@ -14,7 +15,6 @@ import com.project.qvick.global.common.dto.response.BaseResponseData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +23,6 @@ import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -97,6 +96,12 @@ public class UserAdminController {
     public BaseResponse deleteUser(@RequestParam String email){
         userService.adminDeleteUser(email);
         return BaseResponse.ok("회원이 삭제되었습니다.");
+    }
+
+    @PatchMapping("/fix-status")
+    public BaseResponse fixStatus(@RequestBody AdminSetStatusRequest setStatusRequest){
+        userService.fixStatus(setStatusRequest);
+        return BaseResponse.ok("회원 출석 상태 수정이 완료되었습니다.");
     }
 
 }

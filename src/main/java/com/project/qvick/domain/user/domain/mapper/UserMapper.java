@@ -73,7 +73,7 @@ public class UserMapper {
                 .password(user.getPassword())
                 .stdId(user.getStdId())
                 .room(user.getRoom())
-                .userRole(UserRole.USER)
+                .userRole(user.getUserRole())
                 .isChecked(user.isChecked())
                 .checkedDate(user.getCheckedDate())
                 .build();
