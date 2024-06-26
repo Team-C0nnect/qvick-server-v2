@@ -1,6 +1,5 @@
 package com.project.qvick.domain.user.application.service;
 
-import com.project.qvick.domain.check.application.service.CheckService;
 import com.project.qvick.domain.check.client.dto.Check;
 import com.project.qvick.domain.check.client.dto.request.CodeRequest;
 import com.project.qvick.domain.check.domain.repository.jpa.CheckCodeRepository;
@@ -21,14 +20,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
     private final UserUtil userUtil;
-    private final CheckService checkService;
     private final CheckCodeRepository checkCodeRepository;
     private final PasswordEncoder encoder;
 
@@ -61,15 +59,11 @@ public class UserServiceImpl implements UserService {
         User user = userUtil.getUser();
         if(user.isChecked()){
             throw CheckAlreadyExistsException.EXCEPTION;
-        }
-        else{
+        } else{
             if (checkCodeRepository.existsByCodeAndValid(request.getCode(), true)) {
                 user.setChecked(true);
                 userRepository.save(userMapper.toEdit(user));
-                checkService.register(new Check(user.getName(),user.getStdId(),user.getRoom(),user.isChecked(),user.getCheckedDate()));
-            } else {
-                throw CheckCodeError.EXCEPTION;
-            }
+            } else {throw CheckCodeError.EXCEPTION;}
         }
     }
 

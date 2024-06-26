@@ -71,7 +71,8 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
 
     @Override
     public void updateChecked(){
-            jpaQueryFactory.update(userEntity)
+            jpaQueryFactory
+                    .update(userEntity)
                     .set(userEntity.isChecked, false)
                     .execute();
     }
