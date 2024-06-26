@@ -28,11 +28,11 @@ public class UserMapper {
 
     public UserEntity toCreate(SignUpRequest signUpRequest, String password){
         return UserEntity.builder()
-                .name(signUpRequest.getName())
-                .email(signUpRequest.getEmail())
+                .name(signUpRequest.name())
+                .email(signUpRequest.email())
                 .password(password)
-                .stdId(signUpRequest.getStdId())
-                .room(signUpRequest.getRoom())
+                .stdId(signUpRequest.stdId())
+                .room(signUpRequest.room())
                 .userRole(UserRole.USER)
                 .isChecked(false)
                 .checkedDate(LocalDateTime.now())
@@ -41,11 +41,11 @@ public class UserMapper {
 
     public UserEntity toCreateAdmin(SignUpRequest signUpRequest, String password){
         return UserEntity.builder()
-                .name(signUpRequest.getName())
-                .email(signUpRequest.getEmail())
+                .name(signUpRequest.name())
+                .email(signUpRequest.email())
                 .password(password)
-                .stdId(signUpRequest.getStdId())
-                .room(signUpRequest.getRoom())
+                .stdId(signUpRequest.stdId())
+                .room(signUpRequest.room())
                 .userRole(UserRole.ADMIN)
                 .isChecked(true)
                 .checkedDate(null)
@@ -54,11 +54,11 @@ public class UserMapper {
 
     public UserEntity toCreateTeacher(SignUpRequest signUpRequest, String password){
         return UserEntity.builder()
-                .name(signUpRequest.getName())
-                .email(signUpRequest.getEmail())
+                .name(signUpRequest.name())
+                .email(signUpRequest.email())
                 .password(password)
-                .stdId(signUpRequest.getStdId())
-                .room(signUpRequest.getRoom())
+                .stdId(signUpRequest.stdId())
+                .room(signUpRequest.room())
                 .userRole(UserRole.TEACHER)
                 .isChecked(true)
                 .checkedDate(null)

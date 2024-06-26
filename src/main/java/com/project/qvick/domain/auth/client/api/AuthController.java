@@ -59,7 +59,7 @@ public class AuthController {
     public BaseResponseData<RefreshTokenResponse> refresh(RefreshTokenRequest request){
         return BaseResponseData.ok(
                 "토큰 재발급 성공",
-                authService.refresh(request.getRefreshToken()));
+                authService.refresh(request.refreshToken()));
     }
 
 }
