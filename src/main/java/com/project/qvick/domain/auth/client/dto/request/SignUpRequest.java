@@ -1,16 +1,9 @@
 package com.project.qvick.domain.auth.client.dto.request;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
-public class SignUpRequest {
-
-    private String name;
-    private String email;
-    private String password;
-    private String stdId;
-    private String room;
-
-}
+public record SignUpRequest(
+        String name,
+        String email,
+        String password,
+        String stdId,
+        String room
+){}
