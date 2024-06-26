@@ -33,40 +33,40 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public void signUp(SignUpRequest request) {
-        userUtil.userExistCheck(request.getEmail());
+        userUtil.userExistCheck(request.email());
         userRepository.save(userMapper.toCreate(
                 request,
-                encoder.encode(request.getPassword()))
+                encoder.encode(request.password()))
         );
     }
 
     @Override
     public void adminSignUp(SignUpRequest request) {
-        userUtil.userExistCheck(request.getEmail());
+        userUtil.userExistCheck(request.email());
         userRepository.save(userMapper.toCreateAdmin(
                 request,
-                encoder.encode(request.getPassword()))
+                encoder.encode(request.password()))
         );
     }
 
     @Override
     public void teacherSignUp(SignUpRequest request) {
-        userUtil.userExistCheck(request.getEmail());
+        userUtil.userExistCheck(request.email());
         userRepository.save(userMapper.toCreateTeacher(
                 request,
-                encoder.encode(request.getPassword()))
+                encoder.encode(request.password()))
         );
     }
 
     @Override
     public JsonWebTokenResponse signIn(SignInRequest request) {
-        User user = userUtil.findUserByEmail(request.getEmail());
+        User user = userUtil.findUserByEmail(request.email());
         String password = user.getPassword();
-        if (!encoder.matches(request.getPassword(), password))
+        if (!encoder.matches(request.password(), password))
             throw PasswordWrongException.EXCEPTION;
         return JsonWebTokenResponse.builder()
-                .accessToken(jwtProvider.generateAccessToken(request.getEmail(),user.getUserRole()))
-                .refreshToken(jwtProvider.generateRefreshToken(request.getEmail(), user.getUserRole()))
+                .accessToken(jwtProvider.generateAccessToken(request.email(),user.getUserRole()))
+                .refreshToken(jwtProvider.generateRefreshToken(request.email(), user.getUserRole()))
                 .userRole(user.getUserRole())
                 .build();
     }

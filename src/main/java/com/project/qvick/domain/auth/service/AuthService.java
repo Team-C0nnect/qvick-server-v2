@@ -18,6 +18,4 @@ public interface AuthService {
 
     RefreshTokenResponse refresh(String token);
 
-//    void firebase(FirebaseRequest request);
-
 }
