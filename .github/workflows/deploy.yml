@@ -27,6 +27,8 @@ jobs:
         spring.datasource.url: ${{ secrets.RDS_PATH }}
         spring.datasource.username: ${{ secrets.DB_USERNAME }}
         spring.datasource.password: ${{ secrets.DB_PASSWORD }}
+        spring.security.user.name: ${{ secrets.SECURITY_USER_NAME }}
+        spring.security.user.password: ${{ secrets.SECURITY_USER_PASSWORD }}
         application.jwt.secretKey: ${{ secrets.JWT_SECRET_KEY }}
 
     - name: firebase.json set
