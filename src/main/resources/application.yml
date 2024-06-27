@@ -11,6 +11,7 @@ spring:
     username: ${secrets.DB_USERNAME}
     password: ${secrets.DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+
   security:
     user:
       name: ${secrets.SECURITY_USER_NAME}

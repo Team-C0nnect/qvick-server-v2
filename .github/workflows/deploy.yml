@@ -31,10 +31,6 @@ jobs:
         spring.security.user.password: ${{ secrets.SECURITY_USER_PASSWORD }}
         application.jwt.secretKey: ${{ secrets.JWT_SECRET_KEY }}
 
-    - name: firebase.json set
-      run: |
-        echo "${{ secrets.FIREBASE_JSON }}" | base64 --decode > src/main/resources/firebase-sdk.json
-
     - name: set chmod
       run: chmod +x ./gradlew
 
