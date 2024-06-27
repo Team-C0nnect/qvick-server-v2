@@ -4,6 +4,9 @@ import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.global.annotation.Jwt;
 import com.project.qvick.global.security.jwt.config.JwtProperties;
 import com.project.qvick.global.security.jwt.enums.JwtType;
+import com.project.qvick.global.security.jwt.exception.TokenErrorException;
+import com.project.qvick.global.security.jwt.exception.TokenExpiredException;
+import com.project.qvick.global.security.jwt.exception.TokenNotSupportException;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Header;
@@ -25,11 +28,11 @@ public class JwtProvider {
         try {
             return Jwts.parser().setSigningKey(jwtProperties.getSecretKey()).parseClaimsJws(token);
         } catch (ExpiredJwtException e) {
-            throw new IllegalArgumentException("만료된 토큰");
+            throw TokenExpiredException.EXCEPTION;
         } catch (UnsupportedJwtException e) {
-            throw new IllegalArgumentException("지원되지 않는 토큰");
+            throw TokenNotSupportException.EXCEPTION;
         } catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("잘못된 토큰");
+            throw TokenErrorException.EXCEPTION;
         }
     }
 
