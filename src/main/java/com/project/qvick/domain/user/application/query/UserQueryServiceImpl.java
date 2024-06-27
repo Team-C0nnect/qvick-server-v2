@@ -3,7 +3,7 @@ package com.project.qvick.domain.user.application.query;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
 import com.project.qvick.domain.user.domain.repository.query.UserQueryRepository;
-import com.project.qvick.global.common.dto.request.PageRequest;
+import com.project.qvick.global.common.client.dto.request.PageRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;

@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.dto.request;
+package com.project.qvick.global.common.client.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;

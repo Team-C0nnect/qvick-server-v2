@@ -1,4 +1,4 @@
-package com.project.qvick.global.config;
+package com.project.qvick.global.common.config;
 
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;

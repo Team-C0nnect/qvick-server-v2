@@ -1,4 +1,4 @@
-package com.project.qvick.global.common.dto.response;
+package com.project.qvick.global.common.client.dto.response;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;

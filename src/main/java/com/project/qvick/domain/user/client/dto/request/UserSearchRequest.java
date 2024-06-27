@@ -1,6 +1,6 @@
 package com.project.qvick.domain.user.client.dto.request;
 
-import com.project.qvick.global.common.dto.request.PageRequest;
+import com.project.qvick.global.common.client.dto.request.PageRequest;
 import lombok.Getter;
 import lombok.Setter;
 

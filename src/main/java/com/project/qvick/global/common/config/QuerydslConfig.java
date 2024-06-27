@@ -1,4 +1,4 @@
-package com.project.qvick.global.config;
+package com.project.qvick.global.common.config;
 
 import com.querydsl.jpa.JPQLTemplates;
 import com.querydsl.jpa.impl.JPAQueryFactory;

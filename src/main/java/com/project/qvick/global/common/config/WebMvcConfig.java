@@ -1,4 +1,4 @@
-package com.project.qvick.global.config;
+package com.project.qvick.global.common.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

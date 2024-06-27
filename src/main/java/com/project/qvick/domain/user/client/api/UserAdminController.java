@@ -7,9 +7,9 @@ import com.project.qvick.domain.user.client.dto.request.AdminPasswordEditRequest
 import com.project.qvick.domain.user.client.dto.request.AdminSetStatusRequest;
 import com.project.qvick.domain.user.client.dto.request.RoomEditRequest;
 import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
-import com.project.qvick.global.common.dto.request.PageRequest;
-import com.project.qvick.global.common.dto.response.BaseResponse;
-import com.project.qvick.global.common.dto.response.BaseResponseData;
+import com.project.qvick.global.common.client.dto.request.PageRequest;
+import com.project.qvick.global.common.client.dto.response.BaseResponse;
+import com.project.qvick.global.common.client.dto.response.BaseResponseData;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;

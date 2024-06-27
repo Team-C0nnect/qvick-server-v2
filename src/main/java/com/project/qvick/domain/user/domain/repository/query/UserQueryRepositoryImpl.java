@@ -3,7 +3,7 @@ package com.project.qvick.domain.user.domain.repository.query;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.domain.user.client.dto.request.UserSearchRequest;
 import com.project.qvick.domain.user.domain.enums.UserRole;
-import com.project.qvick.global.common.dto.request.PageRequest;
+import com.project.qvick.global.common.client.dto.request.PageRequest;
 import com.project.qvick.global.exception.BadRequestException;
 import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;

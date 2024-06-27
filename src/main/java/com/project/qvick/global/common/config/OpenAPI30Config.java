@@ -1,4 +1,4 @@
-package com.project.qvick.global.config;
+package com.project.qvick.global.common.config;
 
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
 import io.swagger.v3.oas.annotations.security.SecurityScheme;
