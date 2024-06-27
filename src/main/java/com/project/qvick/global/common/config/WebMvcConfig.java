@@ -1,7 +1,5 @@
 package com.project.qvick.global.common.config;
 
-import io.micrometer.common.lang.NonNull;
-import io.micrometer.common.lang.NonNullApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
