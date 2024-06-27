@@ -9,6 +9,7 @@ import com.querydsl.core.types.ConstructorExpression;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -104,7 +105,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
     }
 
     private BooleanExpression eqName(String name) {
-        if(name.isEmpty()){
+        if(name.isBlank()){
             throw BadRequestException.EXCEPTION;
         }
         return userEntity.name.eq(name);
