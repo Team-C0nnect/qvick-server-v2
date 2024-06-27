@@ -1,1 +1,4 @@
 rootProject.name = 'qvick'
+include 'qvick-api'
+include 'qvick-core'
+include 'qvick-infra'

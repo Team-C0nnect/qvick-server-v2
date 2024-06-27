@@ -1,0 +1,13 @@
+dependencies {
+    implementation project(':qvick-core')
+
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+    implementation 'org.apache.httpcomponents.client5:httpclient5:5.2.1'
+
+    runtimeOnly 'com.mysql:mysql-connector-j'
+
+}
+
+bootJar { enabled = false }
+jar { enabled = true }
