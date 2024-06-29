@@ -44,3 +44,8 @@ springdoc:
   swagger-ui:
     operationsSorter: method
     path: /swagger-ui.html
+
+logging:
+  discord:
+    webhook-url: ${secrets.DISCORD_WEBHOOK_URL}
+  config: classpath:logback.xml
