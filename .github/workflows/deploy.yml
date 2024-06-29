@@ -32,6 +32,10 @@ jobs:
         application.jwt.secretKey: ${{ secrets.JWT_SECRET_KEY }}
         logging.discord.webhook-url: ${{ secrets.DISCORD_WEBHOOK_URL }}
 
+    - name: logback.xml set
+      run: |
+        echo "${{ secrets.LOGBACK_XML }}" | base64 --decode > src/main/resources/firebase-sdk.json
+
     - name: set chmod
       run: chmod +x ./gradlew
 
