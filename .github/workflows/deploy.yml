@@ -34,7 +34,7 @@ jobs:
 
     - name: logback.xml set
       run: |
-        echo "${{ secrets.LOGBACK_XML }}" | base64 --decode > src/main/resources/firebase-sdk.json
+        echo "${{ secrets.LOGBACK_XML }}" | base64 --decode > src/main/resources/logback.xml
 
     - name: set chmod
       run: chmod +x ./gradlew
