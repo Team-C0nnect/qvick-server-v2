@@ -6,7 +6,7 @@ spring:
     active: prod
   datasource:
     hikari:
-      max-lifetime: 177000 # 177초
+      max-lifetime: 170000 # 170초
     url: ${secrets.RDS_PATH}
     username: ${secrets.DB_USERNAME}
     password: ${secrets.DB_PASSWORD}
