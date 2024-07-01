@@ -6,11 +6,18 @@ import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.global.annotation.Jwt;
 import com.project.qvick.global.security.auth.CustomUserDetails;
+import com.project.qvick.global.security.jwt.config.JwtProperties;
 import com.project.qvick.global.security.jwt.enums.JwtType;
+import com.project.qvick.global.security.jwt.exception.TokenErrorException;
+import com.project.qvick.global.security.jwt.exception.TokenExpiredException;
+import com.project.qvick.global.security.jwt.exception.TokenNotSupportException;
 import com.project.qvick.global.security.jwt.exception.TokenTypeException;
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Header;
 import io.jsonwebtoken.Jws;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.UnsupportedJwtException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
@@ -23,12 +30,24 @@ import org.springframework.util.StringUtils;
 @RequiredArgsConstructor
 public class JwtExtract {
 
-    private final JwtProvider jwtProvider;
+    private final JwtProperties jwtProperties;
     private final UserRepository userRepository;
     private final UserMapper userMapper;
 
+    public Jws<Claims> getClaims(final String token) {
+        try {
+            return Jwts.parser().setSigningKey(jwtProperties.getSecretKey()).parseClaimsJws(token);
+        } catch (ExpiredJwtException e) {
+            throw TokenExpiredException.EXCEPTION;
+        } catch (UnsupportedJwtException e) {
+            throw TokenNotSupportException.EXCEPTION;
+        } catch (IllegalArgumentException e) {
+            throw TokenErrorException.EXCEPTION;
+        }
+    }
+
     public Authentication getAuthentication(final String token) {
-        final Jws<Claims> claims = jwtProvider.getClaims(token);
+        final Jws<Claims> claims = getClaims(token);
 
         if (isWrongType(claims, JwtType.ACCESS)) {
             throw TokenTypeException.EXCEPTION;

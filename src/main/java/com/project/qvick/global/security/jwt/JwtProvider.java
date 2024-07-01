@@ -24,18 +24,6 @@ public class JwtProvider {
 
     private final JwtProperties jwtProperties;
 
-    public Jws<Claims> getClaims(final String token) {
-        try {
-            return Jwts.parser().setSigningKey(jwtProperties.getSecretKey()).parseClaimsJws(token);
-        } catch (ExpiredJwtException e) {
-            throw TokenExpiredException.EXCEPTION;
-        } catch (UnsupportedJwtException e) {
-            throw TokenNotSupportException.EXCEPTION;
-        } catch (IllegalArgumentException e) {
-            throw TokenErrorException.EXCEPTION;
-        }
-    }
-
     public String generateAccessToken(final String email, final UserRole userRole) {
         return Jwts.builder()
                 .setHeaderParam(Header.JWT_TYPE, JwtType.ACCESS)

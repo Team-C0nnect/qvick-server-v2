@@ -73,7 +73,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public RefreshTokenResponse refresh(String token) {
-        Jws<Claims> claims = jwtProvider.getClaims(jwtExtract.extractToken(token));
+        Jws<Claims> claims = jwtExtract.getClaims(jwtExtract.extractToken(token));
         if (jwtExtract.isWrongType(claims, JwtType.REFRESH)) {
             throw TokenTypeException.EXCEPTION;
         }
