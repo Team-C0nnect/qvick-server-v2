@@ -30,15 +30,15 @@ public class PostServiceImpl implements PostService{
 
     @Override
     public void postEdit(PostEditRequest request){
-        Post post = postUtil.findPost(request.getPostId());
-        post.setTitle(request.getTitle());
-        post.setContent(request.getContent());
+        Post post = postUtil.findPost(request.postId());
+        post.setTitle(request.title());
+        post.setContent(request.content());
         postRepository.save(postMapper.toEntity(post));
     }
 
     @Override
     public void postDelete(PostDeleteRequest request){
-        postRepository.deleteById(request.getPostId());
+        postRepository.deleteById(request.postId());
     }
 
 }
