@@ -26,8 +26,8 @@ public class PostUtil {
 
     public void savePost(PostRegisterRequest request){
         Post post = Post.builder()
-                .title(request.getTitle())
-                .content(request.getContent())
+                .title(request.title())
+                .content(request.content())
                 .author(userUtil.getUser().getName())
                 .build();
         postRepository.save(postMapper.toEntity(post));
