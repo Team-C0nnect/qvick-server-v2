@@ -42,66 +42,65 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void editRoom(RoomEditRequest request){
+    public void editRoom(RoomEditRequest request) {
         User user = userUtil.findUserByStdId(request.getStdId());
         user.setRoom(request.getRoom());
         userRepository.save(userMapper.toEdit(user));
     }
 
     @Override
-    public User findUser(){
+    public User findUser() {
         return userUtil.getUser();
     }
 
     @Override
     public void check(CodeRequest request) {
         User user = userUtil.getUser();
-        if(user.isChecked()){
+        if (user.isChecked()) {
             throw CheckAlreadyExistsException.EXCEPTION;
-        } else{
-            if (checkCodeRepository.existsByCodeAndValid(request.code(), true)) {
-                user.setChecked(true);
-                userRepository.save(userMapper.toEdit(user));
-            } else {throw CheckCodeError.EXCEPTION;}
         }
+
+        if (!checkCodeRepository.existsByCodeAndValid(request.code(), true)) {
+            throw CheckCodeError.EXCEPTION;
+        }
+
+        user.setChecked(true);
+        userRepository.save(userMapper.toEdit(user));
     }
 
     @Override
-    public void editPassword(PasswordEditRequest request){
+    public void editPassword(PasswordEditRequest request) {
         User user = userUtil.getUser();
-        if(!encoder.matches(request.getOldPassword(), user.getPassword()))
+        if (!encoder.matches(request.getOldPassword(), user.getPassword()))
             throw PasswordWrongException.EXCEPTION;
         user.setPassword(encoder.encode(request.getNewPassword()));
         userRepository.save(userMapper.toEdit(user));
     }
 
     @Override
-    public void adminEditPassword(AdminPasswordEditRequest request){
+    public void adminEditPassword(AdminPasswordEditRequest request) {
         User user = userUtil.findUserByEmail(request.getEmail());
         user.setPassword(encoder.encode(request.getNewPassword()));
         userRepository.save(userMapper.toEdit(user));
     }
 
     @Override
-    public void adminDeleteUser(String email){
-        if(userRepository.findByEmail(email).isEmpty())
+    public void adminDeleteUser(String email) {
+        if (userRepository.findByEmail(email).isEmpty())
             throw UserNotFoundException.EXCEPTION;
         userRepository.deleteByEmail(email);
     }
 
-    public boolean isChecked(){
+    @Override
+    public boolean isChecked() {
         User user = userUtil.getUser();
-        if(user.isChecked()){
-            return true;
-        }
-        return false;
+        return user.isChecked();
     }
 
     @Override
     public void fixStatus(AdminSetStatusRequest setStatusRequest) {
         User user = userUtil.findUserByEmail(setStatusRequest.getEmail());
-        user.setChecked(setStatusRequest.getStatus() == 1 ? false : true);
+        user.setChecked(setStatusRequest.getStatus() != 1);
         userRepository.save(userMapper.toEdit(user));
     }
-
 }

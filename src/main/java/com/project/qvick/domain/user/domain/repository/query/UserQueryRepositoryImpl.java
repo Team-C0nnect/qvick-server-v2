@@ -28,7 +28,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
         return jpaQueryFactory
                 .select(userListConstructorExpression())
                 .from(userEntity)
-                .offset((request.getPage() - 1) * request.getSize())
+                .offset((long) (request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
                 .orderBy(userEntity.id.asc())
                 .fetch();
@@ -40,7 +40,7 @@ public class UserQueryRepositoryImpl implements UserQueryRepository{
                 .select(userListConstructorExpression())
                 .from(userEntity)
                 .where(eqName(request.getName()))
-                .offset((request.getPage() - 1) * request.getSize())
+                .offset((long) (request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
                 .orderBy(userEntity.id.asc())
                 .fetch();

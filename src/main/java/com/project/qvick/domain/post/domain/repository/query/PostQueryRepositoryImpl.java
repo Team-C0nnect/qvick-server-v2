@@ -27,7 +27,7 @@ public class PostQueryRepositoryImpl implements PostQueryRepository {
         return jpaQueryFactory
                 .select(postListConstructorExpression())
                 .from(postEntity)
-                .offset((request.getPage() - 1) * request.getSize())
+                .offset((long) (request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
                 .orderBy(postEntity.id.asc())
                 .fetch();
@@ -39,7 +39,7 @@ public class PostQueryRepositoryImpl implements PostQueryRepository {
                 .select(postListConstructorExpression())
                 .from(userEntity)
                 .where(eqTitle(request.getTitle()))
-                .offset((request.getPage() - 1) * request.getSize())
+                .offset((long) (request.getPage() - 1) * request.getSize())
                 .limit(request.getSize())
                 .orderBy(userEntity.id.asc())
                 .fetch();
