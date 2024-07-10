@@ -56,14 +56,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void check(CodeRequest request) {
         User user = userUtil.getUser();
-        if (user.isChecked()) {
+        if (user.isChecked())
             throw CheckAlreadyExistsException.EXCEPTION;
-        }
-
-        if (!checkCodeRepository.existsByCodeAndValid(request.code(), true)) {
+        if (!checkCodeRepository.existsByCodeAndValid(request.code(), true))
             throw CheckCodeError.EXCEPTION;
-        }
-
         user.setChecked(true);
         userRepository.save(userMapper.toEdit(user));
     }
@@ -103,4 +99,5 @@ public class UserServiceImpl implements UserService {
         user.setChecked(setStatusRequest.getStatus() != 1);
         userRepository.save(userMapper.toEdit(user));
     }
+
 }
