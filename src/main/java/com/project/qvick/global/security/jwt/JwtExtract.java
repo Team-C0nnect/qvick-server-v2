@@ -1,9 +1,9 @@
 package com.project.qvick.global.security.jwt;
 
+import com.project.qvick.domain.user.client.dto.User;
+import com.project.qvick.domain.user.domain.mapper.UserMapper;
 import com.project.qvick.domain.user.domain.repository.jpa.UserRepository;
 import com.project.qvick.domain.user.exception.UserNotFoundException;
-import com.project.qvick.domain.user.domain.mapper.UserMapper;
-import com.project.qvick.domain.user.client.dto.User;
 import com.project.qvick.global.annotation.Jwt;
 import com.project.qvick.global.security.auth.CustomUserDetails;
 import com.project.qvick.global.security.jwt.config.JwtProperties;
@@ -23,7 +23,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 @Jwt

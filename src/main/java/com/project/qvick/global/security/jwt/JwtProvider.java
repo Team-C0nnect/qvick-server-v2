@@ -4,16 +4,9 @@ import com.project.qvick.domain.user.domain.enums.UserRole;
 import com.project.qvick.global.annotation.Jwt;
 import com.project.qvick.global.security.jwt.config.JwtProperties;
 import com.project.qvick.global.security.jwt.enums.JwtType;
-import com.project.qvick.global.security.jwt.exception.TokenErrorException;
-import com.project.qvick.global.security.jwt.exception.TokenExpiredException;
-import com.project.qvick.global.security.jwt.exception.TokenNotSupportException;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Header;
-import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.UnsupportedJwtException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.Date;
